@@ -1,0 +1,95 @@
+Differences:
+  $display and $monitor
+  int and integer (verilog and SV)
+  $stop and $finish
+
+
+there is no string datatype in verilog, but for accesssing purposes we declare a reg type of 
+8bit times the no of characters,
+eg.: reg[8*c:0] s 
+     s="strings"
+
+Gate level:
+  delays: three types: transition of output of gates,
+  i.   rise delay: value to 1 from 0,x,z
+  ii.  fall delay: value to 0 from 1,x,z
+  iii. turn-off delay: value to z from 1,0,x
+
+  values: min,max,typical 
+
+Dataflow level:
+  "assign" keyword
+  continous assignment==> basic assignment, right value assigned to the left of '=' operator
+  used for driving values on a net or wire ,
+  'assign' keyword is used, this converts the default reg to be declared as a wire type.
+  note: this method of assignment causes any changes in value on the right ot be recorded,
+        no limitation on the value on the right.
+
+
+  ====================
+
+  regular continous assignment:
+    wire out;
+    assign out = in1 & in2;-----------
+                                     | same as
+  implicit assignment:               |
+    wire out = in1 & in2; <-----------
+
+
+  delays:
+    assign #10 out = in1 & in2 ;
+
+  NOTE: assign is always active.
+  
+
+Operators:
+  operations regarding x,z ***VERY IMP***
+
+A = 4'b0011; B = 4'b0100; // A and B are register vectors
+D = 6; E = 4; F=2// D and E are integers
+A * B // Multiply A and B. Evaluates to 4'b1100
+D / E // Divide D by E. Evaluates to 1. Truncates any fractional part.
+A + B // Add A and B. Evaluates to 4'b0111
+B - A // Subtract A from B. Evaluates to 4'b0001
+F = E ** F; //E to the power F, gives 16
+
+in1 = 4'b101x;
+in2 = 4'b1010;
+sum = in1 + in2; // gives sum = 4'bx
+
+
+Logical:
+  only possible values are 1,0,x(i.e. true false ambigous)
+  
+
+  Equality:
+  // A = 4, B = 3
+  // X = 4'b1010, Y = 4'b1101
+  // Z = 4'b1xxz, M = 4'b1xxz, N = 4'b1xxx
+  A == B // Results in logical 0
+  X != Y // Results in logical 1
+  X == Z // Results in x
+  Z === M // Results in logical 1 (all bits match, including x and z)
+  Z === N // Results in logical 0 (least significant bit does not match)
+  M !== N // Results in logical 1
+
+Relational:
+  comparison is always form MSB in case of logical-equality('==').
+  
+  In case-equality the individual position of x and z are also compared.
+  
+
+Reduction:
+  requires only single operand:
+  
+  performs on bits from LSB to MSB.
+
+  X = 4'b1010
+  &X //Equivalent to 1 & 0 & 1 & 0. Results in 1'b0
+  |X //Equivalent to 1 | 0 | 1 | 0. Results in 1'b1
+  ^X //Equivalent to 1 ^ 0 ^ 1 ^ 0. Results in 1'b0
+  A reduction xor or xnor can be used for even or odd parity
+  generation of a vector.
+
+
+
