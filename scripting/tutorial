@@ -1,8 +1,12 @@
 hiiiiii
 this is a new line
 wow this is so exiting
+
 i am officially intrigued
 use :set nu for line numbers
 use :set nonu to disable line numbers
 
+:s/old_str/new_str          for finding and replacing words or str in curent line.
+:%s/old_str/new_str         for finding and replacing words or str in whole file.
+:5,20s/old_str/new_str/gc   for '''' in lines 5 to 20 with confirmation 'c', dont use 'c' for no confirmation.
 
