@@ -18,3 +18,47 @@ use :set nonu to disable line numbers
 
 
 mktemp to just work on a temp file then vanish.
+
+printf "%d\n" "'$var"    for ascii values
+
+seq 1 10 does this :
+1
+2
+3
+.
+.
+10
+
+
+
+
+{1..10} or {a..z} or {A..Z} for an array type.
+
+echo a{1..10}
+or touch,etc.
+
+
+use pipe to less for viewing output in a single page on terminal.
+command | less 
+
+
+ascii using printf 
+ASSIGNMENT:
+append in a seperate file.
+
+ascii values:
+0<1<.....<A<B<C<......Z<a<b<c.....z
+
+
+sort command sorts from less to high ascii values:
+low to high (increasing)
+
+ex:  sort
+aa 
+aA 
+
+if sorted gives output:
+aA 
+aa 
+
+
