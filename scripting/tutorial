@@ -53,12 +53,50 @@ ascii values:
 sort command sorts from less to high ascii values:
 low to high (increasing)
 
-ex:  sort
+eg:  sort
 aa 
 aA 
 
 if sorted gives output:
 aA 
 aa 
+
+example: sort.txt 
+aa 
+bb
+cc
+dd 
+ee 
+eE 
+Bb 
+90
+1
+2
+5
+6
+1
+23
+98
+45
+43
+12
+
+now the sort command by default sorts character by character and through ascii values
+But , if we want the numerical sort we use -n flag...
+
+eg: sort -n sort.txt
+
+this does such that the sum of ascii is in a sorted order.
+
+now for reverse sort also include -r flag....
+ex: sort -nr FILE 
+
+#################################################
+#  default delimiter in sort is "whitespace"    #
+#  default delimiter in sort is "tab"           #
+#################################################
+
+
+
 
 
