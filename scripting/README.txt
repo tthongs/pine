@@ -946,7 +946,7 @@ tr <option> set
 zero or more characters
 
 ls f*
-f  (* matching zero no char)
+f  (* matching zero no char
 f12345 (* match 5 char )
 
 
@@ -954,7 +954,7 @@ f12345 (* match 5 char )
 ls f*
 
 
-grep : get regular expression pattern
+Ggrep : get regular expression pattern
 egrep: extended grep (advance regular expr)
 
 
@@ -1080,14 +1080,586 @@ sort -u
 
 -s switch ?
 
+cat a.csv
+a,asic,2025
+a,pd,2026
+a,dv,2026
+sort --debug -t ',' -k1,1 -k3,3 -s a.csv 
+sort: text ordering performed using simple byte comparison
+a,asic,2025
+_
+       ____
+a,pd,2026
+_
+     ____
+a,dv,2026
+_
+     ____
+
+sort --debug -t ',' -k2.4,2.6n f2
+sort --debug -t ',' -k2.4,2.4n f2
 
 ls -lh | sort -h -r -k5
 
+grep/regular expression
+
+regex: concept
+	can be used in multiple commands/languages
+						tcl, perl, python, bash
+
+unix:
+	cut (does not use regex)
+	grep (uses regex)
+	sed : 
+	awk :
+	find 
+
+grep:
+	data find from a file
+
+grep 'regex' file1 file2
+egrep 'regex' file1 file2
 
 
-grep/regular expr
+regex:	
+using literal characters:
+	a
+	ac
+
+charracter set:
+
+grep '0' file
+grep '1' file
+
+
+char set:
+	[0123]
+	0 or 1 or 2 or 3
+	[321]
+	3 or 2 or 1
+
+	[1-5]
+	[12345]
+	1 or 2 or 3 or 4 or 5
+
+grep '12345' file
+grep '[12345]' file
+
+1[23]
+	12
+	or
+	13
+
+not 123
+char set:
+	[246]
+	2 or 4 or 6
+grep '123' file
+grep '[1][2][3]' file
+
+[246][246]
+2/4/6
+2/4/6
+22
+24
+26
+42
+44
+46
+62
+64
+66
+
+246246
+246[246]
+
+2462
+2464
+2466
+
+
+
+[1234]
+[abgz]
+a or b or g or z
+[_3%0]
+_ or 3 or % or 0
+
+
+[01]ab
+
+0ab
+1ab
+
+[a-d][2-3]z
+
+[A-Za-z]
+
+Meta character:
+dot: .
+represents any single
+
+
+[1a.d]
+
+1 or a or . or d
+
+[111]
+1 or 1 or 1
 
 
 
 
--
+char set
+---------
+
+egrep 
+A{3}
+AAA
+
+A{1,4}
+A
+AA
+AAA
+AAAA
+
+AB{1,2}
+AB
+ABB
+
+(AB){1,2}
+AB
+ABAB
+
+[A-Z]{2}
+AA
+BB
+AB
+BA
+CZ
+
+[0-9]{2,4}
+09
+092
+0123
+
+[123]{2,}
+11
+22
+33
+12
+23
+31
+111
+222
+123
+321
+
+[bcd]{1,4}
+b
+c
+d
+bbbb
+dddd
+cbdd
+
+
+char set
+modifiers
+anchors
+
+
+egrep 'a|A' file
+
+
+not in char set
+	[^abcd]
+	not a or not b or not c or not d
+	
+	[ab^cd]
+	a or b or ^ or c or d
+
+	[e-h]
+
+anchors
+	^ : start of the line
+	$ : end of the line
+
+	blank line: ^$
+
+
+. dot: meta char
+	any single char not \n
+	not null
+	
+
+
+Assignment
+
+	write egrep which prints lines which:
+
+	start with #
+	end with .
+	start with number OR end with alphabet
+	start with 3 spaces OR end with .
+	start witth non-alphanumeric
+	end with min two numbers
+	start with no space/no tab 
+	end with space or tab
+	have only 1 number
+	have only two albhabets
+
+
+
+
+anchors
+	^
+	$
+
+modifiers
+	*
+	+
+	?
+
+* : star /astrick
+	0 or more times repeatition of any char(s)
+
+egrep 'ab*c' file
+egrep 'ab{1,}c' file : abc abbc abbbc ....
+ac
+abc
+abbc
+abbbc
+and so on
+b 0 or more times
+
+egrep 'a(cd)*e' file
+0 or more times cd
+ae
+acde
+acdcde
+acdcdcde
+and so on
+
+
+
++
+	1 or more times repeat of any char(s)
+
+
+egrep 'ab+c' file
+egrep 'a[a-z]+c : abdfc
+			azc
+			azzzzzzc
+			aycdfghcffc
+
+
+abc
+abbc
+abbbc
+and so on
+
+
+?
+ 0 or 1 times repeat of any char(s)
+
+ab?c
+ac
+abc
+
+. : any single
+[.] : literal dot . 
+
+egrep '[.]+' file
+egrep '\.+' file
+.
+..
+...
+dasfdfdsfasfd.aewr435r
+cdadsfs......................
+cdfCD.........................43R324FR
+
+Assignment 2:
+
+Write egrep to match all valid email address in a file
+
+egrep '^[[:alnum:].]+@[[:alpha:]]+\.com?(.uk)?' f13
+
+
+regex:
+	chars
+	char set
+	meta char (dot)
+	anchors: ^ , $
+	Modifiers :  * + and ?
+	() : round paranthesis
+
+
+[a-z]
+a
+b
+c
+d
+
+sddvSDV2314213512c12
+[a-z][0-9][0-9]$
+a00
+b01
+
+
+str: aZ0122acb
+^[a-z][A-Z]
+aA
+bA
+cZ
+
+
+()
+grouping 
+
+memory
+
+(abcd)+
+abcdabcdabcd
+a(123)*
+0 or more times 123
+a
+a123
+a123123
+
+
+
+AA : (.)\1
+CD
+LL
+
+DAD
+MOM
+TRY
+ABC
+POP
+
+NITIN
+
+
+a((b)(d))
+
+\1 : bd
+\2 : b
+\3 : d
+
+egrep -v
+invert match
+
+
+grep -E -v
+egrep -v
+
+
+egrep -i
+
+	enable case insensitivity
+
+e: extended
+grep: globally search for regular expression patterns
+
+
+
+egrep -c
+
+
+counts no of matched lines
+
+
+egrep -w:
+	word match 
+
+egrep -w 'pine'
+egrep '\<pine\>'
+
+egrep -l
+	retrun only file name which has the match
+
+egrep -R : recursive switch
+
+cmd : unix :         egrep :       universal in all shell
+but cmd can be shell specific
+set : bash shell
+bash
+====
+check integers
+-eq
+-neq
+-gt
+-lt
+-ge
+-le
+
+n=4
+if [[ $n -gt 5 ]] ;  then
+	echo $n
+elif [[ $n -lt 10 ]] ; then
+	echo $n
+elif [[ $n -ge 10 ]] ; then
+	echo $n
+	echo $n
+else 
+	echo 
+fi
+
+if [[ cond ]] ; then
+	if [[ cond ]] ;then
+		#body
+	fi
+fi
+
+
+
+
+string compare
+==
+!=
+>
+<
+>=
+<=
+
+t/false
+&&                logical AND
+if [[ $marks -gt 60 && $marks -lt 80 ]] ; then
+	echo "fisr div"
+fi
+
+||	logical OR
+
+if [[ $marks -gt 60 || $marks -lt 80 ]] ; then
+	echo "fisr div"
+fi
+
+
+if [[ -f f1 ]] ; then
+	rm f1
+fi
+
+
+
+[[ -f file ]] && rm file
+[[ -f file ]] ; rm file
+ls nofile || touch nofile
+
+
+if [[ -f file && ( -f f1 || -f f2 ) ]] ; then
+
+
+egrep/grep
+
+egrep -R
+	recursive
+
+egrep -w
+egrep '\<word\>' file
+
+egrep -o 
+	--
+only-matching
+
+
+-A
+-B
+-C
+
+
+license file log
+
+	total lic of tool:     virtuoso 25/15
+	u1 1
+	u2 2
+	u3 3
+
+
+grep/egrep
+	covered all switches
+
+
+12/Nov/2025
+-----------
+sed cmd
+
+
+read cmd
+IFS in bash shell
+To read file line by line using bash shell script
+
+
+read cmd is bash shell specific
+IFS : internal field seperator in BASH
+WS
+IFS=$' \t\n'
+
+IFS it decides the fields (or word)
+
+str="a b c"
+
+word=3 (field =3)
+
+printf "%q\n" "$IFS"
+
+
+read
+
+
+trailing spaces
+leading spaces
+
+
+cmd substitution
+
+s=$(expr 1 + 2)
+echo $s
+3
+
+
+-z (empty string/var)
+-n (non emptty string/var)
+-f (file existence)
+-d (dir existence)
+bash specific switch
+
+var=10
+[[ -n $var ]] && echo "pass"
+
+[[ -z $a ]] && echo "pass"
+
+
+if [[ -z $var ]] ; then
+	echo
+fi
+
+
+read:
+	-p prompt
+	-r to preserve \
+	
+IFS='-'
+	read a b <<< "i j-p"
+
+-s : hide stdin
+
+-t timeout of read in seconds
+-t 5
+
+-n 1
+
+read -a arr <<< "hi there"
+
+echo ${arr[0]}
+echo ${arr[1]}
+
+
+next class:
+while/read file reading
+cat 
+sed
+
+
+[[ "abc" =~ '^a' ]]

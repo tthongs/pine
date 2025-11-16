@@ -1,0 +1,36 @@
+# This is a main comment line
+#Section_A_1
+
+This sentence ends correctly.
+I need 3 apples.
+
+404 This line starts with a number.
+The letters are P and Q.
+
+This sentence ends correctly.
+The total is calculated as 9.
+I need 3 apples.
+
+$ Amount due is 15.00
+* A bullet point entry
+!@#$x%^&*y
+
+The score is 45
+The magic word is test987
+90-A-B-12
+
+# Todo: Review this section
+#Section_A_1
+This sentence ends correctly.
+$ Amount due is 15.00
+* A bullet point entry
+
+Ends with a space
+Ends with a tab
+Another trailing space
+
+The total is calculated as 9.
+Result: 0 items.
+
+!@#$x%^&*y
+The letters are P and Q.

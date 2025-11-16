@@ -1,0 +1,7 @@
+test_user.name@company.co
+user+tag123@sub.domain.net
+example@.domain.com
+admin@my-server.info
+first.last.name.1@business.org.au
+user@domain..com
+_hello_world_@mail.test

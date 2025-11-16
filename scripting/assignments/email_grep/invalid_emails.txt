@@ -1,0 +1,5 @@
+no@dotcom
+with space@domain.com
+user-name@192.168.1.100
+@onlydomain.org
+missingatsign.com
