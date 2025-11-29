@@ -1875,6 +1875,295 @@ sed -rn '2{/^a/p}' f
 
 
 
+23 nov 2025
+=============
+print last line by sed
+sed -rn '$p' file
+
+p : print PS data to stdout
+P
+= : print line no of PS data to stdout
+
+	a
+		p
+		=
+
+
+	a
+	b
+		= : line no of b
+		p
+		a
+		b
+
+
+d : delete PS data
+D
+
+
+sed -ri.bk '/a/d' f1
+f1 change
+f1.bk
+
+
+
+a
+b
+c
+sed -r 'p;d' f
+
+
+sed -ri.bk 'd' file
+		
+
+a
+b
+c
+
+cp by sed 
+file.bk
+a
+b
+c
+
+file : no data
+
+
+sed cmd:
+p (print PS)
+= (print line no of PS)
+d (delete PS)
+s (substitute)
+
+sed switch:
+-n
+-i
+-r
+
+a a a a
+s/a/A/1
+A a a a
+s/a/A/2
+
+
+s/REGEX/pine/g
+
+aaaaab
+aaab
+aab
+
+sed -r 's/a+/a/g' file
+ab
+ab
+ab
+
+
+ab ab ab
+
+
+26 nov 2025
+-----------
+sed cmd:
+p : print PS data
+= : line no of data in PS
+s : substitute
+d : delete
+
+switch
+-r : regex
+-n : stop buffer data to go to stdout
+-e : multiple cmds
+-i : change inside the file
+
+line address
+regex cond
+
+
+file:
+a
+A
+b
+B
+a
+A
+
+sed -rn '/^[aA]$/p' file
+a
+A
+a
+A
+
+sed -rn '${/^a$|^A$/p}' file
+sed -r '${/^a$|^A$/p}' file
+
+sed -rn '1,+2p' f
+line1
++
+next two lines
+
+sed -rn '1~2p' f
+line 1
+line 3
+line 5
+and so on
+
+sed -rn '2~2p' f
+line2
+line4
+line6
+
+sed -rn '${/^a/p;=}' f9
+sed -rn '${/^a/{p;=}}' f9
+
+
+
+file
+a
+
+sed -r 's/a/A/' file
+
+PS: a
+s/a/A
+PS: A
+		A
+
+sed -rn 's/a/A/;p' file
+
+abc def
+
+PS:
+abc def
+s/^ +//
+abc def
+	abc def
+
+
+
+file
+a a a
+a a
+a
+
+s/a/A/
+a a a
+A a a
+	A a a
+s/a/A/g
+A A A
+	A A A
+file:
+abcabc123abc567abc
+s/abc/ABC/
+s/(abc)+/ABC
+s/(abc)+/ABC/g
+
+   sed 's/abc/ABC/g' <<< "abcabc123abc567abc"
+   sed 's/abc/ABC/1' <<< "abcabc123abc567abc"
+   sed 's/abc/ABC/2' <<< "abcabc123abc567abc"
+   sed 's/abc/ABC/3' <<< "abcabc123abc567abc"
+   sed 's/abc/ABC/4' <<< "abcabc123abc567abc"
+   sed 's/abc/ABC/5' <<< "abcabc123abc567abc"
+   sed 's/abc/ABC/g' <<< "abcabc123abc567abc"
+   sed 's/(abc)+/ABC/1' <<< "abcabc123abc567abc"
+   sed -r 's/(abc)+/ABC/1' <<< "abcabc123abc567abc"
+   sed -r 's/(abc)+/ABC/2' <<< "abcabc123abc567abc"
+   sed -r 's/(abc)+/ABC/3' <<< "abcabc123abc567abc"
+   sed -r 's/(abc)+/ABC/g' <<< "abcabc123abc567abc"
+
+
+\U : upper case conversion
+\L : lower case conversion
+\u : upper case conversion
+\l : lower case conv
+\E : stops cov started by \U or \L
+
+
+sed -r 's/regex/replacement/FLAG' file
+FLAG: g (global occurance)
+      p (print ps) only for sucessful substitution
+
+sed -r 's/a/A/gp' <<< "abc"
+
+sed -rn 's/d/z/gp' <<< "abc"
+p flag wont work
+
+
+\Uab
+AB
+
+\uab
+Ab
+
+
+
+assignment
+use sed on a file
+convert first lower char to upper
+ignore other first char if they are numeric/space or anyother char
+
+
+convert first word to upper case of each line
+
+
+covert first complete line to uper case of a file
+
+
+delete all lines of a file which start with # except first line
+
+
+not 
+
+sed -rn '1!p' file
+print all lines except line 1
+sed -rn '1,3!p' file
+print all lines except line 1 to 3
+
+
+sed -r '1! s/a/A/g/' file
+
+sed -r '/^#/s/#/_/g' file
+
+sed -r '/\.$/ d' file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
