@@ -1,0 +1,15 @@
+sed -rn '/[aA]$/p'  // only a or A
+
+sed -rn '${/a$|^A$/p}'  // start and end with a or A 
+
+sed -rn 'p' filename // prints all lines in the file.
+
+sed -rn '1,4p' filename  // prints form line 1 to 4 (inclusive).
+
+sed -rn '1,+2p' filename // + causes 2 more lines to print 
+
+eg: '3,+5p' filename // causes lines from line 3 to more 5 lines to print.
+
+sed -rn '1~2p' filename // causes to print 1st then +2 3rd then +2 5th line in the file.
+
+

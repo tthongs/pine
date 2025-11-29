@@ -1763,5 +1763,118 @@ $line
 
 
 
+fgrep : fixed grep 
+
+zgrep 
+
+
+
+sed: stream editor
+
+
+file input
+
+sed f1 f2
+a
+b
+c
+d
+
+sed:
+	print data matching regex
+	print data based on lines + regex
+	delete data
+	modify data
+
+
+cat f1 | while IFS= read -r ; do
+	#
+	#
+	done
+
+
+
+sed
+
+standard input
+
+cat f1
+a
+b
+
+sed f1
+
+input
+line 1
+a 
+
+a
+b
+
+sed 'cmd1;cmd2;cmd3' f1
+
+read a (line 1)
+a : pattern space (PS)
+
+PS -> stdout
+
+f1:
+a
+b
+
+
+p: print cmd in sed (print the entire data which is present in PS)
+sed 'p' f1
+stdin  |   ps 	| stdout
+
+a	   	   a
+		   a
+b		   b
+	           b
+
+sed -n 'p' f1
+a	a	a
+b	b	b
+
+
+f1
+a
+b
+
+sed 'p;p' f1
+		a
+		a
+		a
+		b
+		b
+		b
+
+sed -n 'p;p' f1
+		a
+		a
+		b
+		b
+
+sed -e 'p' f1 -e 'p'
+
+
+sed -r :
+-r enables advanced regex
+	|
+	+
+	?
+	{}
+
+
+
+sed -rn '/^a|^b/p' f
+sed -rn '/^a|^b/p;p' f
+sed -rn '/^a|^b/{p;p}' f
+
+sed -rn '2{/^a/p}' f
+
+
+
+
 
 
