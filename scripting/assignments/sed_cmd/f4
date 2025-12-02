@@ -1,0 +1,6 @@
+# This is the header line that MUST be kept.
+# This is a comment that should be deleted.
+data line 1
+# another comment to delete
+data line 2
+#final comment
