@@ -12,7 +12,7 @@ for sf in *.sh; do
     fl=$(head -n 1 "$sf")
 
     if [ "$fl" != "$SB" ]; then
-      echo "-> Missing or incorrect shebang. Inserting '$SB'..."
+      echo "Missing or incorrect shebang. Inserting '$SB'...."
 
       sed -i "1i\\$SB" "$sf"
 
@@ -22,4 +22,3 @@ for sf in *.sh; do
     fi
   fi
 done
-
