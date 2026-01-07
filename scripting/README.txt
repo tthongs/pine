@@ -2127,35 +2127,626 @@ sed -r '/\.$/ d' file
 
 
 
+6th Dec 2025
+============
+
+q cmd
+quit
+echo $?
+
+print 4 lines and quit with exit status 10
+sed '4q 10'
+echo $? : 10
+
+
+a\  append cmd
+i\  insert
+c\  change
+
+sed 'a hello' file
+it will append hello after every line of ip
+
+sed '3,5 a hello' file
+
+sed '1 i this is header'
+
+Assignment1:
+cwd files .sh
+line 1 : !#/usr/bin/bash do nothing
+line1 : !#/usr/bin/bash
+
+seq 10 | sed -e '1 i START' -e '$ a END'
+
+
+sed '1 c TEXT' file
+
+
+-f sedfile
+
+
+n : read next input line to PS and print current PS data if -n is not used
+N : append next line to PS 
+
+
+a
+b
+c
+
+sed 'n' file
+
+
+	PS
+		a	
+		b	
+
+		c
+
+
+a
+b
+c
+d
+
+sed '=;n' file
+a	PS
+	a (cycle started =;n)
+					1
+					a
+					b
+					3
+					c
+
+sed '=;n;n' file
+
+PS
+a
+		1
+		a
+		b
+		c
+		4
+		d
+
+sed '=;=;n' file
+
+		1
+		1
+		a
+		b
+	
+		3
+		3
+		c
+
+		d
+sed -n '=;=;n' file
+
+		1
+		1
+	c
+		3
+		3
+	d
+
+
+
+N: append in current PS
+
+a
+b
+c
+d
+
+sed 'N;N;='
+
+PS:a
+   b
+   c
+		3
+		a
+		b
+		c
+		d
+
+sed 'N;N;p' file
+
+		a
+		b
+		c
+		a
+		b
+		c
+		d
+
+
+n/N
+d : delete entire data of PS and ends the cycle
+D : delete data of PS but only first line
+P : print first line of PS
+p : complete PS data
+
+a/i/c
+
+--debug
+
+-f sedfile
+
+
+10th Dec 2025
+=============
+
+sed substitute flag
+g
+I
+\U
+\u
+\l
+\L
+\E
+
+
+-s
+--seperate
+
+& : represents the regex match
+
+echo "abc123abc" | sed -r 's/^[a-z]+/&&/'
+
+
+ab12cd34ef56
+
+sed -r 's/[0-9]+/0/g' 
+
+
+
+(.*) : \1
+(.*) : &
+
+echo "abc def" | sed -r 's/(.*)( )(.*)/\3\2\1/g'
+
+sed -r 's/regex/replace/g'
+sed -r 's:regex:replace:g'
+ser -r 's|regex|replace|g'
+
+
+sed -r 's|a|A|g' file
+
+
+
+branching
+	b (uncondtional branch)
+	t (runs if prev substition is sucessful)
+	T (runs if prev substition is not sucessful)
+loop
+
+
+
+sed 'b;p;=' file
+
+sed -r 'cmd1;cmd2;cmd3'
+
+sed 'b;p' file
+
+
+
+b LBL  :LBL
+t MYLABEL    :
+T
 
 
 
 
 
+a
+b
+c
+
+
+a b c 
+
+sed 's/\n/ /g' file
+a
+b
+c
+
+
+PS
+	a
+		a
+		b
+		c
+
+
+a
+b
+c
+s/\n/ /g 
+
+a b c 
+
+a
+b
+c
+d
+
+sed -r 'N;N;s/\n/ /g'
+	a
+	b
+	c 
+	a b c
+		a b c
+
+	d
 
 
 
 
+14/12/2025
+==========
+sed 
+awk 
+
+	Bell Labs
+	Aho
+	Weinberger
+	Kernighan
+AWK
+
+awk -f awkfile inputfile
+
+
+why awk?
+	text processing
+			fetch info
+			change info
+			data print
+		sed/grep => awk
+offer
+	complete programming
+		loops
+		function
+		if else
+		built-in function
+		regex
+		array
+		variable
+
+
+awk has its own interpreter
+/usr/bin/awk
+
+#!/usr/bin/awk
+
+
+#!/usr/bin/bash
+egrep
+sed '
+	N;p
+	'
+awk '
+	awk syntax
+'
+
+
+
+awk: bash term
+awk script
+awk -f awk.script inputfile
+
+awk script:
+run.awk
+#!/usr/bin/awk
+
+
+chmod +x run.awk
+./run.awk
+
+
+
+awk -option 'cmd' infile
+
+
+awk
+	3 block
+		BEGIN block
+	awk process BEGIN block first before reading in input from a file
+
+	you can have one or more BEGIN
+
+
+	MAIN block
+	no KW for MAIN
+	{
+
+		MIAN block
+	}
+
+	you can have one or more MAIN
+
+
+		END block
+	END is used after input(s) file is processed
+
+
+Recommendation:
+	use one BEGIN (optional)
+	use one or more MAIN (optional)
+	use one END (optional)
+
+
+BEGIN (optional)
+you can use BEGIN in that case as well where you dont have to
+process any input file
+
+
+BEGIN{ }
+
+{ }
+
+
+END{ }
+
+
+awk:	
+	print (echo): new line is added automatically not formatting
+	printf: you have add \n and you can also format your op
+
+file
+a
+b
+c
+
+	{}
+	{cmd on main block}
+
+	run for line 1 which is a
+	run for line 2 which is b
+	run for line 3 which is c
+	exit from main
+
+
+print $0
+line of the file in main block
+
+line: record
+
+default: 
+a
+b
+c
+
+by default
+record 1 : a
+record 2 : b
+record 3: c
+
+Input record seperator
+Def val
+IRS : \n
+
+Output record seperator 
+ORS
+Def val
+ORS: \n
+
+
+
+AWK
+	main block
+	record 
+	field
+
+IFS: input field seperator: WS
+OFS : def val space
+
+main block:
+
+	$0 : complete record
+	$1 : field1 of that record
+	$2 : field 2 of that record
+	${10} : field 10 of that record
+	and so on
+
+
+
+print in main 
+	print $1,$2
+
+here , is OFS value
+
+only valid for print cmd
+
+
+NF : number of field in each record
+NR : number of record
+
+
+awk 'BEGIN{OFS="_"} {print $1,$}' f
+
+
+awk 'END{print $0}'
+awk 'END{print NR}'
 
 
 
 
+1 2 3
+4 5 6
+8 1 12
+
+
+record: sum all fields
+record 1: sum=6
+record 2: sum=1
 
 
 
 
+2nd Jan 2026
+=============
+
+awk is a cmd, but it provides lots of programming capabilities
+
+
+AWK
+	BEGIN
+	{}
+	END
+
+BEGIN->MAIN->END
+
+
+FS :   input field seperator
+OFS:   o/p field seperator
+NF :   no of field in each record
+NR :   no of record
+FNR:  
+RS :   input record seperator
+ORS:   output record seperator
+FILENAME
+
+
+OFS :      def value space
+print $1,$2
+comma: OFS val =  space
+a b
+
+
+
+awk -F"," 'BEGIN{FS="_"};{print $1,NF}' f4.csv
+a,b,c,d 1
+i,l,k,h,p 1
+1,2,3,4,5,6,7 1
+a,1,d,4,g 1
+
+
+FS inside BEGIN will be the final valu
+it will overwrite -F value
+
+
+-F'[ ]'
+to make FS as single space
+
+def
+FS='[ \t\n]+'
+
+FS='[ ]'
+a b c d
+a b  d
+FS='[ ]+'
+
+
+cat f6
+ab1234552451cdeee1341235215abcccweq
+dasagfasgf452352455fadfdsd857484hghsgshg
+awk -F'[0-9]+' '{print $1,$2,$3}' f6 | awk '{print $NF}'
+abcccweq
+hghsgshg
+
+
+awk -F'[0-9]+' '{print $NF}' f6
+abcccweq
+hghsgshg
+
+
+RS record seperator: def val : \n
+
+
+line1\nline2
+line1
+line2
+
+
+
+ORS (def val new line \n)
+
+
+fn
+ln
+
+fn
+ln
+
+fn
+ln
+
+Get above data in following format using awk:
+fn ln
+fn ln
+fn ln
+
+
+fn ln
+
+fn ln
+
+fn ln
+
+fn ln
+
+
+
+practise:
+FS
+OFS
+RS
+ORS
+
+
+$0 ~ /^p/{
+}
+
+$1 ~ /^[0-9]/{
+}
+
+$NF !~ /[0-9]{
+}
+
+/^abc/{
+}
+
+
+/abc$ | ^def/{
+}
+
+
+$0 ~ /^a/ || $NF == "pine"{
+}
+
+
+$NF ~ /^[0-9]+$/ && $1 !~  /[0-9]/{
+print $0
+}
+
+
+{
+	if( $0 ~ /^p/ ) {
+		print $0
+	} else {
+		print "NO"
+	}
+}
+
+
+Last field:
+	$NF
+
+
+Second last field:
+	$(NF-1)
+
+and so on
 
 
 
 
+exit cmd can usd in awk
 
 
-
-
-
-
-
-
+loops
+array
+built-in functions of awk
+functions
 
 
 
