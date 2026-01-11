@@ -406,7 +406,7 @@ permissions
 
 r: read access : can read file's content
 w: write access : can change the content of file / delete / move
-x: execute access
+(x: execute access
 
 file owner:  	rw-  (pine)
 group owner: 	rw-   (pine)
@@ -2749,10 +2749,135 @@ built-in functions of awk
 functions
 
 
+7th Jan 2026
+============
+
+built-in functions
+------------------
+
+sqrt(n)
+int(n)
+exp(n)
+log(n)
+
+length: length of string
+
+task:
+smallest length record
 
 
 
+task:
+shortest
+and
+longest
+string from a file
 
+
+RS="\n\n"
+a
+b
+
+c d
+e
+
+
+task
+ssassa  fsasargqrqrg 543253326646326
+45235234523 254125343452345 dsfasfasd
+
+
+
+(1)
+length function
+
+length("string")
+->6
+
+
+length(ARGUMENT)
+
+
+
+(2)
+index
+
+pine
+p=index 1
+i=index 2
+n=index 3
+e=index 4
+
+index("pine","i")
+2
+
+index("hello","h")
+1
+index("123","a")
+0 (when substr is not found in main string)
+x
+index("this is pine training","is")
+3
+ 
+this is pine training
+
+for(i=1 ; i<=NF ; i++) {
+	print(index($i,"is"))
+)
+3
+1
+0
+0
+
+
+find if a file has "and"
+
+egrep "and" file
+
+
+{
+find=index($0,"and")
+if( find > 0 ) {
+	print "and is found at index : find in record $0"
+}
+#exit
+}
+
+
+#RS="\n\n\n\n"
+{
+for(i=1 ; i <=NF ; i++) {
+	find=index($i,"and")
+	if ( find > 0 ) {
+		print "and found at index:" find "for the field" $i
+	}
+}
+print ""
+}
+
+
+(3)
+substr
+
+BEGIN{
+print( substr("hello",2,2))
+}
+
+
+
+awk 'BEGIN{v1=substr("A234def",1,3);v2=substr("A234def",5);v=v1 v2;print v }'
+A23def
+
+
+
+match
+split
+sub
+gsub
+gensub
+
+
+array
 
 
 
