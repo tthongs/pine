@@ -2880,6 +2880,496 @@ gensub
 array
 
 
+11 jan 2026
+------------
+
+match
+
+
+match(string, regex)
+
+if match found then match fucntion will return index val of substr
+RSTART will also be the index val
+RLENGTH will contain total length of the match
+
+if no match, return 0
+RSTART =0
+RLENGTH = -1
 
 
 
+
+str="this is awk class and we are learning awk"
+m=match(str,awk)
+m=9
+RSTART=9
+RLENGTH=3
+
+
+
+Array in AWK
+
+Associative in nature
+Indexed array
+
+
+arrName["key"]="value"
+
+arr["a"]=A
+arr["b"]=B
+arr["c"]=C
+arr["d"]=D
+
+print arr["a"]
+		-> A
+
+
+for(k in arr) {
+	print k,arr[k]
+}
+
+
+if("a" in arr) {
+	print "true"
+}
+
+
+if("e" in arr) {
+	print "no print"
+}
+
+
+split function
+===============
+
+a,b,c
+d,f,e,k
+
+n=split($0,arr,",")
+n=3
+for(i=1,i<=n,i++)
+	print arr[i],i
+
+
+arr[1]=a
+arr[2]=b
+arr[3]=c
+
+arr[1]=d
+arr[2]=f
+arr[3]=e
+arr[4]=k
+
+split($0,ARR)
+FS value is used as split char
+
+
+toupper("str")
+tolower("str")
+
+
+
+sub : subs only first occurance
+gsub: global occur
+gensub
+
+
+gsub(/regex/,REPLACE,inputStr)
+
+sub(regex, replacement, str)
+sub(/abc/, ABC, "bcaabcbca")
+
+
+gensub(/regex/,REPLACE,how,str)
+how=1,2,2g
+	g
+
+
+
+abc
+cba
+s="abc"
+s1=""
+substr(s,3,1) -> c
+substr(s,2,1) -> b
+substr(s,1,1) -> a
+
+for(i=length(s),i>=1,i--) {
+	print substr(s,i,1)
+}
+
+
+
+1 pine
+3 abc
+2 ijk
+6 afgghh
+5 rtyu
+4 qweerrtttt
+
+1 pine
+2 ijk
+3 abc
+4 q..
+5 rtyu
+6 afgghh
+
+
+
+pine
+abc
+pine
+pine
+abc
+abc
+pine
+pine
+abc
+123
+ijk
+
+
+
+user defined functions in awk
+ARGV (arguments)
+
+for
+while
+	break
+	continue
+IGNORECASE=1
+
+
+*
+**
+***
+
+***
+**
+*
+
+
+***
+***
+***
+
+
+999
+99
+9
+
+
+Misc examples in AWK
+
+
+printf 
+
+justify (padding) left/right
+
+
+
+18 Jan 2026
+
+built in functions covered
+user defined functions
+
+
+function
+	KW: function printN(arguments){
+		#print
+		#print
+	}
+
+call the function:
+printN()
+
+
+Assign1
+write a function in awk to add all the fields for all records
+and
+print sum in the END block
+
+
+
+
+function printName(fn,ln) {
+	print "Full name :",fn,ln
+}
+
+printName("utkarsh","mishra")
+
+Full name: utkarsh mishra
+
+printName()
+error
+
+
+
+Assign 2
+make reverse_str function
+and call it in main to reverse records
+or any given ny 
+
+echo "abc" | awk -f rev.awk
+cba
+
+
+
+
+Assign 3
+
+write awk to reverse each fields of every record
+use reverse_str function
+
+
+this is pine
+enip si sith
+
+siht si enip
+
+
+
+21 Jan 2026
+-----------
+Bash syntax
+printf format arguments
+
+formatter
+	%s string
+	%d digit
+
+	width (padding)
+
+%6s
+width of string = 6
+right justify
+add extra spaces on left side
+
+left justify
+add extra spaces on right side of string
+
+v=$(printf "%-6s\n" "pine")
+echo $v
+pine
+echo ${#v}
+6
+
+
+
+pine@pine:~/PINE/2026/UNIX_BASH$ printf "[%.4s]\n" pinepine
+[pine]
+pine@pine:~/PINE/2026/UNIX_BASH$ printf "[%.12s]\n" pinepine
+[pinepine]
+pine@pine:~/PINE/2026/UNIX_BASH$ printf "[%12.4s]\n" pinepine
+[        pine]
+
+
+printf "%10d\n" 25
+        25
+pine@pine:~/PINE/2026/UNIX_BASH$ printf "%010d\n" 25
+0000000025
+
+
+pine@pine:~/PINE/2026/UNIX_BASH$ printf "%f\n" 12.37
+12.370000
+pine@pine:~/PINE/2026/UNIX_BASH$ printf "%.2f\n" 12.37
+12.37
+
+
+
+awk '/this/,/sed/{print}' f1
+this is pine
+this is scripting class
+we are learning AWK
+AWK language
+pine@pine:~/PINE/2026/UNIX_BASH/AWK$ awk 'NR==1,NR==3{print}' f1
+awk
+this is pine
+this is scripting class
+pine@pine:~/PINE/2026/UNIX_BASH/AWK$ awk 'NR==2,/we/{print}' f1
+this is pine
+this is scripting class
+we are learning AWK
+
+
+sed 's/a/b/I'
+
+
+IGNORECASE=1
+
+next cmd in awk
+
+
+ARGV
+ARGC
+array / loop / function
+
+
+ARGC: argument count
+ARGV: arguments
+ARGV is an array
+
+
+print patt:
+
+****
+****
+****
+****
+
+
+
+BEGIN{
+	patt=p
+	row=r
+	col=c
+	for( i=1 ;  i<=row ; i++) {
+		for( j=1 ; j<=col ; j++) {
+			printf patt
+		}
+		print ""
+	}
+}
+
+
+awk -v p="+" -v r=6 -v c=4 -f patt.awk
+
+
+
+****
+***
+**
+*
+
+
+*
+**
+***
+****
+
+Assignment:
+****
+***
+**
+*
+**
+***
+****
+
+
+
+abcabc
+gindex(str,substr)
+gindex(str,"c")
+3
+6
+gindex(srt,"pine")
+0
+
+Logic:
+	for(i=1;i<=lenght(str);i++) 
+		if( substr(str,i,1) == "c")
+			print i
+
+
+abcabc
+"c"
+substr "a"
+a==c
+i=3
+
+aaaaaa
+aa : 1
+aa : 3
+aa : 5
+
+
+
+while
+cond: index(str,subst) > 0
+
+aaaaaa
+aa
+
+index("aaaaaa","aa")->1
+inside while
+ind=ind+1
+ind=1
+i
+str=substr("aaaaaa",3)
+aaaa
+
+
+aaaaaa
+aa: 1
+length(aa)=2
+1+2=3
+
+
+gindex funtion
+=============
+
+
+
+
+
+index
+length
+substr
+
+
+while
+	cond false
+	break
+
+
+for
+
+
+
+Can we pass optional argument in user defined function in awk/gawk?
+
+
+awk '{print $0="ashish"}' f1
+ashish
+ashish
+ashish
+
+
+typeof()
+
+ENVIRON : array to print environment variables in awk
+
+
+
+ternary operator
+----------------
+
+condition ? statement1 : statement2
+
+
+
+feb next test
+AWK
+
+
+UNIX
+	find
+	tar/untar/gzip
+	diff/tkdiff
+
+BASH
+
+
+
+1 feb 2026
+
+
+find cmd
+	find
+	find $PWD
+	find $PWD -type f
+	find $PWD -type d -name "d1"
+	find . -type "f" -iname "f"
+find.sh to enhance further]
+	
