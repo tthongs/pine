@@ -15,12 +15,18 @@ note "Using cat <(command) to read output as if it were a file."
 cat <(echo "This is from a subshell")
 
 header "2. Practical Example: Diffing Command Outputs"
-note "Process substitution is great for commands that expect file paths (like diff)."
-diff <(echo "Line A") <(echo "Line B") || echo "Differences found (as expected)"
+# Based on Screenshot_20260328_215517.png
+note "Process substitution is great for commands that expect file paths (like diff or wc)."
+# Example: wc <(egrep -i "bash" file)
+wc -l <(echo -e "Line 1\nLine 2")
 
-header "3. Comparison with Pipes"
-note "Unlike pipes, process substitution allows multiple command outputs to be handled as files."
-# example: join <(sort file1) <(sort file2)
+header "3. Sorting Multiple Command Outputs"
+# Based on Screenshot_20260328_220449.png
+note "You can pass MULTIPLE process substitutions to a single command."
+# Example: sort -k9,9 <(ls -l d1) <(ls -l d2)
+# Here we'll simulate sorting two lists:
+sort <(echo -e "cat\ndog") <(echo -e "bird\napple")
+note "The command above combined the results of two commands and sorted them together."
 
 header "4. Solving the Subshell Variable Problem"
 # Based on Screenshot_20260328_214528.png

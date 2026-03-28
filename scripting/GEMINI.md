@@ -35,14 +35,14 @@ A collection of clean, well-commented example scripts for learning Bash scriptin
 16. **`Screenshot_20251015_231153.png`**: Visual reference for `tr` logic and temporary file handling.
 
 ### `05_redirection_and_descriptors/`
-17. **`io_redirection_basics.sh`**: Explains standard input, output, and error redirection using descriptors (based on `scr/Screenshot_20260328_211807.png`, `Screenshot_20260328_212542.png`, and `Screenshot_20260328_212732.png`).
-18. **`process_substitution.sh`**: Demonstrates process substitution (`<(command)`) and its use in avoiding subshells for loops (based on `scr/Screenshot_20260328_212838.png` and `Screenshot_20260328_214528.png`).
+17. **`io_redirection_basics.sh`**: Explains standard input, output, and error redirection using descriptors (based on `scr/Screenshot_20260328_211807.png`, `Screenshot_20260328_212542.png`, `Screenshot_20260328_212732.png`, and `Screenshot_20260328_215517.png`).
+18. **`process_substitution.sh`**: Demonstrates process substitution (`<(command)`), its use in avoiding subshells, and combining multiple command outputs (based on `scr/Screenshot_20260328_212838.png`, `Screenshot_20260328_214528.png`, `Screenshot_20260328_215517.png`, and `Screenshot_20260328_220449.png`).
 
 ### `sed/`
 19. **`sed_tutorial.sh`**: Deleting, printing, grouping, and in-place editing with `sed` (based on `scr/Screenshot_20251123_210955.png` to `Screenshot_20251123_214519.png`).
 
 ### `sort_command/`
-20. **`sort_basics.sh`**: Key-based sorting, debugging, and human-readable size sorting (based on `scr/Screenshot_20251025_231422.png` and `Screenshot_20251025_234012.png`).
+20. **`sort_basics.sh`**: Key-based sorting, human-readable size sorting, and handling 'total' lines in `ls -l` output (based on `scr/Screenshot_20251025_231422.png`, `Screenshot_20251025_234012.png`, and `Screenshot_20260328_220410.png`).
 
 ### `data/` 
 - Contains sample files like `f1` and `tt` used by the tutorial scripts.

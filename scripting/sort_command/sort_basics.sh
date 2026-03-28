@@ -32,6 +32,7 @@ header "2. Human-Readable Sorting (-h)"
 note "Sorting by sizes with human suffixes (K, M, G) using -h."
 # Creating dummy 'ls -lh' style output
 cat <<EOF > sizes.txt
+total 4
 0 Sep 27 22:34 newfile 1.2K
 0 Oct  4 21:37 f9 500
 0 Nov 10 10:00 bigfile 2.5M
@@ -41,6 +42,13 @@ EOF
 note "Sorting by the 5th column in reverse human-readable order."
 echo "Command: sort -h -r -k5 sizes.txt"
 sort -h -r -k5 sizes.txt
+note "Wait! The 'total' line got sorted too. This is often undesirable."
+
+header "3. Filtering out 'total' before sorting"
+# Based on Screenshot_20260328_220410.png
+note "To remove the 'total' line from ls -l output, use grep -v."
+echo "Command: grep -v '^total' sizes.txt | sort -h -r -k5"
+grep -v '^total' sizes.txt | sort -h -r -k5
 
 # Cleanup
 rm f1 sizes.txt

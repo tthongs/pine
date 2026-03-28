@@ -13,7 +13,7 @@ TEMP_FILE="sample_data.txt"
 echo -e "Line 1: Hello\nLine 2: World\nLine 3: Bash" > "$TEMP_FILE"
 
 header "1. Standard Input (stdin) - Descriptor 0"
-# Based on Screenshot_20260328_211807.png
+# Based on Screenshot_20260328_211807.png and Screenshot_20260328_215517.png
 # 'cat < file' and 'cat 0< file' are equivalent.
 note "Using '<' to redirect stdin from a file."
 cat < "$TEMP_FILE"
@@ -21,11 +21,20 @@ cat < "$TEMP_FILE"
 note "Using '0<' explicitly (descriptor 0 is stdin)."
 cat 0< "$TEMP_FILE"
 
+note "Using '0<' with grep to count matches."
+# Example: egrep -i "bash" 0< file | wc
+grep -i "bash" 0< "$TEMP_FILE" | wc -l
+
 header "2. Standard Output (stdout) - Descriptor 1"
 # '>' is equivalent to '1>'.
 note "Redirecting stdout to a new file (overwrites)."
 echo "Fresh content" > output.txt
 cat output.txt
+
+note "Saving intermediate results to a temporary file."
+# Based on Screenshot_20260328_215517.png
+grep -i "bash" 0< "$TEMP_FILE" > temp_results.txt
+wc -l temp_results.txt
 
 note "Appending to a file using '>>'."
 echo "Appended content" >> output.txt
