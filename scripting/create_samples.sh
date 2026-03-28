@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Setup Tutorial Sample Data
-# Description: This script creates a 'data/' directory with sample files used in the tutorials.
+# Description: This script creates a 'data/' directory with sample files and deep paths.
 # Run this if you want to explore the data structures manually.
 
+# Create base data directory
 mkdir -p data
-cd data
+cd data || exit
 
 # 1. Basic Text File (f1)
 cat <<EOF > f1
@@ -45,10 +46,17 @@ total 4
 0 Nov 11 11:00 smallfile 100K
 EOF
 
-# 5. Sample Directories (D1, D2)
+# 5. Deep Paths for Parameter Expansion testing
+mkdir -p projects/bash_tutorial/src/utils
+touch projects/bash_tutorial/src/main.sh
+touch projects/bash_tutorial/src/utils/helper.py
+touch projects/bash_tutorial/config.json
+
+# 6. Sample Directories for diff comparison
 mkdir -p D1 D2
 touch D1/f1 D1/f2 D1/f3
 touch D2/f1 D2/f2
 
 echo "Sample data has been created in the 'data/' directory."
-ls -R .
+echo "Deep paths generated for testing basename/dirname logic:"
+find projects -maxdepth 3

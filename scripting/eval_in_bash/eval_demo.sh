@@ -26,7 +26,28 @@ echo "Normal access: $pointer"
 # eval allows us to get the value of the variable NAMED in 'pointer'
 eval "echo Value found via eval: \$$pointer"
 
-header "3. Dynamic Variable Assignment"
+header "3. Advanced Indirect Access and Escaping"
+note "Using eval to resolve multiple levels of variable references."
+foo=10
+x=foo
+y=\$x
+
+echo "Variable y contains the literal string: $y"
+note "Executing 'eval echo \$y' resolves \$y to \$foo, then \$foo to 10."
+eval echo $y
+
+note "Another variation: eval echo \\\$\${pointer_var}"
+a=10
+b=a
+eval echo \$$b
+
+header "4. Special Variables and Literal Symbols"
+note "Distinguishing between literal '\$' and special variables like '\$\$' (PID)."
+echo "Literal string: \$\$x (where PID is concatenated with 'x')"
+echo "$$x"
+echo "The current Process ID (PID) is: $$"
+
+header "5. Dynamic Variable Assignment"
 note "You can also set variables dynamically."
 var_prefix="user"
 var_id="101"
