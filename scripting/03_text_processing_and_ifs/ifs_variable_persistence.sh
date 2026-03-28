@@ -11,5 +11,5 @@ done
 
 while IFS= read -r line ; do
 	echo "$line"
-done < f1
+done < ../data/f1
 printf "%q\n" "$IFS"

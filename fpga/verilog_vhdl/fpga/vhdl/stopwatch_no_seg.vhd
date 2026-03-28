@@ -32,7 +32,7 @@ begin
                     qhz <= not qhz;
                 else
                     divider <= divider + 1;
-                end
+                end if;
             end if;
         end if;
     end process;
@@ -50,7 +50,7 @@ begin
                     data <= (others => '0');
                 else
                     data <= data + 1;
-                end
+                end if;
             end if;
         end if;
     end process;

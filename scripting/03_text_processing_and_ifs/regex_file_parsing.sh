@@ -9,4 +9,4 @@ while IFS= read -r line ; do
 	fi
 	#cnt=$(( $cnt + 1 ))
 	cnt=$( expr $cnt + 1)
-done < f1
+done < ../data/f1

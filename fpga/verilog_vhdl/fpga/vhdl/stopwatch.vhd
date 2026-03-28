@@ -36,7 +36,7 @@ begin
                     qkhz <= not qkhz;
                 else
                     counter <= counter + 1;
-                end
+                end if;
             end if;
         end if;
     end process;
@@ -56,7 +56,7 @@ begin
                     qhz <= not qhz;
                 else
                     count <= count + 1;
-                end
+                end if;
             end if;
         end if;
     end process;
@@ -73,7 +73,7 @@ begin
                     data <= (others => '0');
                 else
                     data <= data + 1;
-                end
+                end if;
             end if;
         end if;
     end process;
