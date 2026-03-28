@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # I/O Redirection and File Descriptors
-# Based on Screenshot_20260328_211807.png and Screenshot_20260328_212542.png
 # Explains standard input, output, and error redirection.
 
 # Set up some formatting
@@ -13,7 +12,6 @@ TEMP_FILE="sample_data.txt"
 echo -e "Line 1: Hello\nLine 2: World\nLine 3: Bash" > "$TEMP_FILE"
 
 header "1. Standard Input (stdin) - Descriptor 0"
-# Based on Screenshot_20260328_211807.png and Screenshot_20260328_215517.png
 # 'cat < file' and 'cat 0< file' are equivalent.
 note "Using '<' to redirect stdin from a file."
 cat < "$TEMP_FILE"
@@ -32,7 +30,6 @@ echo "Fresh content" > output.txt
 cat output.txt
 
 note "Saving intermediate results to a temporary file."
-# Based on Screenshot_20260328_215517.png
 grep -i "bash" 0< "$TEMP_FILE" > temp_results.txt
 wc -l temp_results.txt
 
@@ -41,7 +38,6 @@ echo "Appended content" >> output.txt
 cat output.txt
 
 header "3. Standard Error (stderr) - Descriptor 2"
-# Based on Screenshot_20260328_212542.png
 # '2> /dev/null' suppresses error messages.
 note "Running a command that fails (listing a non-existent file)."
 ls /non_existent_path
@@ -50,7 +46,7 @@ note "Suppressing the error message using '2> /dev/null'."
 ls /non_existent_path 2> /dev/null
 echo "Error was suppressed, exit code was: $?"
 
-note "Example from screenshot: find /etc -type f 2> /dev/null"
+note "Command example: find /etc -type f 2> /dev/null"
 # (Skipping execution to avoid long output, but explaining it.)
 echo "The command 'find /etc -type f 2> /dev/null' finds all files in /etc,"
 echo "but hides all 'Permission denied' errors by redirecting stderr (2) to /dev/null."
@@ -62,7 +58,6 @@ ls /etc/passwd /non_existent_path > all_output.txt 2>&1
 cat all_output.txt
 
 header "5. Redirecting stderr to stdout"
-# Based on Screenshot_20260328_212732.png
 note "The command 'find /etc -type f 2>&1' merges stderr (2) into stdout (1)."
 # This is useful when you want to pipe BOTH errors and normal output to the next command.
 find /etc -maxdepth 1 -type f 2>&1 | head -n 5

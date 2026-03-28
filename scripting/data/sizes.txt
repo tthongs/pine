@@ -1,0 +1,5 @@
+total 4
+0 Sep 27 22:34 newfile 1.2K
+0 Oct  4 21:37 f9 500
+0 Nov 10 10:00 bigfile 2.5M
+0 Nov 11 11:00 smallfile 100K

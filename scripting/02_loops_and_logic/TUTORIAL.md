@@ -7,6 +7,7 @@ This directory focuses on controlling the flow of execution in Bash scripts usin
 1. **`while_loops_demo.sh`**: Teaches basic `while` loops, infinite loops, and waiting for file events (based on core concepts).
 2. **`nested_while_loops.sh`**: Demonstrates multi-dimensional iteration (multiplication tables and pattern printing).
 3. **`loop_control_continue.sh`**: Explains how to use `continue` to skip specific iterations and `break` to exit loops entirely.
+4. **`eval_demo.sh`**: Teaches dynamic command execution and the risks involved with `eval`.
 
 ## Key Takeaways
 - **`while`**: Repeats a block as long as a condition is true.

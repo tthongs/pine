@@ -4,7 +4,7 @@ This directory focuses on sorting and organizing text data.
 
 ## Core Files
 
-1. **`sort_basics.sh`**: Teaches basic sorting, field-based sorting (`-k`), human-readable size sorting (`-h`), and how to debug the sorting process. (Based on `scr/Screenshot_20251025_231422.png`, `Screenshot_20251025_234012.png`, and `Screenshot_20260328_220410.png`).
+1. **`sort_basics.sh`**: Teaches basic sorting, field-based sorting (`-k`), human-readable size sorting (`-h`), and how to debug the sorting process.
 
 ## Key Takeaways
 - **`-k`**: Specify which field (column) to sort by. Use `-k2,2` to sort *only* by the second field.

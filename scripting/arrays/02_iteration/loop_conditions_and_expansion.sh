@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# LOOP CONDITIONS AND EXPANSION: BASED ON SCREENSHOT_20260321_165545.PNG
+# LOOP CONDITIONS AND EXPANSION
 # ==============================================================================
 
 # 1. SETUP: Example array

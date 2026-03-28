@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# IMAGE REFERENCE EXAMPLES: BASED ON ARRAYS_SCR1.PNG
+# ARRAY REFERENCE EXAMPLES
 # ==============================================================================
 
 # 1. SETUP: Example array

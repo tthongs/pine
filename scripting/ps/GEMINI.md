@@ -13,7 +13,7 @@ This directory is part of a comprehensive Unix/Linux/Bash scripting course. It f
 Currently, this directory serves as a workspace for exercises related to the `ps` command and process lifecycle management.
 
 ### `ps/` 
-1. **`ulimit_demo.sh`**: Explains shell resource limits and the usage of the `ulimit` command (based on `scr/Screenshot_20260328_213351.png`).
+1. **`ulimit_demo.sh`**: Explains shell resource limits and the usage of the `ulimit` command.
 
 ## Building and Running
 As this directory is intended for shell scripts, there is no compilation step.

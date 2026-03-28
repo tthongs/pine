@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Sort Command Basics
-# Based on Screenshot_20251025_231422.png and Screenshot_20251025_234012.png
 # Demonstrates key-based sorting, debugging, and human-readable size sorting.
 
 # Set up some formatting
@@ -19,7 +18,6 @@ pine academy 1
 EOF
 
 header "1. Sorting with --debug and Keys (-k)"
-# Based on Screenshot_20251025_231422.png
 note "Using --debug shows how sort identifies keys and compares lines."
 echo "Command: sort --debug -k2,2 -k1,1 f1"
 sort --debug -k2,2 -k1,1 f1
@@ -28,7 +26,6 @@ note "Sorting by the second field, then the first."
 sort -k2,2 -k1,1 f1
 
 header "2. Human-Readable Sorting (-h)"
-# Based on Screenshot_20251025_234012.png
 note "Sorting by sizes with human suffixes (K, M, G) using -h."
 # Creating dummy 'ls -lh' style output
 cat <<EOF > sizes.txt
@@ -45,7 +42,6 @@ sort -h -r -k5 sizes.txt
 note "Wait! The 'total' line got sorted too. This is often undesirable."
 
 header "3. Filtering out 'total' before sorting"
-# Based on Screenshot_20260328_220410.png
 note "To remove the 'total' line from ls -l output, use grep -v."
 echo "Command: grep -v '^total' sizes.txt | sort -h -r -k5"
 grep -v '^total' sizes.txt | sort -h -r -k5

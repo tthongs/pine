@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Subshell Iteration Pitfalls
-# Based on Screenshot_20260328_210634.png and Screenshot_20260328_210747.png
 # Demonstrates how pipes and explicit subshells affect variable persistence.
 
 # Set up some formatting

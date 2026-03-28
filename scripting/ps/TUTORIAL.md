@@ -4,7 +4,7 @@ This directory focuses on process management and system resources.
 
 ## Core Files
 
-1. **`ulimit_demo.sh`**: Teaches how to view and manage shell resource limits using the `ulimit` command. (Based on `scr/Screenshot_20260328_213351.png`).
+1. **`ulimit_demo.sh`**: Teaches how to view and manage shell resource limits using the `ulimit` command.
 
 ## Key Takeaways
 - **`ulimit -a`**: View all current resource limits for your shell.

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Ulimit: Resource Limits for Shell and Processes
-# Based on Screenshot_20260328_213351.png
 # Demonstrates how to view and set resource limits.
 
 # Set up some formatting
@@ -9,7 +8,6 @@ header() { echo -e "\n\e[1;34m=== $1 ===\e[0m"; }
 note() { echo -e "\e[1;33mNote:\e[0m $1"; }
 
 header "1. Basic ulimit"
-# Based on Screenshot_20260328_213351.png
 note "Running 'ulimit' shows the current file size limit (often 'unlimited')."
 ulimit
 

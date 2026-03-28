@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Diff Command: Comparing Files
-# Based on Screenshot_20260328_220929.png
 # Demonstrates how to find differences between two files.
 
 # Set up some formatting
@@ -23,7 +22,6 @@ Dragonfruit
 EOF
 
 header "1. Basic Diff"
-# Based on Screenshot_20260328_220929.png
 note "Running 'diff f1 f2' shows which lines need to change to make them identical."
 diff f1 f2
 
@@ -40,7 +38,6 @@ note "Unified format is commonly used for creating 'patches'."
 diff -u f1 f2
 
 header "5. Invisible Differences (Trailing Spaces/Hidden Characters)"
-# Based on Screenshot_20260328_221100.png
 note "Sometimes files look identical but diff reports a difference."
 # Creating two files that LOOK the same but have different trailing characters
 echo "a" > f1_clean
@@ -57,7 +54,6 @@ note "Use 'diff -w' to ignore ALL whitespace, or 'cat -A' to see hidden characte
 diff -w f1_clean f2_space && echo "Files match when ignoring whitespace (-w)."
 
 header "6. Comparing Directory Listings"
-# Based on Screenshot_20260328_221925.png
 note "You can use process substitution to compare the contents of two directories."
 mkdir -p D1 D2
 touch D1/f1 D1/f2 D2/f1 D2/f2
@@ -76,6 +72,24 @@ header "7. Recursive Directory Diff (-r)"
 note "The -r flag compares files and subdirectories recursively."
 diff -r D1 D2
 
+header "8. Comparing Filtered Command Outputs"
+note "Using diff with process substitution and egrep to compare filtered content."
+cat <<EOF > f1
+pine
+apple
+orange
+pine
+EOF
+
+cat <<EOF > f2
+pine
+banana
+grape
+EOF
+
+note "Filtering both files for 'pine' and comparing the result streams."
+diff <(grep 'pine' f1) <(grep 'pine' f2)
+
 # Cleanup
-rm f1 f2 f1_clean f2_space
+rm f1 f2
 rm -rf D1 D2
