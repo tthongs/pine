@@ -29,10 +29,13 @@ A collection of clean, well-commented example scripts for learning Bash scriptin
 12. **`line_by_line_parsing.sh`**: Advanced file parsing and conditional logic.
 13. **`tr_command_demo.sh`**: Practical implementation of the `tr` command (from visual references).
 
+### `diff_command/`
+14. **`diff_command_demo.sh`**: Comparing file contents and handling invisible differences (based on `scr/Screenshot_20260328_220929.png` and `Screenshot_20260328_221100.png`).
+
 ### `04_references/` 
-14. **`tutorial_notes.txt`**: General notes on quotes, line numbers, find/replace, and more.
-15. **`main_readme.txt`**: Comprehensive history and foundational notes.
-16. **`Screenshot_20251015_231153.png`**: Visual reference for `tr` logic and temporary file handling.
+15. **`tutorial_notes.txt`**: General notes on quotes, line numbers, find/replace, and more.
+16. **`main_readme.txt`**: Comprehensive history and foundational notes.
+17. **`Screenshot_20251015_231153.png`**: Visual reference for `tr` logic and temporary file handling.
 
 ### `05_redirection_and_descriptors/`
 17. **`io_redirection_basics.sh`**: Explains standard input, output, and error redirection using descriptors (based on `scr/Screenshot_20260328_211807.png`, `Screenshot_20260328_212542.png`, `Screenshot_20260328_212732.png`, and `Screenshot_20260328_215517.png`).
