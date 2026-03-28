@@ -38,6 +38,12 @@ A collection of clean, well-commented example scripts for learning Bash scriptin
 17. **`io_redirection_basics.sh`**: Explains standard input, output, and error redirection using descriptors (based on `scr/Screenshot_20260328_211807.png`, `Screenshot_20260328_212542.png`, and `Screenshot_20260328_212732.png`).
 18. **`process_substitution.sh`**: Demonstrates process substitution (`<(command)`) and its use in avoiding subshells for loops (based on `scr/Screenshot_20260328_212838.png` and `Screenshot_20260328_214528.png`).
 
+### `sed/`
+19. **`sed_tutorial.sh`**: Deleting, printing, grouping, and in-place editing with `sed` (based on `scr/Screenshot_20251123_210955.png` to `Screenshot_20251123_214519.png`).
+
+### `sort_command/`
+20. **`sort_basics.sh`**: Key-based sorting, debugging, and human-readable size sorting (based on `scr/Screenshot_20251025_231422.png` and `Screenshot_20251025_234012.png`).
+
 ### `data/` 
 - Contains sample files like `f1` and `tt` used by the tutorial scripts.
 
