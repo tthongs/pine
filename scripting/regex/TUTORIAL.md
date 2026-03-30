@@ -5,6 +5,7 @@ This directory contains a collection of scripts that demonstrate different aspec
 ## Core Tutorial Scripts
 1. **`regex_file_parsing.sh`**: Basic `grep -E` patterns, character classes, and anchors.
 2. **`line_by_line_parsing.sh`**: Using the Bash `=~` operator to capture and process groups.
+3. **`interactive_regex_tester.sh`**: A practical tool to test strings against regex patterns provided via user input.
 
 ## Specialized Tools
 3. **`sed_tutorial.sh`**: Deletion, printing, and substitution with `sed` using patterns.

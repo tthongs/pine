@@ -35,11 +35,27 @@ note "Syntax: \${var%.*} - Removes the extension from the filename."
 filename_no_ext="${filename%.*}"
 echo "Filename without extension: $filename_no_ext"
 
-header "4. Practical Loop Example"
-note "Filtering for files in current directory and using parameter expansion."
-for f in *; do
-    if [[ -f "$f" ]]; then
-        # This is safe even if the file name has spaces
-        echo "Processing: ${f##*/} (Type: ${f##*.})"
-    fi
-done
+header "4. Practical Loop Example: find and basename"
+note "Iterating over files in \$PWD and comparing basename vs. parameter expansion."
+
+# Creating a few test files
+touch test_file_1.txt test_file_2.log
+
+# Using process substitution to feed find output into a while loop
+# This is more robust than a simple for loop for complex paths.
+while IFS= read -r path; do
+    # Only process regular files
+    [[ -f "$path" ]] || continue
+
+    echo "Full Path: \$path"
+    
+    # Method 1: External command (basename)
+    echo "  Using basename: \$(basename \"\$path\")"
+    
+    # Method 2: Parameter Expansion (Faster)
+    echo "  Using expansion: \${path##*/}"
+    
+done < <(find "\$PWD" -maxdepth 1)
+
+# Cleanup
+rm test_file_1.txt test_file_2.log

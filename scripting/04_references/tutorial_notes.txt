@@ -100,3 +100,27 @@ ex: sort -nr FILE
 
 
 
+
+#################################################
+#  Basename on 'find' output                    #
+#################################################
+
+To apply 'basename' to each result of a 'find' command:
+
+1. Using '-exec' (Recommended):
+find "$PWD" -exec basename {} \;
+
+2. Using 'printf' (Fastest/GNU Find):
+find "$PWD" -printf "%f\n"
+
+3. Using 'xargs':
+find "$PWD" | xargs -L 1 basename
+
+4. Using a 'while' loop:
+find "$PWD" | while read -r line; do basename "$line"; done
+
+Note: In a script, the subroutine to update file paths to basenames can be:
+update_basename_list() {
+    local target_dir="$1"
+    find "$target_dir" -maxdepth 1 -exec basename {} \;
+}

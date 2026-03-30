@@ -19,17 +19,17 @@ A collection of professional, well-commented example scripts for learning Bash s
 4. **`while_loops_demo.sh`**: Finite counters, infinite loops, and waiting for file-existence events.
 5. **`nested_while_loops.sh`**: Multi-dimensional iteration (multiplication tables and patterns).
 6. **`loop_control_continue.sh`**: Using `continue` to skip iterations and `break` to exit loops.
-7. **`eval_demo.sh`**: Dynamic command execution and variable manipulation.
 
 ### `03_text_processing_and_ifs/` 
-8. **`ifs_field_splitting.sh`**: Basics of the Internal Field Separator for tokenization.
-9. **`ifs_tab_separator.sh`**: Handling tab-delimited data using specific IFS syntax.
-10. **`ifs_newline_processing.sh`**: Iterating over data line-by-line using newline delimiters.
-11. **`ifs_variable_persistence.sh`**: Understanding global vs. command-scoped variable changes.
-12. **`regex_file_parsing.sh`**: Using `grep -E` for basic file content filtering and anchors.
-13. **`line_by_line_parsing.sh`**: Advanced regex using the Bash `=~` operator and `BASH_REMATCH`.
-14. **`tr_command_demo.sh`**: Practical implementation of character translation and deletion.
-15. **`list_files_only.sh`**: Extracting only regular files from a directory using multiple methods.
+7. **`ifs_field_splitting.sh`**: Basics of the Internal Field Separator for tokenization.
+8. **`ifs_tab_separator.sh`**: Handling tab-delimited data using specific IFS syntax.
+9. **`ifs_newline_processing.sh`**: Iterating over data line-by-line using newline delimiters.
+10. **`ifs_variable_persistence.sh`**: Understanding global vs. command-scoped variable changes.
+11. **`regex_file_parsing.sh`**: Using `grep -E` for basic file content filtering and anchors.
+12. **`line_by_line_parsing.sh`**: Advanced regex using the Bash `=~` operator and `BASH_REMATCH`.
+13. **`tr_command_demo.sh`**: Practical implementation of character translation and deletion.
+14. **`list_files_only.sh`**: Extracting only regular files from a directory.
+15. **`file_extraction_logic.sh`**: Iterating files, regex filtering, and extracting filename parts using `cut`.
 
 ### `parameter_expansion/`
 16. **`parameter_expansion_basics.sh`**: High-performance `basename` and `dirname` using `${var##*/}` syntax.
@@ -45,21 +45,24 @@ A collection of professional, well-commented example scripts for learning Bash s
 20. **`sort_basics.sh`**: Key-based sorting, human-readable size sorting, and header cleanup.
 
 ### `05_redirection_and_descriptors/`
-21. **`io_redirection_basics.sh`**: Standard streams (0, 1, 2) and merging stderr into stdout.
+21. **`io_redirection_basics.sh`**: Standard input, output, and error redirection using descriptors.
 22. **`process_substitution.sh`**: Treating command output as a file path using `<(command)`.
 
+### `time_command/`
+23. **`time_basics.sh`**: Measuring execution duration and resource usage using the `time` utility.
+
 ### `ps/`
-23. **`ulimit_demo.sh`**: Viewing and managing shell resource limits (FDs, process limits).
+24. **`ulimit_demo.sh`**: Viewing and managing shell resource limits (FDs, process limits).
 
 ### `regex/`
-24. **`TUTORIAL.md`**: Central index for consolidated regex scripts (consolidated from various topics).
+25. **`TUTORIAL.md`**: Central index for consolidated regex scripts.
 
 ### `eval_in_bash/`
-25. **`TUTORIAL.md`**: Central index for consolidated dynamic execution scripts.
+26. **`TUTORIAL.md`**: Central index for consolidated dynamic execution scripts.
 
 ### `04_references/` 
-26. **`tutorial_notes.txt`**: General notes on quotes, line numbers, find/replace, and more.
-27. **`main_readme.txt`**: Comprehensive history and foundational notes.
+27. **`tutorial_notes.txt`**: General notes on quotes, line numbers, find/replace, and more.
+28. **`main_readme.txt`**: Comprehensive history and foundational notes.
 
 ### `data/` 
 - **`create_samples.sh`**: Run this from the root to (re)generate all sample data for manual exploration.
@@ -69,7 +72,7 @@ A collection of professional, well-commented example scripts for learning Bash s
 ## Building and Running
 
 Ensure the scripts are executable and run them in your terminal:
-- **Set Permissions:** `chmod +x */*.sh` and `chmod +x arrays/*/*.sh`
+- **Set Permissions:** `chmod 777 */*.sh` and `chmod 777 arrays/*/*.sh`
 - **To Run:** `./01_input_and_output/basic_read.sh`, `./parameter_expansion/advanced_expansion.sh`, etc.
 
 ## Development Conventions

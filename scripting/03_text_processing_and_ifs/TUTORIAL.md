@@ -10,11 +10,12 @@ This directory covers Internal Field Separator (IFS) manipulation and advanced t
 4. **`ifs_variable_persistence.sh`**: Demonstrates IFS scope and persistence.
 5. **`regex_file_parsing.sh`**: Using regex for basic file content filtering.
 6. **`line_by_line_parsing.sh`**: Advanced file parsing and conditional logic.
-7. **`tr_command_demo.sh`**: Practical implementation of the `tr` command.
+7. **`tr_command_demo.sh`**: Practical implementation of the tr command.
 8. **`list_files_only.sh`**: Extracting only regular files from a directory.
+9. **`file_extraction_logic.sh`**: Practical logic for filtering by extension and parsing names.
 
 ## Key Takeaways
 - **IFS**: Control how Bash splits strings into tokens.
-- **`read -r`**: Always use `-r` to prevent backslashes from being interpreted.
-- **Parameter Expansion**: Built-in shell features are significantly faster than external commands like `basename` or `dirname`.
-- **regex**: Use `[[ $var =~ pattern ]]` for internal Bash pattern matching.
+- **read -r**: Always use -r to prevent backslashes from being interpreted.
+- **Parameter Expansion**: Built-in shell features are faster than external commands.
+- **Regex**: Use [[ $var =~ pattern ]] for internal Bash pattern matching.

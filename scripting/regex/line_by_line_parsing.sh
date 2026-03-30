@@ -16,7 +16,18 @@ InvalidData123
 User: Charlie, Age: 30
 EOF
 
-header "Processing file line by line"
+header "1. Basic Regex Operator Logic (=~)"
+note "The =~ operator returns 0 (success) if the string matches the pattern, or 1 (failure) otherwise."
+
+if [[ "abc" =~ ^a ]]; then
+    echo "Success: 'abc' starts with 'a' (exit code: $?)"
+fi
+
+if ! [[ "abc" =~ ^b ]]; then
+    echo "Success: 'abc' does NOT start with 'b' (exit code: $? after negation)"
+fi
+
+header "2. Processing file line by line"
 note "We use 'while read' and the =~ operator for regex matching within Bash."
 
 while read -r line; do
