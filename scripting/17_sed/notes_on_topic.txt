@@ -1,36 +1,34 @@
 # Sed (Stream Editor) Technical Reference
 
-`sed` is a non-interactive stream editor that transforms text on the fly. It reads input line by line into a "pattern space," applies commands, and outputs the result.
+`sed` is a non-interactive stream editor that transforms text on the fly. It
+reads input line by line into a "pattern space," applies commands, and outputs
+the result.
 
 ## Basic Syntax
-`sed [options] 'command' file`
-- **`-n`**: Suppress automatic printing (used with the `p` command).
-- **`-i`**: In-place editing (modifies the file directly). Use `-i.bak` to create a backup.
-- **`-r`** (or `-E`): Use Extended Regular Expressions.
+`sed [options] 'command' file` - **`-n`**: Suppress automatic printing (used
+with the `p` command). - **`-i`**: In-place editing (modifies the file
+directly). Use `-i.bak` to  create a backup. - **`-r`** (or `-E`): Use Extended
+Regular Expressions.
 
 ## Core Commands
-- **`s/pattern/replacement/flags`**: Substitute.
-  - Flags: `g` (global), `p` (print), `I` (case-insensitive), `1, 2...` (nth occurrence).
-- **`d`**: Delete the line.
-- **`p`**: Print the line.
-- **`q`**: Quit sed.
-- **`a\`, `i\`, `c\`**: Append, Insert, or Change lines.
+- **`s/pattern/replacement/flags`**: Substitute.   - Flags: `g` (global), `p`
+  (print), `I` (case-insensitive), `1, 2...` (nth  occurrence). - **`d`**:
+  Delete the line. - **`p`**: Print the line. - **`q`**: Quit sed. - **`a\`,
+  `i\`, `c\`**: Append, Insert, or Change lines.
 
 ## Addressing (Targeting Lines)
-- **`5`**: Target line 5.
-- **`$`**: Target the last line.
-- **`1,5`**: Target lines 1 through 5.
-- **`/pattern/`**: Target lines matching the pattern.
-- **`1~2`**: Target every other line (start at 1, step 2).
+- **`5`**: Target line 5. - **`$`**: Target the last line. - **`1,5`**: Target
+  lines 1 through 5. - **`/pattern/`**: Target lines matching the pattern. -
+  **`1~2`**: Target every other line (start at 1, step 2).
 
 ## Case Conversion (GNU Sed)
-Used inside the replacement string of an `s` command:
-- **`\U`**: Convert to uppercase until `\E` or end of string.
-- **`\L`**: Convert to lowercase until `\E` or end of string.
-- **`\u`**: Convert only the next character to uppercase.
+Used inside the replacement string of an `s` command: - **`\U`**: Convert to
+uppercase until `\E` or end of string. - **`\L`**: Convert to lowercase until
+`\E` or end of string. - **`\u`**: Convert only the next character to uppercase.
 - **`\l`**: Convert only the next character to lowercase.
 
 ## Advanced Buffers
-- **Pattern Space**: The primary buffer for the current line.
-- **Hold Space**: A secondary buffer used for temporary storage (`h`, `H`, `g`, `G`, `x` commands).
-- **`n` / `N`**: Read the next line into the pattern space (overwriting or appending).
+- **Pattern Space**: The primary buffer for the current line. - **Hold Space**:
+  A secondary buffer used for temporary storage (`h`, `H`, `g`,  `G`, `x`
+  commands). - **`n` / `N`**: Read the next line into the pattern space
+  (overwriting or  appending).

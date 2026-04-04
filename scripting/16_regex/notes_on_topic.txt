@@ -1,37 +1,37 @@
 # Regular Expressions (Regex) Technical Reference
 
-Regular Expressions are sequences of characters that define search patterns. In Linux, they are used extensively by `grep`, `sed`, `awk`, and Bash itself.
+Regular Expressions are sequences of characters that define search patterns. In
+Linux, they are used extensively by `grep`, `sed`, `awk`, and Bash itself.
 
 ## Meta-characters and Anchors
-- **`.`**: Matches any single character except newline.
-- **`^`**: Matches the start of a line.
-- **`$`**: Matches the end of a line.
-- **`\`**: Escapes a meta-character to treat it literally (e.g., `\.` matches a literal dot).
+- **`.`**: Matches any single character except newline. - **`^`**: Matches the
+  start of a line. - **`$`**: Matches the end of a line. - **`\`**: Escapes a
+  meta-character to treat it literally (e.g., `\.` matches a  literal dot).
 
 ## Quantifiers
-- **`*`**: Matches 0 or more occurrences of the preceding element.
-- **`+`**: Matches 1 or more occurrences (ERE only).
-- **`?`**: Matches 0 or 1 occurrence (ERE only).
-- **`{n,m}`**: Matches between `n` and `m` occurrences.
+- **`*`**: Matches 0 or more occurrences of the preceding element. - **`+`**:
+  Matches 1 or more occurrences (ERE only). - **`?`**: Matches 0 or 1 occurrence
+  (ERE only). - **`{n,m}`**: Matches between `n` and `m` occurrences.
 
 ## Character Classes
-- **`[abc]`**: Matches any one of the characters a, b, or c.
-- **`[^abc]`**: Matches any character *except* a, b, or c.
-- **`[a-z]`**: Matches any lowercase letter.
-- **`[0-9]`**: Matches any digit.
-- **`[:alnum:]`**, **`[:alpha:]`**, **`[:digit:]`**: POSIX classes for portability.
+- **`[abc]`**: Matches any one of the characters a, b, or c. - **`[^abc]`**:
+  Matches any character *except* a, b, or c. - **`[a-z]`**: Matches any
+  lowercase letter. - **`[0-9]`**: Matches any digit. - **`[:alnum:]`**,
+  **`[:alpha:]`**, **`[:digit:]`**: POSIX classes for  portability.
 
 ## BRE vs. ERE
-- **Basic Regular Expressions (BRE)**: Used by default in `grep` and `sed`. Meta-characters like `+`, `?`, `|`, `(`, and `)` must be escaped (`\+`, `\?`, etc.) to be treated as operators.
-- **Extended Regular Expressions (ERE)**: Enabled with `grep -E` or `sed -r`. Meta-characters are operators by default.
+- **Basic Regular Expressions (BRE)**: Used by default in `grep` and `sed`.
+  Meta-characters like `+`, `?`, `|`, `(`, and `)` must be escaped (`\+`, `\?`,
+  etc.) to be treated as operators. - **Extended Regular Expressions (ERE)**:
+  Enabled with `grep -E` or `sed -r`.  Meta-characters are operators by default.
 
 ## Bash Regex Operator (`=~`)
-Bash (version 3.0+) supports native regex matching within double brackets.
-- **Syntax**: `[[ $string =~ $pattern ]]`
-- **Capture Groups**: If the pattern contains parentheses, the matched substrings are stored in the `BASH_REMATCH` array.
-  - `${BASH_REMATCH[0]}`: The entire match.
-  - `${BASH_REMATCH[1]}`: The first captured group.
+Bash (version 3.0+) supports native regex matching within double brackets. -
+**Syntax**: `[[ $string =~ $pattern ]]` - **Capture Groups**: If the pattern
+contains parentheses, the matched  substrings are stored in the `BASH_REMATCH`
+array.   - `${BASH_REMATCH[0]}`: The entire match.   - `${BASH_REMATCH[1]}`: The
+first captured group.
 
 ## Word Boundaries
-- **`\<`**, **`\>`**: Match the beginning and end of a word (mostly `grep` and `sed`).
-- **`\b`**: Common shorthand for word boundaries in many engines.
+- **`\<`**, **`\>`**: Match the beginning and end of a word (mostly `grep` and
+  `sed`). - **`\b`**: Common shorthand for word boundaries in many engines.

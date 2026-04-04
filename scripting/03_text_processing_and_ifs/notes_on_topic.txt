@@ -1,7 +1,9 @@
 # Notes on Topic: Text Processing and IFS
 
 ## 📖 Overview
-Text processing is a core strength of Bash. This topic covers the Internal Field Separator (IFS) for tokenizing strings, using Regular Expressions for pattern matching, and various tools for filtering and extracting data.
+Text processing is a core strength of Bash. This topic covers the Internal
+Field Separator (IFS) for tokenizing strings, using Regular Expressions for
+pattern matching, and various tools for filtering and extracting data.
 
 ## 🛠️ Commands and References
 
@@ -15,9 +17,9 @@ The `IFS` variable determines how Bash splits strings into words.
 | Tab | `IFS=$'\t'` | Handling tab-separated values (TSV). |
 | Newline | `IFS=$'\n'` | Iterating over lines in a multiline variable. |
 
-**Scope Management:**
-- **Global Change:** `IFS=":"; for i in $var...` (Requires manual restoration of `OLD_IFS`).
-- **Command-Scoped (Recommended):** `IFS=":" read -r a b <<< "$var"` (Only affects the `read` command).
+**Scope Management:** - **Global Change:** `IFS=":"; for i in $var...` (Requires
+manual restoration  of `OLD_IFS`). - **Command-Scoped (Recommended):** `IFS=":"
+read -r a b <<< "$var"` (Only  affects the `read` command).
 
 ### 2. Regular Expressions in Bash
 Bash supports native regex matching using the `[[ $var =~ pattern ]]` operator.
@@ -41,6 +43,8 @@ Bash supports native regex matching using the `[[ $var =~ pattern ]]` operator.
 | `find` | `-type f`, `-maxdepth` | Locate files based on metadata. |
 
 ## 💡 Practical Use-Cases
-1. **Line-by-Line Parsing:** Using `while read -r line; do ... done < file.txt` to process a file.
-2. **Safe Filename Extraction:** Using `${i##*.}` for extensions and `cut` for parts.
-3. **Data Validation:** Using regex to ensure a variable contains only digits or follows a specific format (e.g., `Screenshot-YYYYMMDD.png`).
+1. **Line-by-Line Parsing:** Using `while read -r line; do ... done < file.txt`
+   to process a file. 2. **Safe Filename Extraction:** Using `${i##*.}` for
+   extensions and `cut` for  parts. 3. **Data Validation:** Using regex to
+   ensure a variable contains only digits  or follows a specific format (e.g.,
+   `Screenshot-YYYYMMDD.png`).

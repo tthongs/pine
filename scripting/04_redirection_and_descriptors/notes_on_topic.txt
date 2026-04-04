@@ -1,7 +1,8 @@
 # Notes on Topic: Redirection and Descriptors
 
 ## 📖 Overview
-I/O Redirection allows you to control where a command reads its input and where it sends its output and errors. This is handled through File Descriptors.
+I/O Redirection allows you to control where a command reads its input and where
+it sends its output and errors. This is handled through File Descriptors.
 
 ## 🛠️ Commands and References
 
@@ -13,24 +14,27 @@ I/O Redirection allows you to control where a command reads its input and where 
 | **2** | **stderr** | Terminal Screen | `2>` |
 
 ### 2. Basic Redirection Patterns
-- **`>`**: Overwrites the target file with stdout.
-- **`>>`**: Appends stdout to the end of the target file.
-- **`2> /dev/null`**: Discards error messages (e.g., "Permission denied").
-- **`2>&1`**: Merges stderr into the stdout stream.
-- **`&>`**: Redirects both stdout and stderr to a file (Modern Bash shorthand).
+- **`>`**: Overwrites the target file with stdout. - **`>>`**: Appends stdout to
+  the end of the target file. - **`2> /dev/null`**: Discards error messages
+  (e.g., "Permission denied"). - **`2>&1`**: Merges stderr into the stdout
+  stream. - **`&>`**: Redirects both stdout and stderr to a file (Modern Bash
+  shorthand).
 
 ### 3. Process Substitution
-Treats the output of a command as if it were a temporary file path. This is extremely powerful for commands that usually require a physical file.
+Treats the output of a command as if it were a temporary file path. This is
+extremely powerful for commands that usually require a physical file.
 
-- **Syntax:** `<(command)`
-- **Key Use-Case: Avoiding Subshells**
-  - Standard pipe: `cat file | while read...` (Creates a subshell; variables lost).
-  - Process Substitution: `while read... done < <(cat file)` (Runs in current shell; variables persist).
+- **Syntax:** `<(command)` - **Key Use-Case: Avoiding Subshells**   - Standard
+  pipe: `cat file | while read...` (Creates a subshell; variables  lost).   -
+  Process Substitution: `while read... done < <(cat file)` (Runs in current
+  shell; variables persist).
 
-- **Key Use-Case: Comparing Streams**
-  - `diff <(ls dir1) <(ls dir2)` compares the contents of two directories without creating intermediate files.
+- **Key Use-Case: Comparing Streams**   - `diff <(ls dir1) <(ls dir2)` compares
+  the contents of two directories  without creating intermediate files.
 
 ## 💡 Practical Use-Cases
-1. **Silent Execution:** `command > /dev/null 2>&1` runs a command without any terminal output, regardless of success or failure.
-2. **Merging Logs:** `tar -czf backup.tar.gz /data > backup.log 2>&1` saves both progress and errors to a single log file.
-3. **Dynamic Filtering:** `grep "ERROR" <(journalctl -u nginx)` filters logs directly from a command output as if it were a file.
+1. **Silent Execution:** `command > /dev/null 2>&1` runs a command without any
+   terminal output, regardless of success or failure. 2. **Merging Logs:** `tar
+   -czf backup.tar.gz /data > backup.log 2>&1` saves  both progress and errors
+   to a single log file. 3. **Dynamic Filtering:** `grep "ERROR" <(journalctl -u
+   nginx)` filters logs  directly from a command output as if it were a file.

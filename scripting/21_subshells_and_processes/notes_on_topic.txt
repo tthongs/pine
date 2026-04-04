@@ -1,25 +1,29 @@
 # Notes on Topic: Subshells and Processes
 
 ## 📖 Overview
-Understanding subshells and process management is critical for writing robust Bash scripts, especially when dealing with pipelines and background tasks.
+Understanding subshells and process management is critical for writing robust
+Bash scripts, especially when dealing with pipelines and background tasks.
 
 ## 🛠️ Commands and References
 
 ### 1. Subshell Creation
-Subshells are created in several ways:
-- **Parentheses:** `( commands )` explicitly starts a subshell.
-- **Pipelines:** `cmd1 | cmd2` runs both commands in subshells.
-- **Backgrounding:** `command &` runs the command in a subshell.
+Subshells are created in several ways: - **Parentheses:** `( commands )`
+explicitly starts a subshell. - **Pipelines:** `cmd1 | cmd2` runs both commands
+in subshells. - **Backgrounding:** `command &` runs the command in a subshell.
 
 ### 2. Variable Scope
-- **Inheritance:** Subshells inherit all variables and exported environment variables from the parent.
-- **Isolation:** Changes made to variables inside a subshell **do not** affect the parent shell.
+- **Inheritance:** Subshells inherit all variables and exported environment
+  variables from the parent. - **Isolation:** Changes made to variables inside a
+  subshell **do not** affect  the parent shell.
 
 ### 3. Process IDs
-- **`$$`**: The Process ID of the original shell. In most subshells, this remains the same as the parent's PID.
-- **`$BASHPID`**: The actual Process ID of the current execution environment. This changes inside every subshell.
+- **`$$`**: The Process ID of the original shell. In most subshells, this
+  remains the same as the parent's PID. - **`$BASHPID`**: The actual Process ID
+  of the current execution environment.  This changes inside every subshell.
 
 ## 💡 Practical Use-Cases
-1. **Scope Isolation:** Using `( cd /tmp; ... )` to perform operations in another directory without changing the current directory of the main script.
-2. **Parallel Processing:** Using subshells to run multiple independent tasks simultaneously.
-3. **Pipeline Debugging:** Using `$BASHPID` to track which part of a complex pipeline is executing.
+1. **Scope Isolation:** Using `( cd /tmp; ... )` to perform operations in
+   another directory without changing the current directory of the main script.
+   2. **Parallel Processing:** Using subshells to run multiple independent tasks
+   simultaneously. 3. **Pipeline Debugging:** Using `$BASHPID` to track which
+   part of a complex  pipeline is executing.
