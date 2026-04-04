@@ -9,6 +9,7 @@ discovered items.
 ## 🛠️ Commands and References
 
 ### 1. Basic Filtering
+
 | Option | Description | Example |
 | :--- | :--- | :--- |
 | `-name` | Case-sensitive name pattern. | `find . -name "*.sh"` |
@@ -17,6 +18,7 @@ discovered items.
 | `-type d` | Search for directories only. | `find /home -type d` |
 
 ### 2. Metadata Filtering
+
 | Option | Description | Example |
 | :--- | :--- | :--- |
 | `-maxdepth N` | Limit search to N levels of depth. | `find . -maxdepth 1` |
@@ -35,12 +37,15 @@ criteria.
 | `-ok cmd {} \;` | Same as `-exec`, but prompts for confirmation. | Safest (interactive). |
 
 **Pro Tip: Basename Extraction** While `-exec basename {} \;` works, using
-`-printf "%f\n"` is a built-in GNU  find feature that is significantly faster
-because it doesn't spawn an external  process.
+`-printf "%f\n"` is a built-in GNU find feature that is significantly faster
+because it doesn't spawn an external process.
 
 ## 💡 Practical Use-Cases
-1. **Cleanup Old Logs:** `find /var/log -name "*.log" -mtime +30 -exec rm {}
-   \;` deletes logs older than 30 days. 2. **Permission Auditing:** `find .
-   -type f -perm 777` identifies dangerously  over-privileged files. 3. **Batch
-   Renaming/Processing:** Using `-exec bash -c '...'` to perform  complex logic
-   on each file found.
+1. **Cleanup Old Logs:** `find /var/log -name "*.log" -mtime +30 -exec rm {} \;`
+deletes logs older than 30 days.
+
+2. **Permission Auditing:** `find . -type f -perm 777` identifies dangerously
+over-privileged files.
+
+3. **Batch Renaming/Processing:** Using `-exec bash -c '...'` to perform complex
+logic on each file found.

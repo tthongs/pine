@@ -1,47 +1,67 @@
 # Parameter Expansion Technical Reference
-
-Parameter Expansion is the process of retrieving and optionally manipulating
-the value of a variable directly within the shell. It is significantly faster
-than calling external tools like `sed` or `awk`.
+Parameter Expansion is the process of retrieving and optionally manipulating the
+value of a variable directly within the shell. It is significantly faster than
+calling external tools like `sed` or `awk`.
 
 ## Basic Expansion
 - **${var}**: Standard expansion. Braces are required when appending text
-  immediately after (e.g., `${var}text`).
+immediately after (e.g., `${var}text`).
 
 ## String Length
 - **${#var}**: Returns the number of characters in the value of `var`.
 
 ## Default and Alternate Values
-- **${var:-word}**: If `var` is unset or null, use `word`. - **${var:=word}**:
-  If `var` is unset or null, assign `word` to `var` and use  it. -
-  **${var:?word}**: If `var` is unset or null, print `word` and exit the script.
-  - **${var:+word}**: If `var` is set and not null, use `word`; otherwise use
-  nothing.
+- **${var:-word}**: If `var` is unset or null, use `word`.
+
+- **${var:=word}**: If `var` is unset or null, assign `word` to `var` and use
+it.
+
+- **${var:?word}**: If `var` is unset or null, print `word` and exit the script.
+
+- **${var:+word}**: If `var` is set and not null, use `word`; otherwise use
+nothing.
 
 ## Substring Extraction (Slicing)
-- **${var:offset}**: Extract from `offset` to the end. -
-  **${var:offset:length}**: Extract `length` characters starting from `offset`.
-  - **${var: -length}**: Extract `length` characters from the end (note the
-  space  before the minus).
+- **${var:offset}**: Extract from `offset` to the end.
+
+-     **${var:offset:length}**: Extract `length` characters starting from
+`offset`.
+
+- **${var: -length}**: Extract `length` characters from the end (note the space
+before the minus).
 
 ## Pattern Removal
-- **#** (Left): Remove the **shortest** match from the beginning. - **##**
-  (Left): Remove the **longest** match from the beginning. - **%** (Right):
-  Remove the **shortest** match from the end. - **%%** (Right): Remove the
-  **longest** match from the end.
+- **#** (Left): Remove the **shortest** match from the beginning.
+
+- **##** (Left): Remove the **longest** match from the beginning.
+
+- **%** (Right): Remove the **shortest** match from the end.
+
+- **%%** (Right): Remove the **longest** match from the end.
 
 ## Search and Replace
-- **${var/pattern/string}**: Replace the **first** match. -
-  **${var//pattern/string}**: Replace **all** matches. -
-  **${var/#pattern/string}**: Replace only if match is at the **start**. -
-  **${var/%pattern/string}**: Replace only if match is at the **end**.
+- **${var/pattern/string}**: Replace the **first** match.
+
+-     **${var//pattern/string}**: Replace **all** matches.
+
+-     **${var/#pattern/string}**: Replace only if match is at the **start**.
+
+-     **${var/%pattern/string}**: Replace only if match is at the **end**.
 
 ## Case Conversion (Bash 4+)
-- **${var^^}**: Convert all characters to uppercase. - **${var,,}**: Convert all
-  characters to lowercase. - **${var^}**: Convert only the first character to
-  uppercase. - **${var,}**: Convert only the first character to lowercase.
+- **${var^^}**: Convert all characters to uppercase.
+
+- **${var,,}**: Convert all characters to lowercase.
+
+- **${var^}**: Convert only the first character to uppercase.
+
+- **${var,}**: Convert only the first character to lowercase.
 
 ## Use Cases
-- High-performance string manipulation in loops. - Parsing file paths (getting
-  extension, filename, or directory). - Setting default configuration values. -
-  Quick case-insensitive comparisons.
+- High-performance string manipulation in loops.
+
+- Parsing file paths (getting extension, filename, or directory).
+
+- Setting default configuration values.
+
+- Quick case-insensitive comparisons.

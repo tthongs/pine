@@ -9,30 +9,35 @@ clean way to handle multiline text input/output within a script.
 ### 1. Bash Functions
 Functions are blocks of code that can be called by name.
 
-- **Definition:**   ```bash   my_function() {
-      local arg1=$1
-      echo "Argument received: $arg1"
-}   ``` - **Calling:** `my_function "Hello"` - **Key Feature: `local` Scope**
-Always use the `local` keyword for variables inside functions to prevent them
-from overwriting global variables of the same name.
+- **Definition:** ```bash my_function() { local arg1=$1 echo "Argument received:
+$arg1" } ```
+
+- **Calling:** `my_function "Hello"`
+
+- **Key Feature: `local` Scope** Always use the `local` keyword for variables
+inside functions to prevent them from overwriting global variables of the same
+name.
 
 ### 2. Heredocs (`<<`)
-Heredocs allow you to pass a multiline block of text to a command (usually
-`cat` or `EOF`).
+Heredocs allow you to pass a multiline block of text to a command (usually `cat`
+or `EOF`).
 
-- **Standard Heredoc:**   ```bash   cat << EOF   Welcome, $USER   Current
-  Directory: $PWD   EOF   ```   *(Variables are expanded inside the block.)*
+- **Standard Heredoc:** ```bash cat << EOF Welcome, $USER Current Directory:
+$PWD EOF ``` *(Variables are expanded inside the block.)*
 
-- **Quoted Heredoc:**   ```bash   cat << 'EOF'   Literal $USER (not expanded)
-  EOF   ```   *(Quoting the delimiter prevents variable expansion.)*
+- **Quoted Heredoc:** ```bash cat << 'EOF' Literal $USER (not expanded) EOF ```
+*(Quoting the delimiter prevents variable expansion.)*
 
-- **Indented Heredoc (`<<-`):**   Allows you to indent the heredoc block with
-  **tabs** for better code  readability without including those tabs in the
-  output.
+- **Indented Heredoc (`<<-`):** Allows you to indent the heredoc block with
+**tabs** for better code readability without including those tabs in the output.
 
 ## 💡 Practical Use-Cases
 1. **Usage Functions:** Creating a `usage()` function that uses a heredoc to
-   display a standardized help message when a script is run with incorrect
-   arguments. 2. **Config File Generation:** Using a heredoc to dynamically
-   create a  configuration file or a temporary script. 3. **DRY Code:** Moving
-   repetitive logic (like formatted logging or error  handling) into functions.
+display a standardized help message when a script is run with incorrect
+arguments.
+
+2. **Config File Generation:** Using a heredoc to dynamically create a
+configuration file or a temporary script.
+
+3. **DRY Code:** Moving repetitive logic (like formatted logging or error
+handling) into functions.

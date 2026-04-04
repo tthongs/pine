@@ -1,36 +1,63 @@
 # Process Scripting and Resource Limits
-
 This topic covers the management of system processes and the enforcement of
 resource constraints on the shell and its children.
 
 ## Process Monitoring with `ps`
 The `ps` (process status) command is the primary tool for viewing active
-processes. - **`ps aux`**: BSD-style syntax.   - `a`: All users.   - `u`:
-Display user/owner information.   - `x`: Processes not attached to a terminal. -
-**`ps -ef`**: Standard/System V syntax.   - `-e`: Select all processes.   -
-`-f`: Full-format listing. - **`--sort`**: Sort processes by a specific column
-(e.g., `ps aux  --sort=-%mem`).
+processes.
+
+- **`ps aux`**: BSD-style syntax.
+
+- `a`: All users.
+
+- `u`: Display user/owner information.
+
+- `x`: Processes not attached to a terminal.
+
+- **`ps -ef`**: Standard/System V syntax.
+
+- `-e`: Select all processes.
+
+- `-f`: Full-format listing.
+
+- **`--sort`**: Sort processes by a specific column (e.g., `ps aux
+--sort=-%mem`).
 
 ## Resource Limits with `ulimit`
 The `ulimit` command controls the resources available to the shell and the
-processes it starts. - **Hard vs. Soft Limits**:   - **Soft Limit (`-S`)**: The
-current limit enforced. Users can increase this  up to the hard limit.   -
-**Hard Limit (`-H`)**: The absolute maximum set by the administrator  (root).
-Only root can increase this. - **Common Flags**:   - **`-a`**: View all current
-limits.   - **`-n`**: Maximum number of open file descriptors (crucial for
-servers).   - **`-u`**: Maximum number of processes available to a single user.
-- **`-v`**: Maximum amount of virtual memory.   - **`-f`**: Maximum size of
-files created by the shell.
+processes it starts.
+
+- **Hard vs. Soft Limits**: - **Soft Limit (`-S`)**: The current limit enforced.
+Users can increase this up to the hard limit.
+
+- **Hard Limit (`-H`)**: The absolute maximum set by the administrator (root).
+Only root can increase this.
+
+- **Common Flags**: - **`-a`**: View all current limits.
+
+- **`-n`**: Maximum number of open file descriptors (crucial for servers).
+
+- **`-u`**: Maximum number of processes available to a single user.
+
+- **`-v`**: Maximum amount of virtual memory.
+
+- **`-f`**: Maximum size of files created by the shell.
 
 ## Process States
-- **R (Running/Runnable)**: Process is on the CPU or in the run queue. - **S
-  (Interruptible Sleep)**: Waiting for an event/resource. - **D (Uninterruptible
-  Sleep)**: Usually waiting for I/O. - **Z (Zombie)**: Process terminated but
-  parent hasn't "reaped" it yet. - **T (Stopped)**: Suspended by a signal (e.g.,
-  Ctrl+Z).
+- **R (Running/Runnable)**: Process is on the CPU or in the run queue.
+
+- **S (Interruptible Sleep)**: Waiting for an event/resource.
+
+- **D (Uninterruptible Sleep)**: Usually waiting for I/O.
+
+- **Z (Zombie)**: Process terminated but parent hasn't "reaped" it yet.
+
+- **T (Stopped)**: Suspended by a signal (e.g., Ctrl+Z).
 
 ## Signal Handling
 - **`kill -9 <PID>`**: Sends `SIGKILL` (immediate termination, cannot be
-  ignored). - **`kill -15 <PID>`**: Sends `SIGTERM` (graceful termination,
-  allows cleanup). - **`trap`**: A bash built-in to catch signals within a
-  script and execute code.
+ignored).
+
+- **`kill -15 <PID>`**: Sends `SIGTERM` (graceful termination, allows cleanup).
+
+- **`trap`**: A bash built-in to catch signals within a script and execute code.

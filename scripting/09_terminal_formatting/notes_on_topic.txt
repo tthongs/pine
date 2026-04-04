@@ -7,14 +7,21 @@ Terminal formatting enhances the user experience by providing visual cues
 ## 🛠️ Commands and References
 
 ### 1. ANSI Escape Codes
-Directly control colors and styles via strings sent to the terminal. -
-**Syntax:** `\e[<STYLE>;<COLOR>m` - **Common Codes:**
-    - `0`: Reset all styles.
-    - `1`: **Bold**.
-    - `4`: __Underline__.
-    - `31-37`: Foreground Colors (Red, Green, Yellow, Blue, Magenta, Cyan, 
-White).
-    - `41-47`: Background Colors.
+Directly control colors and styles via strings sent to the terminal.
+
+- **Syntax:** `\e[<STYLE>;<COLOR>m`
+
+- **Common Codes:**
+
+- `0`: Reset all styles.
+
+- `1`: **Bold**.
+
+- `4`: __Underline__.
+
+- `31-37`: Foreground Colors (Red, Green, Yellow, Blue, Magenta, Cyan, White).
+
+- `41-47`: Background Colors.
 
 ### 2. The `tput` Command
 A more portable way to manage terminal capabilities by looking up the current
@@ -30,13 +37,18 @@ A more portable way to manage terminal capabilities by looking up the current
 | `invis` / `cvis` | Hide / Show cursor. | `tput invis` |
 
 ### 3. Hex and ASCII Printing
-Use `printf` to output non-printable characters or specific byte values. -
-**Syntax:** `printf '%b' '\xNN'` (where NN is the Hex code). - **Example:**
-`printf '%b' '\x41'` prints 'A'.
+Use `printf` to output non-printable characters or specific byte values.
+
+- **Syntax:** `printf '%b' '\xNN'` (where NN is the Hex code).
+
+- **Example:** `printf '%b' '\x41'` prints 'A'.
 
 ## 💡 Practical Use-Cases
 1. **Interactive Menus:** Using `tput cup` to place options at specific
-   locations and `tput rev` to highlight the selected item. 2. **Logging:**
-   Using ANSI colors (Red for ERROR, Green for OK) to make logs  quickly
-   scannable. 3. **Password Security:** Using `tput invis` to hide user input
-   during  sensitive data entry.
+locations and `tput rev` to highlight the selected item.
+
+2. **Logging:** Using ANSI colors (Red for ERROR, Green for OK) to make logs
+quickly scannable.
+
+3. **Password Security:** Using `tput invis` to hide user input during sensitive
+data entry.

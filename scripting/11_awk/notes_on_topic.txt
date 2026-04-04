@@ -1,5 +1,4 @@
 # AWK Technical Reference
-
 AWK is a domain-specific language designed for text processing and typically
 used as a data extraction and reporting tool.
 
@@ -8,36 +7,59 @@ used as a data extraction and reporting tool.
 
 ## Core Architecture: The 3-Block Structure
 - **BEGIN { ... }**: Executed once before any input lines are read. Good for
-  initializing variables or setting separators. - **{ ... }**: The MAIN block,
-  executed for every record (line) in the input. - **END { ... }**: Executed
-  once after all input lines have been processed.  Good for printing summaries.
+initializing variables or setting separators.
+
+- **{ ... }**: The MAIN block, executed for every record (line) in the input.
+
+- **END { ... }**: Executed once after all input lines have been processed. Good
+for printing summaries.
 
 ## Records and Fields
-- **$0**: The entire current record (line). - **$1, $2, ...**: Individual fields
-  in the record. - **NR**: Number of Records (the current line number). -
-  **NF**: Number of Fields in the current record.
+- **$0**: The entire current record (line).
+
+- **$1, $2, ...**: Individual fields in the record.
+
+- **NR**: Number of Records (the current line number).
+
+- **NF**: Number of Fields in the current record.
 
 ## Variables and Separators
-- **FS**: Input Field Separator (default is whitespace). Use `-F` flag to
-  change (e.g., `awk -F','`). - **OFS**: Output Field Separator (default is
-  space). - **RS / ORS**: Input/Output Record Separators (default is newline). -
-  **ARGC / ARGV**: Argument count and array of command-line arguments.
+- **FS**: Input Field Separator (default is whitespace). Use `-F` flag to change
+(e.g., `awk -F','`).
+
+- **OFS**: Output Field Separator (default is space).
+
+- **RS / ORS**: Input/Output Record Separators (default is newline).
+
+- **ARGC / ARGV**: Argument count and array of command-line arguments.
 
 ## Built-in Functions
-- **length(str)**: Returns the length of a string. - **index(str, sub)**:
-  Returns the position of substring `sub` in `str`. - **substr(str, start,
-  [len])**: Returns a portion of the string. - **split(str, array, [sep])**:
-  Splits `str` into `array` using `sep`. - **sub(regex, repl, [target])**:
-  Replaces the first match of `regex`. - **gsub(regex, repl, [target])**:
-  Replaces all matches (Global Substitution). - **match(str, regex)**: Checks if
-  `str` matches `regex`.
+- **length(str)**: Returns the length of a string.
+
+- **index(str, sub)**: Returns the position of substring `sub` in `str`.
+
+- **substr(str, start, [len])**: Returns a portion of the string.
+
+- **split(str, array, [sep])**: Splits `str` into `array` using `sep`.
+
+- **sub(regex, repl, [target])**: Replaces the first match of `regex`.
+
+- **gsub(regex, repl, [target])**: Replaces all matches (Global Substitution).
+
+- **match(str, regex)**: Checks if `str` matches `regex`.
 
 ## Control Flow
-- **if (condition) { ... } else { ... }** - **for (i=1; i<=N; i++) { ... }** -
-  **for (key in array) { ... }** (for associative arrays) - **while (condition)
-  { ... }**
+- **if (condition) { ... } else { ... }** - **for (i=1; i<=N; i++) { ... }**
+
+-     **for (key in array) { ... }** (for associative arrays)
+
+- **while (condition) { ... }**
 
 ## Use Cases
-- Generating reports from CSV/TSV files. - Filtering logs based on specific
-  column values. - Performing arithmetic calculations on columnar data. -
-  Reformatting text files.
+- Generating reports from CSV/TSV files.
+
+- Filtering logs based on specific column values.
+
+- Performing arithmetic calculations on columnar data.
+
+- Reformatting text files.

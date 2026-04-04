@@ -1,9 +1,9 @@
 # Notes on Topic: Text Processing and IFS
 
 ## 📖 Overview
-Text processing is a core strength of Bash. This topic covers the Internal
-Field Separator (IFS) for tokenizing strings, using Regular Expressions for
-pattern matching, and various tools for filtering and extracting data.
+Text processing is a core strength of Bash. This topic covers the Internal Field
+Separator (IFS) for tokenizing strings, using Regular Expressions for pattern
+matching, and various tools for filtering and extracting data.
 
 ## 🛠️ Commands and References
 
@@ -17,21 +17,32 @@ The `IFS` variable determines how Bash splits strings into words.
 | Tab | `IFS=$'\t'` | Handling tab-separated values (TSV). |
 | Newline | `IFS=$'\n'` | Iterating over lines in a multiline variable. |
 
-**Scope Management:** - **Global Change:** `IFS=":"; for i in $var...` (Requires
-manual restoration  of `OLD_IFS`). - **Command-Scoped (Recommended):** `IFS=":"
-read -r a b <<< "$var"` (Only  affects the `read` command).
+**Scope Management:**
+
+- **Global Change:** `IFS=":"; for i in $var...` (Requires manual restoration of
+`OLD_IFS`).
+
+- **Command-Scoped (Recommended):** `IFS=":" read -r a b <<< "$var"` (Only
+affects the `read` command).
 
 ### 2. Regular Expressions in Bash
 Bash supports native regex matching using the `[[ $var =~ pattern ]]` operator.
 
 - **`BASH_REMATCH` Array:**
-    - `${BASH_REMATCH[0]}`: The entire portion of the string that matched.
-    - `${BASH_REMATCH[1..n]}`: Content captured by `(parentheses)` in the regex.
+
+- `${BASH_REMATCH[0]}`: The entire portion of the string that matched.
+
+- `${BASH_REMATCH[1..n]}`: Content captured by `(parentheses)` in the regex.
+
 - **Common Regex Symbols:**
-    - `^` / `$`: Start and end of string anchors.
-    - `[0-9]+`: One or more digits.
-    - `[a-zA-Z]+`: One or more letters.
-    - `.` : Any character.
+
+- `^` / `$`: Start and end of string anchors.
+
+- `[0-9]+`: One or more digits.
+
+- `[a-zA-Z]+`: One or more letters.
+
+- `.` : Any character.
 
 ### 3. Text Processing Tools
 
@@ -44,7 +55,10 @@ Bash supports native regex matching using the `[[ $var =~ pattern ]]` operator.
 
 ## 💡 Practical Use-Cases
 1. **Line-by-Line Parsing:** Using `while read -r line; do ... done < file.txt`
-   to process a file. 2. **Safe Filename Extraction:** Using `${i##*.}` for
-   extensions and `cut` for  parts. 3. **Data Validation:** Using regex to
-   ensure a variable contains only digits  or follows a specific format (e.g.,
-   `Screenshot-YYYYMMDD.png`).
+to process a file.
+
+2. **Safe Filename Extraction:** Using `${i##*.}` for extensions and `cut` for
+parts.
+
+3. **Data Validation:** Using regex to ensure a variable contains only digits or
+follows a specific format (e.g., `Screenshot-YYYYMMDD.png`).

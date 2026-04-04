@@ -1,34 +1,56 @@
 # Sort Command Technical Reference
-
 The `sort` command is used to sort lines of text files. It is highly
 configurable and can handle large datasets efficiently.
 
 ## Essential Flags
-- **`-n`**: Numeric sort (treats strings as numbers). - **`-r`**: Reverse the
-  result. - **`-u`**: Unique (remove duplicate lines). Note: `sort -u` is often
-  faster  than `sort | uniq`. - **`-f`**: Ignore case (fold). - **`-t`**: Define
-  the field separator (default is whitespace transition). - **`-k`**: Specify a
-  key (field) to sort by.
+- **`-n`**: Numeric sort (treats strings as numbers).
+
+- **`-r`**: Reverse the result.
+
+- **`-u`**: Unique (remove duplicate lines). Note: `sort -u` is often faster
+than `sort | uniq`.
+
+- **`-f`**: Ignore case (fold).
+
+- **`-t`**: Define the field separator (default is whitespace transition).
+
+- **`-k`**: Specify a key (field) to sort by.
 
 ## Advanced Sorting
-- **`-h`**: Human-numeric sort (handles suffixes like 2K, 1G, 4M). - **`-V`**:
-  Version sort (handles `v1.2`, `v1.10` correctly). - **`-M`**: Month sort (JAN,
-  FEB, etc.). - **`-R`**: Random sort (useful for shuffling data).
+- **`-h`**: Human-numeric sort (handles suffixes like 2K, 1G, 4M).
+
+- **`-V`**: Version sort (handles `v1.2`, `v1.10` correctly).
+
+- **`-M`**: Month sort (JAN, FEB, etc.).
+
+- **`-R`**: Random sort (useful for shuffling data).
 
 ## Key-Based Sorting Syntax (`-k`)
-The syntax is `-k POS1[,POS2]`, where POS is `FIELD[.CHAR][FLAGS]`. - **`-k
-2,2`**: Sort by field 2 only. - **`-k 2`**: Sort from field 2 to the end of the
-line. - **`-k 1.2,1.2`**: Sort by the second character of the first field.
+The syntax is `-k POS1[,POS2]`, where POS is `FIELD[.CHAR][FLAGS]`.
+
+- **`-k 2,2`**: Sort by field 2 only.
+
+- **`-k 2`**: Sort from field 2 to the end of the line.
+
+- **`-k 1.2,1.2`**: Sort by the second character of the first field.
 
 ## Debugging and Performance
 - **`--debug`**: Highlights the keys used for sorting and warns about potential
-  issues (like locale-specific behavior). - **`-S <size>`**: Set the memory
-  buffer size (e.g., `-S 2G` for large files). - **`--parallel=<n>`**: Use `n`
-  threads for sorting. - **`-o <file>`**: Write output to a file (can be the
-  same as input, unlike `>`  redirection).
+issues (like locale-specific behavior).
+
+- **`-S <size>`**: Set the memory buffer size (e.g., `-S 2G` for large files).
+
+- **`--parallel=<n>`**: Use `n` threads for sorting.
+
+- **`-o <file>`**: Write output to a file (can be the same as input, unlike `>`
+redirection).
 
 ## Integration with `uniq`
 While `sort -u` handles basic uniqueness, the `uniq` command provides extra
-functionality: - **`uniq -c`**: Prefix lines by the number of occurrences
-(frequency count). - **`uniq -d`**: Only print duplicate lines. - **`uniq -u`**:
-Only print unique lines (that occur exactly once).
+functionality:
+
+- **`uniq -c`**: Prefix lines by the number of occurrences (frequency count).
+
+- **`uniq -d`**: Only print duplicate lines.
+
+- **`uniq -u`**: Only print unique lines (that occur exactly once).

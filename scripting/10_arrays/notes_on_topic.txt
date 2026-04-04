@@ -8,15 +8,25 @@ supports both **Indexed Arrays** (numeric keys) and **Associative Arrays**
 ## 🛠️ Commands and References
 
 ### 1. Indexed Arrays
-- **Declaration:** `fruits=("Apple" "Banana" "Cherry")` - **Access:**
-  `${fruits[0]}` - **Length:** `${#fruits[@]}` - **All Elements:**
-  `"${fruits[@]}"` (Always use quotes!) - **Indices:** `"${!fruits[@]}"`
+- **Declaration:** `fruits=("Apple" "Banana" "Cherry")`
+
+- **Access:** `${fruits[0]}`
+
+- **Length:** `${#fruits[@]}`
+
+- **All Elements:** `"${fruits[@]}"` (Always use quotes!)
+
+- **Indices:** `"${!fruits[@]}"`
 
 ### 2. Associative Arrays (Bash 4.0+)
-- **Declaration:** `declare -A user_roles` (Mandatory) - **Assignment:**
-  `user_roles[alice]="admin"` - **Access:** `${user_roles[alice]}`
+- **Declaration:** `declare -A user_roles` (Mandatory)
+
+- **Assignment:** `user_roles[alice]="admin"`
+
+- **Access:** `${user_roles[alice]}`
 
 ### 3. Common Operations
+
 | Operation | Syntax | Description |
 | :--- | :--- | :--- |
 | **Append** | `arr+=("NewVal")` | Adds to the end of the array. |
@@ -27,13 +37,20 @@ supports both **Indexed Arrays** (numeric keys) and **Associative Arrays**
 
 ### 4. The Subshell Pitfall
 Piping data to a `while` loop to populate an array will fail because the loop
-runs in a subshell. - **Wrong:** `cat file | while read; do arr+=($REPLY); done`
-(Array will be  empty). - **Correct:** `while read; do arr+=($REPLY); done <
-<(cat file)` (Process  substitution).
+runs in a subshell.
+
+- **Wrong:** `cat file | while read; do arr+=($REPLY); done` (Array will be
+empty).
+
+- **Correct:** `while read; do arr+=($REPLY); done < <(cat file)` (Process
+substitution).
 
 ## 💡 Practical Use-Cases
 1. **Batch File Processing:** Storing a list of files found by `find` into an
-   array for sequential processing. 2. **Config Mapping:** Using associative
-   arrays to map environment names to  their respective IP addresses. 3. **Data
-   Filtering:** Iterating through an array and creating a new "filtered"  array
-   based on specific criteria.
+array for sequential processing.
+
+2. **Config Mapping:** Using associative arrays to map environment names to
+their respective IP addresses.
+
+3. **Data Filtering:** Iterating through an array and creating a new "filtered"
+array based on specific criteria.

@@ -2,16 +2,18 @@
 
 ## 📖 Overview
 Shell options allow you to modify the behavior of the Bash environment. These
-can be toggled using the `set` command to enable features, enforce safety
-rules, or debug scripts.
+can be toggled using the `set` command to enable features, enforce safety rules,
+or debug scripts.
 
 ## 🛠️ Commands and References
 
 ### 1. Toggling Options
-- **`set -o <option>`**: Enables (turns ON) an option. - **`set +o <option>`**:
-  Disables (turns OFF) an option.
+- **`set -o <option>`**: Enables (turns ON) an option.
+
+- **`set +o <option>`**: Disables (turns OFF) an option.
 
 ### 2. Common Safety and Debugging Options
+
 | Option | Shorthand | Description |
 | :--- | :--- | :--- |
 | `errexit` | `-e` | Exit immediately if a command exits with a non-zero status. |
@@ -20,15 +22,20 @@ rules, or debug scripts.
 | `pipefail` | (none) | The return value of a pipeline is the status of the last command to exit with a non-zero status. |
 
 ### 3. Feature-Specific Options
-- **`allexport` (`-a`)**: Automatically marks all subsequently defined
-  variables for export to child processes. - **`braceexpand` (`-B`)**:
-  Enables/disables the `{a,b}` expansion feature. - **`noclobber` (`-C`)**:
-  Prevents overwriting existing files with the `>`  operator.
+- **`allexport` (`-a`)**: Automatically marks all subsequently defined variables
+for export to child processes.
+
+- **`braceexpand` (`-B`)**: Enables/disables the `{a,b}` expansion feature.
+
+- **`noclobber` (`-C`)**: Prevents overwriting existing files with the `>`
+operator.
 
 ## 💡 Practical Use-Cases
 1. **Strict Mode:** Adding `set -euo pipefail` at the start of a script to make
-   it more robust and easier to debug. 2. **Environment Setup:** Using `set -a`
-   before sourcing a `.env` file to  ensure all variables are immediately
-   available to subshells and child processes. 3. **Isolating Behavior:**
-   Temporarily disabling `braceexpand` when working  with filenames that contain
-   literal curly braces.
+it more robust and easier to debug.
+
+2. **Environment Setup:** Using `set -a` before sourcing a `.env` file to ensure
+all variables are immediately available to subshells and child processes.
+
+3. **Isolating Behavior:** Temporarily disabling `braceexpand` when working with
+filenames that contain literal curly braces.
