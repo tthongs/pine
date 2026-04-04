@@ -1,0 +1,189 @@
+# 🎓 The Ultimate Bash Scripting & UNIX Master Notes
+
+This document is the definitive study guide for students, structured to take you from absolute beginner to advanced shell programmer. It integrates core concepts, lecture insights, and practical Pro-Tips.
+
+---
+
+## 📑 Table of Contents
+1. [UNIX Fundamentals & Navigation](#1-unix-fundamentals--navigation)
+2. [Permissions & Security](#2-permissions--security)
+3. [The Power of the GVIM Editor](#3-the-power-of-the-gvim-editor)
+4. [Core Text Processing Utilities](#4-core-text-processing-utilities)
+5. [Shell Mechanics & Environment](#5-shell-mechanics--environment)
+6. [Bash Scripting: Module-by-Module (01-19)](#6-bash-scripting-module-by-module)
+7. [Process Management](#7-process-management)
+8. [Practice & Master Roadmap](#8-practice--master-roadmap)
+
+---
+
+## 1. UNIX Fundamentals & Navigation
+The foundation of everything you do in the terminal.
+
+### **Essential Commands**
+- `pwd`: Print Working Directory (Absolute path starting from `/`).
+- `ls`: List files.
+  - `-l`: Long list (permissions, size, owner).
+  - `-a` / `-A`: Show hidden files (starting with `.`).
+  - `-F`: Append indicators (`/` for dirs, `*` for executables).
+  - `-ld`: List directory info itself, not its contents.
+- `mkdir -p D1/D2`: Create nested directories.
+- `cp -r src dest`: Recursive copy (for directories).
+- `rm -rf`: Force recursive remove. **No undo.**
+
+### **Path Logic**
+- `/`: The Root (top-level).
+- `~`: Your Home Directory (`/home/pine`).
+- `.`: Current directory.
+- `..`: Parent directory.
+- `*`: Wildcard (matches zero or more characters).
+
+---
+
+## 2. Permissions & Security
+Understanding who can do what to a file.
+
+### **Permission Groups**
+`[Type][Owner][Group][Others]`
+Example: `-rw-rw-r--`
+- `-`: Regular file.
+- `d`: Directory.
+- `l`: Link.
+
+### **Octal Math (Binary Logic)**
+- `r (Read)` = 4
+- `w (Write)` = 2
+- `x (Execute)` = 1
+- **777**: Everyone can do everything.
+- **644**: Owner (rw), Group (r), Others (r).
+- **755**: Owner (rwx), Group (rx), Others (rx).
+
+### **umask (Default Permissions)**
+- New Files default to `666 - umask`.
+- New Dirs default to `777 - umask`.
+- If `umask` is `002`, a new file gets `664`.
+
+---
+
+## 3. The Power of the GVIM Editor
+A master's tool for editing code inside the terminal.
+
+### **Modes**
+- **Command Mode (CM):** Default mode for navigation and editing commands.
+- **Insert Mode (IM):** For typing text. Press `i`, `a`, or `o` to enter.
+- **Esc:** Always returns you to Command Mode.
+
+### **Navigation (Command Mode)**
+- `h`, `j`, `k`, `l`: Left, Down, Up, Right.
+- `w`: Jump forward by word.
+- `b`: Jump backward by word.
+- `0`: Start of line.
+- `$`: End of line.
+- `gg`: Top of file.
+- `G`: Bottom of file.
+
+### **Editing (Command Mode)**
+- `x`: Delete single character.
+- `dd`: Delete (cut) current line.
+- `yy`: Yank (copy) current line.
+- `p`: Paste below cursor.
+- `u`: Undo last action.
+- `cc`: Change line (delete + enter Insert Mode).
+- `:set nu`: Enable line numbers.
+- `:w!`: Force save.
+- `:wq`: Save and quit.
+
+---
+
+## 4. Core Text Processing Utilities
+The "Swiss Army Knives" of the command line.
+
+### **wc (Word Count)**
+- `-l`: Lines.
+- `-w`: Words.
+- `-m`: Characters.
+
+### **cut (Column Extraction)**
+- `-d','`: Set delimiter (comma).
+- `-f1,3`: Extract fields 1 and 3.
+- `-c2-5`: Extract character range 2 to 5.
+
+### **tr (Translate/Delete)**
+- `tr 'a-z' 'A-Z'`: Convert to uppercase.
+- `tr -d ' '`: Delete all spaces.
+- `tr -s ' '`: Squeeze multiple spaces into one.
+
+### **Head & Tail**
+- `head -n 5`: First 5 lines.
+- `tail -n 2`: Last 2 lines.
+
+---
+
+## 5. Shell Mechanics & Environment
+How the shell interprets your commands.
+
+### **Quotes**
+- **Weak Quotes (`" "`)**: Variables are expanded (`"$USER"` $\rightarrow$ `pine`).
+- **Strong Quotes (`' '`)**: Everything is literal (`'$USER'` $\rightarrow$ `$USER`).
+- **Escape (`\`)**: Escapes the next character (e.g., `\$`).
+
+### **Variables**
+- **User Defined:** `v=100` (No spaces around `=`).
+- **Environment:** `$SHELL`, `$PATH`, `$USER`, `$HOSTNAME`.
+- **Command Substitution:** `file=$(ls)` or `file=`ls``. Stores command output in a variable.
+
+### **Redirection (I/O)**
+- `0 <`: Standard Input (stdin).
+- `1 >`: Standard Output (stdout - overwrite).
+- `1 >>`: Standard Output (stdout - append).
+- `2 >`: Standard Error (stderr).
+- `&>`: Both stdout and stderr.
+- `|`: Pipe (Output of cmd1 $\rightarrow$ Input of cmd2).
+
+---
+
+## 6. Bash Scripting: Module-by-Module
+Refer to individual `TUTORIAL.md` files in each directory for deeper dives.
+
+- **01 Input/Output:** Using `read` and `printf`.
+- **02 Loops/Logic:** `if/else`, `while`, `for`.
+- **03 IFS:** Controlling how strings are split.
+- **04 Redirection:** Managing descriptors and process substitution `<()`.
+- **05 Search:** Mastering `find` with `-exec`.
+- **06 Arguments:** `$0`, `$1`, `$#`, and `shift`.
+- **07 Functions:** Reusable code blocks and `Heredocs`.
+- **08 Shell Options:** `set -e`, `set -x`, `set -a`.
+- **09 Terminal UI:** `tput`, ANSI colors, and `stty`.
+- **10 Arrays:** Indexed and Associative collections.
+- **11 AWK:** Field-based programming (`BEGIN`, `END`).
+- **12 Diff:** Comparing files and generating patches.
+- **13 Eval:** Dynamic execution (use with caution!).
+- **14 Parameter Expansion:** `${var##*/}`, `${var,,}`, etc. **(High Performance)**.
+- **15 PS:** Resource limits (`ulimit`).
+- **16 Regex:** Pattern matching with `[[ =~ ]]`.
+- **17 Sed:** Stream editing and substitutions.
+- **18 Sort:** Numerical and field-based organization.
+- **19 Time:** Performance benchmarking (`real`, `user`, `sys`).
+
+---
+
+## 7. Process Management
+How to run and monitor programs.
+
+- **PID (Process ID):** Every command gets a unique ID.
+- **&**: Run command in the background (`gvim file &`).
+- **jobs -l**: List background jobs in current terminal.
+- **ps -f**: Full listing of processes.
+- **Exit Status (`$?`):**
+  - `0`: Success.
+  - `1-255`: Failure/Error.
+
+---
+
+## 8. Practice & Master Roadmap
+1. **Scaffold Data:** `./data/create_samples.sh`.
+2. **Permissions:** `chmod 777 */*.sh`.
+3. **Follow the Roadway:** Check `l_roadway/ROADMAP.md` for a clickable index.
+4. **The Master Rule:** **Read, Modify, Run.** Never just copy.
+
+---
+**Reference:** For the original raw lecture logs, see `references/main_readme.txt`.
