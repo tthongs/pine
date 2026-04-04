@@ -1,23 +1,19 @@
 # Sed (Stream Editor) Technical Reference
-`sed` is a non-interactive stream editor that transforms text on the fly. It
-reads input line by line into a "pattern space," applies commands, and outputs
-the result.
+`sed` is a non-interactive stream editor that transforms text on the fly. It reads input line by line into a "pattern space," applies commands, and outputs the result.
 
 ## Basic Syntax
 `sed [options] 'command' file`
 
 - **`-n`**: Suppress automatic printing (used with the `p` command).
 
-- **`-i`**: In-place editing (modifies the file directly). Use `-i.bak` to
-create a backup.
+- **`-i`**: In-place editing (modifies the file directly). Use `-i.bak` to create a backup.
 
 - **`-r`** (or `-E`): Use Extended Regular Expressions.
 
 ## Core Commands
 - **`s/pattern/replacement/flags`**: Substitute.
 
-- Flags: `g` (global), `p` (print), `I` (case-insensitive), `1, 2...` (nth
-occurrence).
+- Flags: `g` (global), `p` (print), `I` (case-insensitive), `1, 2...` (nth occurrence).
 
 - **`d`**: Delete the line.
 
@@ -54,8 +50,6 @@ Used inside the replacement string of an `s` command:
 ## Advanced Buffers
 - **Pattern Space**: The primary buffer for the current line.
 
-- **Hold Space**: A secondary buffer used for temporary storage (`h`, `H`, `g`,
-`G`, `x` commands).
+- **Hold Space**: A secondary buffer used for temporary storage (`h`, `H`, `g`, `G`, `x` commands).
 
-- **`n` / `N`**: Read the next line into the pattern space (overwriting or
-appending).
+- **`n` / `N`**: Read the next line into the pattern space (overwriting or appending).

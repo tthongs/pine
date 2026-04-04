@@ -1,14 +1,12 @@
 # Sort Command Technical Reference
-The `sort` command is used to sort lines of text files. It is highly
-configurable and can handle large datasets efficiently.
+The `sort` command is used to sort lines of text files. It is highly configurable and can handle large datasets efficiently.
 
 ## Essential Flags
 - **`-n`**: Numeric sort (treats strings as numbers).
 
 - **`-r`**: Reverse the result.
 
-- **`-u`**: Unique (remove duplicate lines). Note: `sort -u` is often faster
-than `sort | uniq`.
+- **`-u`**: Unique (remove duplicate lines). Note: `sort -u` is often faster than `sort | uniq`.
 
 - **`-f`**: Ignore case (fold).
 
@@ -35,19 +33,16 @@ The syntax is `-k POS1[,POS2]`, where POS is `FIELD[.CHAR][FLAGS]`.
 - **`-k 1.2,1.2`**: Sort by the second character of the first field.
 
 ## Debugging and Performance
-- **`--debug`**: Highlights the keys used for sorting and warns about potential
-issues (like locale-specific behavior).
+- **`--debug`**: Highlights the keys used for sorting and warns about potential issues (like locale-specific behavior).
 
 - **`-S <size>`**: Set the memory buffer size (e.g., `-S 2G` for large files).
 
 - **`--parallel=<n>`**: Use `n` threads for sorting.
 
-- **`-o <file>`**: Write output to a file (can be the same as input, unlike `>`
-redirection).
+- **`-o <file>`**: Write output to a file (can be the same as input, unlike `>` redirection).
 
 ## Integration with `uniq`
-While `sort -u` handles basic uniqueness, the `uniq` command provides extra
-functionality:
+While `sort -u` handles basic uniqueness, the `uniq` command provides extra functionality:
 
 - **`uniq -c`**: Prefix lines by the number of occurrences (frequency count).
 

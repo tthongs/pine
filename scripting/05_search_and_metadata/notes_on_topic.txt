@@ -1,10 +1,7 @@
 # Notes on Topic: Search and Metadata
 
 ## 📖 Overview
-The `find` command is the primary tool in Bash for discovering files based on
-their metadata (name, size, permissions, time) rather than their content. It
-allows for complex filtering and immediate execution of commands on the
-discovered items.
+The `find` command is the primary tool in Bash for discovering files based on their metadata (name, size, permissions, time) rather than their content. It allows for complex filtering and immediate execution of commands on the discovered items.
 
 ## 🛠️ Commands and References
 
@@ -27,8 +24,7 @@ discovered items.
 | `-mtime <days>` | Filter by modification time (in days). | `find . -mtime -7` (last 7 days) |
 
 ### 3. Dynamic Execution (`-exec`)
-The `-exec` flag allows you to run a command on every file that matches the
-criteria.
+The `-exec` flag allows you to run a command on every file that matches the criteria.
 
 | Syntax | Description | Performance |
 | :--- | :--- | :--- |
@@ -36,16 +32,11 @@ criteria.
 | `-exec cmd {} +` | Passes multiple files as arguments to one `cmd`. | Faster (efficient batching). |
 | `-ok cmd {} \;` | Same as `-exec`, but prompts for confirmation. | Safest (interactive). |
 
-**Pro Tip: Basename Extraction** While `-exec basename {} \;` works, using
-`-printf "%f\n"` is a built-in GNU find feature that is significantly faster
-because it doesn't spawn an external process.
+**Pro Tip: Basename Extraction** While `-exec basename {} \;` works, using `-printf "%f\n"` is a built-in GNU find feature that is significantly faster because it doesn't spawn an external process.
 
 ## 💡 Practical Use-Cases
-1. **Cleanup Old Logs:** `find /var/log -name "*.log" -mtime +30 -exec rm {} \;`
-deletes logs older than 30 days.
+1. **Cleanup Old Logs:** `find /var/log -name "*.log" -mtime +30 -exec rm {} \;` deletes logs older than 30 days.
 
-2. **Permission Auditing:** `find . -type f -perm 777` identifies dangerously
-over-privileged files.
+2. **Permission Auditing:** `find . -type f -perm 777` identifies dangerously over-privileged files.
 
-3. **Batch Renaming/Processing:** Using `-exec bash -c '...'` to perform complex
-logic on each file found.
+3. **Batch Renaming/Processing:** Using `-exec bash -c '...'` to perform complex logic on each file found.

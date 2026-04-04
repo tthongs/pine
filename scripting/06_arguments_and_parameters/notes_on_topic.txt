@@ -1,15 +1,12 @@
 # Notes on Topic: Arguments and Parameters
 
 ## 📖 Overview
-Arguments are the primary way to pass external data into a Bash script. This
-topic covers positional parameters, tracking argument counts, and shifting
-parameters for sequential processing.
+Arguments are the primary way to pass external data into a Bash script. This topic covers positional parameters, tracking argument counts, and shifting parameters for sequential processing.
 
 ## 🛠️ Commands and References
 
 ### 1. Positional Parameters
-Bash automatically assigns arguments to special variables based on their
-position.
+Bash automatically assigns arguments to special variables based on their position.
 
 | Variable | Description |
 | :--- | :--- |
@@ -20,20 +17,13 @@ position.
 | `$*` | All arguments as a single string (`"$1 $2 ..."`). |
 
 ### 2. Manual Parameter Management
-- **`set -- arg1 arg2 ...`**: Overwrites the current positional parameters with
-the provided values. This is useful for testing or re-parsing data within a
-script.
+- **`set -- arg1 arg2 ...`**: Overwrites the current positional parameters with the provided values. This is useful for testing or re-parsing data within a script.
 
-- **`shift [n]`**: "Consumes" the first `n` arguments (default 1) and shifts all
-remaining arguments to the left. `$2` becomes `$1`, `$3` becomes `$2`, and `$#`
-decreases accordingly.
+- **`shift [n]`**: "Consumes" the first `n` arguments (default 1) and shifts all remaining arguments to the left. `$2` becomes `$1`, `$3` becomes `$2`, and `$#` decreases accordingly.
 
 ## 💡 Practical Use-Cases
-1. **Argument Validation:** Checking `if [[ $# -lt 2 ]]` to ensure the user
-provided enough information before proceeding.
+1. **Argument Validation:** Checking `if [[ $# -lt 2 ]]` to ensure the user provided enough information before proceeding.
 
-2. **Sequential Processing:** Using a `while` loop with `shift` to process a
-list of files passed as arguments one by one.
+2. **Sequential Processing:** Using a `while` loop with `shift` to process a list of files passed as arguments one by one.
 
-3. **Usage Menus:** Passing the script name (`$0`) to a help function to ensure
-the correct name is displayed in the instructions.
+3. **Usage Menus:** Passing the script name (`$0`) to a help function to ensure the correct name is displayed in the instructions.

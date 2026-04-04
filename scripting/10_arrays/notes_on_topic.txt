@@ -1,9 +1,7 @@
 # Notes on Topic: Arrays
 
 ## 📖 Overview
-Arrays in Bash allow you to store multiple values in a single variable. Bash
-supports both **Indexed Arrays** (numeric keys) and **Associative Arrays**
-(string keys).
+Arrays in Bash allow you to store multiple values in a single variable. Bash supports both **Indexed Arrays** (numeric keys) and **Associative Arrays** (string keys).
 
 ## 🛠️ Commands and References
 
@@ -36,21 +34,15 @@ supports both **Indexed Arrays** (numeric keys) and **Associative Arrays**
 | **Re-indexing** | `arr=("${arr[@]}")` | Closes gaps after an `unset`. |
 
 ### 4. The Subshell Pitfall
-Piping data to a `while` loop to populate an array will fail because the loop
-runs in a subshell.
+Piping data to a `while` loop to populate an array will fail because the loop runs in a subshell.
 
-- **Wrong:** `cat file | while read; do arr+=($REPLY); done` (Array will be
-empty).
+- **Wrong:** `cat file | while read; do arr+=($REPLY); done` (Array will be empty).
 
-- **Correct:** `while read; do arr+=($REPLY); done < <(cat file)` (Process
-substitution).
+- **Correct:** `while read; do arr+=($REPLY); done < <(cat file)` (Process substitution).
 
 ## 💡 Practical Use-Cases
-1. **Batch File Processing:** Storing a list of files found by `find` into an
-array for sequential processing.
+1. **Batch File Processing:** Storing a list of files found by `find` into an array for sequential processing.
 
-2. **Config Mapping:** Using associative arrays to map environment names to
-their respective IP addresses.
+2. **Config Mapping:** Using associative arrays to map environment names to their respective IP addresses.
 
-3. **Data Filtering:** Iterating through an array and creating a new "filtered"
-array based on specific criteria.
+3. **Data Filtering:** Iterating through an array and creating a new "filtered" array based on specific criteria.

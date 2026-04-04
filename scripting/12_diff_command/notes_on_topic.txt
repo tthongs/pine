@@ -1,6 +1,5 @@
 # Diff Command Technical Reference
-The `diff` utility is used to compare files line by line and find differences
-between them.
+The `diff` utility is used to compare files line by line and find differences between them.
 
 ## Basic Usage
 `diff [options] file1 file2`
@@ -10,39 +9,31 @@ between them.
 
 -     **-y (--side-by-side)**: Display the files side-by-side in two columns.
 
-- **-u (-U n)**: Unified output format. Shows context lines and is the standard
-format for creating patches.
+- **-u (-U n)**: Unified output format. Shows context lines and is the standard format for creating patches.
 
-- **-w (--ignore-all-space)**: Ignore all whitespace differences when comparing
-lines.
+- **-w (--ignore-all-space)**: Ignore all whitespace differences when comparing lines.
 
 - **-i (--ignore-case)**: Ignore case differences in file contents.
 
-- **-B (--ignore-blank-lines)**: Ignore changes that just insert or delete blank
-lines.
+- **-B (--ignore-blank-lines)**: Ignore changes that just insert or delete blank lines.
 
 - **-r (--recursive)**: Recursively compare any subdirectories found.
 
-- **-N (--new-file)**: Treat absent files as empty (useful when comparing
-directories to see newly added files).
+- **-N (--new-file)**: Treat absent files as empty (useful when comparing directories to see newly added files).
 
 ## Output Symbols (Normal Format)
 - **a**: Add (e.g., `2a3` means after line 2 in file1, add line 3 from file2).
 
--     **d**: Delete (e.g., `4d3` means line 4 in file1 was deleted to match line
-  3
-in file2).
+-     **d**: Delete (e.g., `4d3` means line 4 in file1 was deleted to match line 3 in file2).
 
-- **c**: Change (e.g., `1c1` means line 1 in file1 was changed to line 1 in
-file2).
+- **c**: Change (e.g., `1c1` means line 1 in file1 was changed to line 1 in file2).
 
 - **<**: Indicates a line from the first file.
 
 - **>**: Indicates a line from the second file.
 
 ## Advanced Techniques
-- **Process Substitution**: Compare outputs of commands directly. `diff <(ls
-dir1) <(ls dir2)`
+- **Process Substitution**: Compare outputs of commands directly. `diff <(ls dir1) <(ls dir2)`
 
 - **Creating Patches**: `diff -u original_file modified_file > my_change.patch`
 

@@ -1,9 +1,7 @@
 # Notes on Topic: Loops and Logic
 
 ## 📖 Overview
-Loops and Logic control the flow of execution in Bash. This topic covers
-iteration (`while`, `for`), loop control (`break`, `continue`), and dynamic
-command evaluation (`eval`).
+Loops and Logic control the flow of execution in Bash. This topic covers iteration (`while`, `for`), loop control (`break`, `continue`), and dynamic command evaluation (`eval`).
 
 ## 🛠️ Commands and References
 
@@ -19,22 +17,18 @@ Repeats a block of code as long as the specified condition remains true.
 ### 2. Loop Control
 Modify the behavior of a running loop.
 
-- **`break`**: Exits the loop entirely and moves to the first command after
-`done`.
+- **`break`**: Exits the loop entirely and moves to the first command after `done`.
 
-- **`continue`**: Skips the remaining commands in the current iteration and
-jumps back to the start of the loop for the next check.
+- **`continue`**: Skips the remaining commands in the current iteration and jumps back to the start of the loop for the next check.
 
 ### 3. Conditional Statements
 Bash provides several ways to perform tests and branches.
 
-- **`if [[ ... ]]; then`**: Modern test syntax with support for regex and
-logical operators.
+- **`if [[ ... ]]; then`**: Modern test syntax with support for regex and logical operators.
 
 - **`case ... in`**: Efficient multi-way branching based on pattern matching.
 
-- **`(( ... ))`**: Specialized environment for arithmetic evaluations and
-comparisons.
+- **`(( ... ))`**: Specialized environment for arithmetic evaluations and comparisons.
 
 ### 4. `eval` (Dynamic Execution)
 Parses and executes a string as a shell command.
@@ -48,8 +42,7 @@ Parses and executes a string as a shell command.
 > [!CAUTION]
 > > **Security Warning:** `eval` is dangerous if the input contains
 
-untrusted data, as it can execute arbitrary commands (e.g., `rm -rf /`). Always
-prefer arrays or `${!var}` (indirect expansion) when possible.
+untrusted data, as it can execute arbitrary commands (e.g., `rm -rf /`). Always prefer arrays or `${!var}` (indirect expansion) when possible.
 
 ### 4. Nested Loops
 Placing one loop inside another allows for multi-dimensional iteration.
@@ -59,11 +52,8 @@ Placing one loop inside another allows for multi-dimensional iteration.
 - **Inner Loop:** Controls the secondary dimension (e.g., Columns).
 
 ## 💡 Practical Use-Cases
-1. **File Waiter:** Using a `while` loop with `[[ ! -f file ]]` to wait for a
-specific file to appear before proceeding.
+1. **File Waiter:** Using a `while` loop with `[[ ! -f file ]]` to wait for a specific file to appear before proceeding.
 
-2. **Data Filtering:** Using a `for` loop with `continue` to skip hidden files
-or directories during processing.
+2. **Data Filtering:** Using a `for` loop with `continue` to skip hidden files or directories during processing.
 
-3. **Pattern Printing:** Using nested loops to generate grids, multiplication
-tables, or ASCII art.
+3. **Pattern Printing:** Using nested loops to generate grids, multiplication tables, or ASCII art.

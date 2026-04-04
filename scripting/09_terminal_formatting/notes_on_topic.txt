@@ -1,8 +1,7 @@
 # Notes on Topic: Terminal Formatting
 
 ## 📖 Overview
-Terminal formatting enhances the user experience by providing visual cues
-(colors, styles) and controlling the terminal's cursor and screen state.
+Terminal formatting enhances the user experience by providing visual cues (colors, styles) and controlling the terminal's cursor and screen state.
 
 ## 🛠️ Commands and References
 
@@ -24,8 +23,7 @@ Directly control colors and styles via strings sent to the terminal.
 - `41-47`: Background Colors.
 
 ### 2. The `tput` Command
-A more portable way to manage terminal capabilities by looking up the current
-`$TERM` definition.
+A more portable way to manage terminal capabilities by looking up the current `$TERM` definition.
 
 | Capability | Description | Example |
 | :--- | :--- | :--- |
@@ -44,11 +42,8 @@ Use `printf` to output non-printable characters or specific byte values.
 - **Example:** `printf '%b' '\x41'` prints 'A'.
 
 ## 💡 Practical Use-Cases
-1. **Interactive Menus:** Using `tput cup` to place options at specific
-locations and `tput rev` to highlight the selected item.
+1. **Interactive Menus:** Using `tput cup` to place options at specific locations and `tput rev` to highlight the selected item.
 
-2. **Logging:** Using ANSI colors (Red for ERROR, Green for OK) to make logs
-quickly scannable.
+2. **Logging:** Using ANSI colors (Red for ERROR, Green for OK) to make logs quickly scannable.
 
-3. **Password Security:** Using `tput invis` to hide user input during sensitive
-data entry.
+3. **Password Security:** Using `tput invis` to hide user input during sensitive data entry.

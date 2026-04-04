@@ -143,5 +143,6 @@ Ensure the scripts are executable and run them in your terminal:
 
 ## Development Conventions
 - **Readability:** All scripts use clear section headers and `echo` statements for formatted output.
+- **Mobile Readability:** Notes and documentation should NOT use hard line breaks (e.g., 80-character wrapping) within paragraphs to ensure text flows correctly on mobile devices.
 - **Self-Contained:** Tutorial scripts generate their own temporary data and cleanup after execution.
 - **Performance:** Built-in shell features (like Parameter Expansion) are preferred over external tools for single-variable tasks.

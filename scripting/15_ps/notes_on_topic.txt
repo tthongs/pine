@@ -1,10 +1,8 @@
 # Process Scripting and Resource Limits
-This topic covers the management of system processes and the enforcement of
-resource constraints on the shell and its children.
+This topic covers the management of system processes and the enforcement of resource constraints on the shell and its children.
 
 ## Process Monitoring with `ps`
-The `ps` (process status) command is the primary tool for viewing active
-processes.
+The `ps` (process status) command is the primary tool for viewing active processes.
 
 - **`ps aux`**: BSD-style syntax.
 
@@ -20,18 +18,14 @@ processes.
 
 - `-f`: Full-format listing.
 
-- **`--sort`**: Sort processes by a specific column (e.g., `ps aux
---sort=-%mem`).
+- **`--sort`**: Sort processes by a specific column (e.g., `ps aux --sort=-%mem`).
 
 ## Resource Limits with `ulimit`
-The `ulimit` command controls the resources available to the shell and the
-processes it starts.
+The `ulimit` command controls the resources available to the shell and the processes it starts.
 
-- **Hard vs. Soft Limits**: - **Soft Limit (`-S`)**: The current limit enforced.
-Users can increase this up to the hard limit.
+- **Hard vs. Soft Limits**: - **Soft Limit (`-S`)**: The current limit enforced. Users can increase this up to the hard limit.
 
-- **Hard Limit (`-H`)**: The absolute maximum set by the administrator (root).
-Only root can increase this.
+- **Hard Limit (`-H`)**: The absolute maximum set by the administrator (root). Only root can increase this.
 
 - **Common Flags**: - **`-a`**: View all current limits.
 
@@ -55,8 +49,7 @@ Only root can increase this.
 - **T (Stopped)**: Suspended by a signal (e.g., Ctrl+Z).
 
 ## Signal Handling
-- **`kill -9 <PID>`**: Sends `SIGKILL` (immediate termination, cannot be
-ignored).
+- **`kill -9 <PID>`**: Sends `SIGKILL` (immediate termination, cannot be ignored).
 
 - **`kill -15 <PID>`**: Sends `SIGTERM` (graceful termination, allows cleanup).
 

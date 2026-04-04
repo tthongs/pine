@@ -1,18 +1,15 @@
 # AWK Technical Reference
-AWK is a domain-specific language designed for text processing and typically
-used as a data extraction and reporting tool.
+AWK is a domain-specific language designed for text processing and typically used as a data extraction and reporting tool.
 
 ## Basic Syntax
 `awk 'pattern { action }' input_file`
 
 ## Core Architecture: The 3-Block Structure
-- **BEGIN { ... }**: Executed once before any input lines are read. Good for
-initializing variables or setting separators.
+- **BEGIN { ... }**: Executed once before any input lines are read. Good for initializing variables or setting separators.
 
 - **{ ... }**: The MAIN block, executed for every record (line) in the input.
 
-- **END { ... }**: Executed once after all input lines have been processed. Good
-for printing summaries.
+- **END { ... }**: Executed once after all input lines have been processed. Good for printing summaries.
 
 ## Records and Fields
 - **$0**: The entire current record (line).
@@ -24,8 +21,7 @@ for printing summaries.
 - **NF**: Number of Fields in the current record.
 
 ## Variables and Separators
-- **FS**: Input Field Separator (default is whitespace). Use `-F` flag to change
-(e.g., `awk -F','`).
+- **FS**: Input Field Separator (default is whitespace). Use `-F` flag to change (e.g., `awk -F','`).
 
 - **OFS**: Output Field Separator (default is space).
 
