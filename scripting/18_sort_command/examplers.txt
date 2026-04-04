@@ -1,0 +1,35 @@
+# Sort Command Examplers
+
+### Q1: How do you sort the `/etc/passwd` file by User ID (the 3rd field) numerically?
+**A1:** Use `-t` to set the separator to `:` and `-k` with the `-n` flag.
+```bash
+sort -t ':' -k 3,3n /etc/passwd
+```
+**Explanation:** `-t ':'` tells sort the fields are colon-separated. `-k 3,3n` targets the 3rd field only and applies a numeric sort to it.
+
+---
+
+### Q2: How do you find the Top 10 largest files in a directory using `ls` and `sort`?
+**A2:** Use `ls -lh` and `sort -h`.
+```bash
+ls -lh | grep -v '^total' | sort -hr -k 5 | head -n 10
+```
+**Explanation:** `ls -lh` provides human-readable sizes. `grep -v '^total'` removes the summary line. `sort -hr -k 5` sorts by the 5th column (size) in reverse human-readable order.
+
+---
+
+### Q3: How do you sort a file by the second column alphabetically, and if there is a tie, by the first column numerically?
+**A3:** Chain multiple `-k` options.
+```bash
+sort -k 2,2 -k 1,1n data.txt
+```
+**Explanation:** `sort` processes keys in order. It first compares the second fields; if they are identical, it moves to the second key (first field) and compares it numerically.
+
+---
+
+### Q4: How do you count the frequency of unique lines in a file, sorted from most frequent to least frequent?
+**A4:** Combine `sort`, `uniq -c`, and another `sort`.
+```bash
+sort file.txt | uniq -c | sort -rn
+```
+**Explanation:** `uniq` requires sorted input. `uniq -c` counts occurrences. `sort -rn` then sorts those counts numerically in reverse order to put the most frequent lines at the top.

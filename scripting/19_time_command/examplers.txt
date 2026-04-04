@@ -1,0 +1,32 @@
+# Time Command Examplers
+
+### Q1: If a command shows `real 0m10.0s`, `user 0m0.1s`, and `sys 0m0.2s`, what can you conclude about the command?
+**A1:** The command is **I/O bound** or spent most of its time waiting.
+**Explanation:** The CPU was only active for 0.3 seconds (`user + sys`), but 10 seconds elapsed in total. This indicates the process was likely waiting for a network response, disk I/O, or a `sleep` command.
+
+---
+
+### Q2: How do you measure the execution time of a pipeline like `cat large_file | grep "pattern"`?
+**A2:** Wrap the entire pipeline in a subshell or braces.
+```bash
+time { cat large_file | grep "pattern" > /dev/null; }
+```
+**Explanation:** Simply running `time cat file | grep pattern` would only measure the `cat` command. Braces ensure the `time` keyword applies to the entire execution block.
+
+---
+
+### Q3: How do you find the peak memory (RAM) usage of a script?
+**A3:** Use the system binary `/usr/bin/time` with the verbose flag.
+```bash
+/usr/bin/time -v ./my_script.sh 2>&1 | grep "Maximum resident set size"
+```
+**Explanation:** The built-in `time` cannot track memory. The binary utility's `-v` flag provides "Maximum resident set size," which is the peak amount of physical RAM the process used during its lifetime.
+
+---
+
+### Q4: How do you format the output of `time` to only show the elapsed seconds followed by the word "seconds"?
+**A4:** Use the `/usr/bin/time` binary with the `-f` (format) flag.
+```bash
+/usr/bin/time -f "%e seconds" sleep 2
+```
+**Explanation:** The `%e` placeholder represents the elapsed real time in seconds. This is much cleaner for automated logging than parsing the default multi-line output.

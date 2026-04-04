@@ -1,0 +1,35 @@
+# Sed Examplers
+
+### Q1: How do you remove all leading whitespace (spaces and tabs) from every line in a file?
+**A1:** Use the substitute command with a start anchor and a whitespace class.
+```bash
+sed -r 's/^[[:space:]]+//' file.txt
+```
+**Explanation:** `^` matches the start of the line, `[[:space:]]+` matches one or more whitespace characters, and the empty replacement string removes them.
+
+---
+
+### Q2: How do you replace only the 2nd occurrence of the word "apple" with "orange" on each line?
+**A2:** Use the numeric flag for the `s` command.
+```bash
+sed 's/apple/orange/2' file.txt
+```
+**Explanation:** Without a flag or with `g`, sed behaves differently. The `2` specifically targets the second match found on each line.
+
+---
+
+### Q3: How do you print only lines 10 through 20 of a large file efficiently?
+**A3:** Use `-n` with the range and `p` command, and `q` to stop processing early.
+```bash
+sed -n '10,20p; 21q' file.txt
+```
+**Explanation:** `-n` suppresses printing. `10,20p` prints the desired range. `21q` tells sed to quit immediately after line 20, which is much faster than reading the rest of a multi-gigabyte file.
+
+---
+
+### Q4: How do you convert a file to "Title Case" (capitalize the first letter of every word)?
+**A4:** Use the `\u` case conversion flag.
+```bash
+sed -r 's/\b([a-z])/\u\1/g' file.txt
+```
+**Explanation:** `\b` matches a word boundary, `([a-z])` captures the first lowercase letter of a word, and `\u\1` converts that captured group to uppercase.

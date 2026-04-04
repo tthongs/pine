@@ -1,0 +1,57 @@
+# Examplers: Functions and Heredocs
+
+### Question 1: Global vs Local Scope
+What will be the output of the following script?
+```bash
+var="Global"
+change_var() {
+    var="Local"
+}
+change_var
+echo "$var"
+```
+How do you fix it so the output is "Global"?
+
+**Answer:**
+- **Current Output:** `Local` (The function overwrote the global variable).
+- **Fix:** Add the `local` keyword inside the function.
+```bash
+change_var() {
+    local var="Local"
+}
+```
+
+---
+
+### Question 2: Literal Heredocs
+You are writing a script that generates a second script. Inside your heredoc, you want to include the text `$PATH`, but you want it to be written literally as `$PATH` in the new file, rather than being expanded to your current system path. How do you achieve this?
+
+**Answer:**
+Quote the delimiter of the heredoc.
+```bash
+cat << 'EOF' > new_script.sh
+echo "The path is: $PATH"
+EOF
+```
+
+**Explanation:**
+When the delimiter (e.g., `EOF`, `STOP`) is quoted with single or double quotes, Bash disables parameter expansion, command substitution, and arithmetic expansion within the heredoc body.
+
+---
+
+### Question 3: Function Return Values
+How do you "return" a string from a Bash function, given that the `return` command only supports numeric exit statuses (0-255)?
+
+**Answer:**
+Use command substitution (`$(...)`) to capture the function's standard output.
+```bash
+get_name() {
+    echo "Alice"
+}
+
+name=$(get_name)
+echo "Name is: $name"
+```
+
+**Explanation:**
+In Bash, the `return` statement is strictly for exit codes (indicating success or failure). To pass data back to the caller, the function should print the data to `stdout`, and the caller should capture that output using `$(...)`.

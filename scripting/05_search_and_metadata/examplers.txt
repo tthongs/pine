@@ -1,0 +1,42 @@
+# Examplers: Search and Metadata
+
+### Question 1: Efficient Batch Processing
+What is the difference between `-exec chmod 644 {} \;` and `-exec chmod 644 {} +`? Which one is preferred for a directory containing 10,000 files?
+
+**Answer:**
+- `-exec ... {} \;` executes the `chmod` command 10,000 times (once for each file).
+- `-exec ... {} +` batches the filenames and executes `chmod` as few times as possible (e.g., `chmod 644 file1 file2 ... fileN`).
+- **Preference:** `-exec ... {} +` is strongly preferred for large datasets because it significantly reduces the overhead of spawning new processes.
+
+---
+
+### Question 2: Time-Based Discovery
+Write a `find` command that locates all `.tmp` files in `/tmp` that have NOT been modified in the last 2 days AND are larger than 100MB.
+
+**Answer:**
+```bash
+find /tmp -name "*.tmp" -mtime +2 -size +100M
+```
+
+**Explanation:**
+- `-mtime +2`: Matches files modified *more than* 2 days ago.
+- `-size +100M`: Matches files *larger than* 100 Megabytes.
+- By default, multiple criteria in `find` are joined by a logical "AND".
+
+---
+
+### Question 3: Complex -exec Logic
+How can you use `find` to print the full path AND the file size for every `.jpg` file in the current directory, formatted as "Path: [path] | Size: [size]"?
+
+**Answer:**
+```bash
+find . -name "*.jpg" -exec bash -c 'for f; do echo "Path: $f | Size: $(du -h "$f" | cut -f1)"; done' _ {} +
+```
+*Alternative (GNU find only):*
+```bash
+find . -name "*.jpg" -printf "Path: %p | Size: %s bytes\n"
+```
+
+**Explanation:**
+- The first answer uses a subshell (`bash -c`) to run custom logic on a batch of files passed via `{} +`. The `_` is a placeholder for `$0`.
+- The second answer uses the powerful `-printf` flag, where `%p` is the path and `%s` is the size in bytes. This is much faster but less portable to non-GNU systems.

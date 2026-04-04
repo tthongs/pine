@@ -1,0 +1,35 @@
+# AWK Examplers
+
+### Q1: How can you use AWK to find and print the longest line in a file?
+**A1:** You can track the maximum length encountered so far in a variable and store the corresponding line.
+```bash
+awk 'length($0) > max { max = length($0); line = $0 } END { print line }' filename
+```
+**Explanation:** For each line, `length($0)` is compared with `max`. If it's greater, `max` is updated and the line is saved. After processing all lines, the `END` block prints the longest one.
+
+---
+
+### Q2: How do you sum the values in the second column of a CSV file, assuming it has a header?
+**A2:** Use the `-F` flag for the delimiter and a condition to skip the first record.
+```bash
+awk -F',' 'NR > 1 { sum += $2 } END { print sum }' data.csv
+```
+**Explanation:** `-F','` sets the field separator to a comma. `NR > 1` ensures we only process lines after the header. The `END` block prints the final accumulated sum.
+
+---
+
+### Q3: How do you print only the unique lines based on the first field of a file?
+**A3:** Use an associative array to keep track of seen values.
+```bash
+awk '!seen[$1]++' filename
+```
+**Explanation:** `seen[$1]` uses the first field as a key in an array. The `++` happens after the check. If the value hasn't been seen, `seen[$1]` is 0 (false), `!0` is true, so AWK performs the default action (printing the line). For subsequent identical `$1` values, `seen[$1]` is >0 (true), so `!` makes it false, and nothing is printed.
+
+---
+
+### Q4: How do you use AWK to extract a specific substring, for example, characters 5 through 10 of every line?
+**A4:** Use the `substr` function.
+```bash
+awk '{ print substr($0, 5, 6) }' filename
+```
+**Explanation:** `substr($0, 5, 6)` takes the current line (`$0`), starts at index 5, and takes 6 characters (up to index 10).

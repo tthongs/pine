@@ -1,0 +1,25 @@
+# Eval in Bash Technical Reference
+
+The `eval` command is a powerful but dangerous tool that tells the shell to take its arguments as a string and execute them as a command.
+
+## Basic Syntax
+`eval [string_to_execute]`
+
+## How it Works
+`eval` forces the shell to perform an extra round of expansion. It parses the string first, expands variables, and then executes the resulting command.
+
+## Key Applications
+- **Indirect Variable Access (Pointers)**: Accessing a variable when its name is stored in another variable.
+  - `ptr="myvar"; myvar="hello"; eval echo \$$ptr`
+- **Dynamic Command Construction**: Executing complex commands built from strings that include pipes, redirections, or loops.
+- **Accessing Array Elements Dynamically**: When array names are constructed at runtime.
+
+## Security Warning: The "Eval is Evil" Rule
+**Never** use `eval` on strings that contain untrusted user input.
+- **Injection Risk**: An attacker can include shell metacharacters (like `;`, `|`, `&`, `>`) to execute arbitrary commands.
+- **Alternative**: For simple indirect variable access, modern Bash (v2+) supports `name_reference` using `declare -n` which is much safer.
+
+## Use Cases
+- Scripts that need to generate and execute other scripts or commands on the fly.
+- Handling configuration files where variable names are dynamic.
+- Building complex pipelines where the number of stages depends on input parameters.

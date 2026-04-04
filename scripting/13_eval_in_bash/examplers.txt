@@ -1,0 +1,46 @@
+# Eval in Bash Examplers
+
+### Q1: How do you access the value of a variable if you only have its name stored in another variable?
+**A1:** Use `eval` with escaped symbols to force double expansion.
+```bash
+var_name="data"
+data="Top Secret"
+eval echo "The value is: \$$var_name"
+```
+**Explanation:** The shell first expands `$var_name` into `data`. `eval` then sees the command `echo The value is: $data`, which it executes to print "Top Secret".
+
+---
+
+### Q2: You have a string `cmd="ls -l | grep .sh"`. Why won't `$cmd` work correctly, and how does `eval` fix it?
+**A2:** Running `$cmd` directly treats the pipe `|` as a literal argument to `ls`, not as a shell operator.
+```bash
+cmd="ls -l | grep .sh"
+eval "$cmd"
+```
+**Explanation:** `eval` causes the shell to parse the string a second time, correctly identifying the pipe `|` as a redirection operator and setting up the pipeline as intended.
+
+---
+
+### Q3: Demonstrate a simple shell injection vulnerability using `eval`.
+**A3:** If a script takes a directory name from a user and uses it in `eval`.
+```bash
+# Vulnerable script snippet
+read -p "Enter dir: " user_dir
+eval "ls $user_dir"
+
+# Attacker input:
+# . ; rm -rf /
+```
+**Explanation:** The resulting string executed by `eval` becomes `ls . ; rm -rf /`. The shell executes `ls .` and then immediately executes the devastating `rm -rf /` command.
+
+---
+
+### Q4: What is the safer Bash alternative to using `eval` for variable pointers?
+**A4:** Use the `declare -n` (nameref) attribute.
+```bash
+real_var="I am safe"
+ptr="real_var"
+declare -n ref=$ptr
+echo "$ref" # Prints "I am safe"
+```
+**Explanation:** Namerefs provide a way to create an alias for another variable without the risks associated with the secondary parsing pass of `eval`.

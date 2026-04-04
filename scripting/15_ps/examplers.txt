@@ -1,0 +1,35 @@
+# Process Scripting Examplers
+
+### Q1: What is the difference between a Soft Limit and a Hard Limit in `ulimit`?
+**A1:** A **Soft Limit** is the value that the kernel enforces for the corresponding resource. A **Hard Limit** acts as a ceiling for the Soft Limit. An unprivileged user can only increase their Soft Limit up to the Hard Limit and can only decrease their Hard Limit. Only root can increase Hard Limits.
+
+---
+
+### Q2: How do you find the Top 5 processes consuming the most memory using `ps`?
+**A2:** Use the `--sort` flag with a minus sign for descending order.
+```bash
+ps aux --sort=-%mem | head -n 6
+```
+**Explanation:** `ps aux` lists all processes, `--sort=-%mem` sorts them by memory usage descending, and `head -n 6` takes the header plus the first 5 processes.
+
+---
+
+### Q3: How do you check the maximum number of file descriptors your current shell can open?
+**A3:** Use `ulimit -n`.
+```bash
+ulimit -n
+# Or for hard limit
+ulimit -Hn
+```
+**Explanation:** File descriptors are used for every open file, socket, and pipe. Reaching this limit often causes "Too many open files" errors in applications like web servers.
+
+---
+
+### Q4: How do you send a signal to a process by its name instead of its PID?
+**A4:** Use `pkill` or `killall`.
+```bash
+pkill -SIGTERM nginx
+# OR
+killall nginx
+```
+**Explanation:** `pkill` matches patterns in the process name, while `killall` matches the exact name. Both are safer and faster than manually finding the PID with `ps` and then running `kill`.

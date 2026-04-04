@@ -1,0 +1,60 @@
+# Examplers: Loops and Logic
+
+### Question 1: The File Waiter Pattern
+Write a `while` loop that waits for a file named `config.lock` to disappear. The script should check every 1 second and time out after 10 attempts.
+
+**Answer:**
+```bash
+attempts=1
+while [[ -f config.lock ]]; do
+    echo "Waiting for lock to release... ($attempts/10)"
+    sleep 1
+    ((attempts++))
+    if [[ $attempts -gt 10 ]]; then
+        echo "Error: Timeout waiting for lock."
+        exit 1
+    fi
+done
+echo "Lock released, proceeding..."
+```
+
+**Explanation:**
+- The condition `[[ -f config.lock ]]` stays true as long as the file exists.
+- `((attempts++))` increments the counter.
+- The `if` check inside the loop provides a safety break to prevent an infinite loop if the lock is never removed.
+
+---
+
+### Question 2: Dynamic Variable Access (Pointer Pattern)
+Given `var_name="data"` and `data="Hello World"`, how can you use `eval` to print "Hello World" using only the `var_name` variable? Also, what is the safer modern alternative?
+
+**Answer:**
+- **Using `eval`:** `eval echo \$$var_name`
+- **Modern Alternative:** `echo ${!var_name}` (Indirect Expansion)
+
+**Explanation:**
+- `eval` parses the string twice. First, it turns `\$$var_name` into `$data`, and then it executes `echo $data`.
+- `${!var_name}` is a built-in Bash feature called **Indirect Expansion**, which is faster and significantly more secure because it doesn't execute arbitrary code.
+
+---
+
+### Question 3: Skipping and Stopping
+In a loop iterating from 1 to 20, write the logic to skip all multiples of 3 and stop the loop entirely if the number 17 is reached.
+
+**Answer:**
+```bash
+for ((i=1; i<=20; i++)); do
+    if [[ $i -eq 17 ]]; then
+        break
+    fi
+    if [[ $((i % 3)) -eq 0 ]]; then
+        continue
+    fi
+    echo "Number: $i"
+done
+```
+
+**Explanation:**
+- `break` exits the loop immediately when `i` reaches 17.
+- `continue` skips the `echo` command for numbers like 3, 6, 9, etc., moving directly to the next iteration.
+- Order matters: the `break` and `continue` checks must happen before the primary logic (`echo`).

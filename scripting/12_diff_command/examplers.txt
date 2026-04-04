@@ -1,0 +1,39 @@
+# Diff Command Examplers
+
+### Q1: How can you check if two directories contain the exact same set of filenames without checking their content?
+**A1:** Use process substitution with `ls`.
+```bash
+diff <(ls DirA) <(ls DirB)
+```
+**Explanation:** This treats the output of `ls DirA` and `ls DirB` as virtual files and compares them. It will highlight any files present in one directory but not the other.
+
+---
+
+### Q2: You have two files that look identical when you `cat` them, but `diff` says they are different. How do you troubleshoot and ignore this?
+**A2:** Troubleshoot with `cat -A` to see hidden characters (like trailing spaces or carriage returns), and ignore with `-w`.
+```bash
+diff -w file1 file2
+```
+**Explanation:** The `-w` flag tells `diff` to ignore all whitespace differences. If they are logically identical except for spaces/tabs, this will return no differences.
+
+---
+
+### Q3: How do you generate a unified patch for a project directory and later apply it to another copy of the same project?
+**A3:** Use `diff -ruN` to create the patch and `patch -p1` to apply it.
+```bash
+# Create
+diff -ruN project_v1/ project_v2/ > project.patch
+
+# Apply (inside project_v1)
+patch -p1 < project.patch
+```
+**Explanation:** `-r` is recursive, `-u` is unified format, and `-N` treats absent files as new. When applying, `-p1` strips the first level of the directory path from the patch file to match the current directory structure.
+
+---
+
+### Q4: How do you compare only the lines containing a specific keyword (e.g., "ERROR") between two log files?
+**A4:** Use process substitution with `grep`.
+```bash
+diff <(grep "ERROR" log1.txt) <(grep "ERROR" log2.txt)
+```
+**Explanation:** This filters both files first and then compares only the relevant "ERROR" lines, ignoring all other differences.

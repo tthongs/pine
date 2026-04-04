@@ -1,0 +1,45 @@
+# Examplers: Input and Output
+
+### Question 1: Secure Input with Timeout
+How can you prompt a user for a password, ensuring it is not visible on the screen, and automatically time out if they do not provide it within 30 seconds?
+
+**Answer:**
+```bash
+if read -s -t 30 -p "Enter Password: " my_pass; then
+    echo -e "\nPassword accepted."
+else
+    echo -e "\nError: Timeout reached (30 seconds)."
+fi
+```
+
+**Explanation:**
+- The `-s` flag enables "silent mode," preventing the input characters from being echoed to the terminal.
+- The `-t 30` flag sets a timer for 30 seconds.
+- The `read` command returns a non-zero exit status if it times out, which is why it can be used directly as a condition in an `if` statement.
+
+---
+
+### Question 2: Advanced `printf` Alignment
+Write a `printf` command that prints a table row with three columns: "Item Name" (left-justified, 15 chars), "Quantity" (right-justified, 5 chars, zero-padded), and "Price" (right-justified, 10 chars, 2 decimal places).
+
+**Answer:**
+```bash
+printf "| %-15s | %05d | %10.2f |\n" "Laptop" 1 1200.50
+```
+
+**Explanation:**
+- `%-15s`: The minus sign `-` triggers left justification, and `15` sets the column width.
+- `%05d`: `0` triggers zero-padding, and `5` sets the total width for the integer.
+- `%10.2f`: `10` is the total width, and `.2` specifies two decimal places for the float.
+
+---
+
+### Question 3: Arithmetic and Whitespace
+What is the difference between `result=$(expr 10+20)` and `result=$((10+20))`?
+
+**Answer:**
+- `result=$(expr 10+20)` will fail or simply output the string "10+20" because `expr` requires spaces between operators and operands (e.g., `expr 10 + 20`).
+- `result=$((10+20))` is the modern Bash arithmetic expansion which does not require spaces and is much more efficient as it is a shell built-in.
+
+**Detailed Explanation:**
+`expr` is an external binary that evaluates expressions. It treats each argument separately, so `10+20` is seen as a single string. `$(( ))` is handled directly by the shell parser, making it significantly faster and more flexible with spacing and variable handling.

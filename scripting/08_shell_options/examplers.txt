@@ -1,0 +1,39 @@
+# Examplers: Shell Options
+
+### Question 1: The `pipefail` Option
+Why is `set -e` alone sometimes insufficient for error handling in pipelines, and how does `pipefail` solve this?
+Example: `false | true`
+
+**Answer:**
+By default, the exit status of a pipeline is the exit status of the **last command** (`true`). Therefore, `set -e` will not trigger even if the first command (`false`) fails.
+`set -o pipefail` ensures that if *any* command in the pipeline fails, the entire pipeline returns a non-zero exit status, triggering the `errexit` behavior.
+
+---
+
+### Question 2: Debugging with `xtrace`
+How can you enable debugging for only a specific block of code within a large script, rather than the entire script?
+
+**Answer:**
+Wrap the block with `set -x` and `set +x`.
+```bash
+echo "Normal execution"
+set -x
+# High-risk logic here
+rm -rf "$TARGET_DIR"
+set +x
+echo "Back to normal"
+```
+
+**Explanation:**
+`set -x` (xtrace) prints the expanded command to the terminal before running it. Toggling it on and off allows you to focus on specific sections of your code without being overwhelmed by trace output for the whole script.
+
+---
+
+### Question 3: Preventing Data Loss
+Which shell option prevents you from accidentally overwriting an important file when using the `>` redirection operator?
+
+**Answer:**
+`set -o noclobber` (or `set -C`).
+
+**Explanation:**
+When `noclobber` is active, attempting to run `echo "data" > existing_file.txt` will result in an error message: "cannot overwrite existing file". To force an overwrite while this option is on, you must use the special syntax `>|`.

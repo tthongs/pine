@@ -1,0 +1,39 @@
+# Regular Expressions Examplers
+
+### Q1: How do you match a line that contains exactly five digits and nothing else?
+**A1:** Use anchors `^` and `$` with the digit class and quantifier.
+```bash
+grep -E "^[0-9]{5}$" file.txt
+```
+**Explanation:** `^` ensures the match starts at the beginning, `[0-9]{5}` matches exactly five digits, and `$` ensures the line ends immediately after.
+
+---
+
+### Q2: How do you extract the username and domain from an email string using Bash's `=~` operator?
+**A2:** Use capturing groups `()` and the `BASH_REMATCH` array.
+```bash
+email="user@example.com"
+if [[ $email =~ ^([^@]+)@([^@]+)$ ]]; then
+    echo "User: ${BASH_REMATCH[1]}"
+    echo "Domain: ${BASH_REMATCH[2]}"
+fi
+```
+**Explanation:** `([^@]+)` captures one or more characters that are not `@`. The first group captures everything before the `@`, and the second captures everything after.
+
+---
+
+### Q3: What is the difference between `grep "a*"` and `grep -E "a+"`?
+**A3:** `a*` matches **zero** or more 'a's (meaning it will match every line, even empty ones). `a+` matches **one** or more 'a's (meaning the line must contain at least one 'a').
+```bash
+echo "bc" | grep "a*"   # Matches (returns "bc")
+echo "bc" | grep -E "a+" # No match
+```
+
+---
+
+### Q4: How do you find lines in a file that start with 'Error' but do NOT end with a semicolon?
+**A4:** Combine the start anchor with a negated character class at the end.
+```bash
+grep -E "^Error.*[^;]$" log.txt
+```
+**Explanation:** `^Error` matches the start, `.*` matches anything in between, and `[^;]$` ensures the last character is not a semicolon.

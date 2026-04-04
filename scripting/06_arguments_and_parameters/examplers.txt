@@ -1,0 +1,51 @@
+# Examplers: Arguments and Parameters
+
+### Question 1: Processing an Unknown Number of Arguments
+Write a script snippet that iterates through every argument passed to it, printing "Processing: [arg]" for each, and finally prints "Total processed: [count]". Use the `shift` command.
+
+**Answer:**
+```bash
+count=0
+total=$#
+while [[ $# -gt 0 ]]; do
+    echo "Processing: $1"
+    ((count++))
+    shift
+done
+echo "Total processed: $total"
+```
+
+**Explanation:**
+- `while [[ $# -gt 0 ]]` continues as long as there are arguments left.
+- `shift` removes the current `$1` and moves `$2` into its place.
+- We store the initial `$#` in `total` because `shift` modifies the value of `$#` dynamically.
+
+---
+
+### Question 2: The `set --` Command
+Given a variable `line="user1:admin:active"`, how can you use the `set` command and `IFS` to treat these fields as positional parameters `$1`, `$2`, and `$3`?
+
+**Answer:**
+```bash
+line="user1:admin:active"
+IFS=":"
+set -- $line
+echo "User: $1, Role: $2, Status: $3"
+```
+
+**Explanation:**
+By setting `IFS=":"`, the shell splits the variable `$line` into three words. The `set --` command then takes those three words and assigns them to the positional parameters, allowing you to access them as if they were passed to the script directly.
+
+---
+
+### Question 3: Difference between `$@` and `$*`
+Explain why `for arg in "$@"` is generally preferred over `for arg in "$*"` when arguments contain spaces (e.g., `"File Name.txt"`).
+
+**Answer:**
+- **`"$@"`**: Expands each argument as a separate quoted string: `"arg1" "arg2" "arg3"`. Spaces within an argument are preserved.
+- **`"$*"`**: Expands all arguments into a single quoted string, separated by the first character of IFS: `"arg1 arg2 arg3"`. Spaces within an argument are lost or merged into the single string.
+
+**Detailed Explanation:**
+If you pass `"My File.txt"` to a script:
+- `"$@"` results in one element: `My File.txt`.
+- `"$*"` (with default IFS) results in one element: `My File.txt`, but if unquoted (`$*`), it would be split into `My` and `File.txt`. Even when quoted, `"$*"` fails if you are trying to iterate through multiple separate files as a list.

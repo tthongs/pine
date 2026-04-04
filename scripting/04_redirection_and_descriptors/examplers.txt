@@ -1,0 +1,34 @@
+# Examplers: Redirection and Descriptors
+
+### Question 1: Suppressing Specific Errors
+How do you run a `find` command that searches the entire system for `.conf` files, but hides all "Permission denied" errors while still showing the successful results on the screen?
+
+**Answer:**
+```bash
+find / -name "*.conf" 2> /dev/null
+```
+
+**Explanation:**
+"Permission denied" messages are sent to **stderr (descriptor 2)**. By redirecting `2>` to `/dev/null`, we discard those messages. Standard output (descriptor 1) is left untouched and continues to display on the terminal.
+
+---
+
+### Question 2: Merging Streams
+Explain the difference between `command > log 2>&1` and `command 2>&1 > log`. Which one correctly captures both stdout and stderr into the log file?
+
+**Answer:**
+- **`command > log 2>&1`**: **Correct.** First, stdout is sent to `log`. Then, stderr is redirected to "wherever stdout is currently going" (which is `log`).
+- **`command 2>&1 > log`**: **Incorrect.** First, stderr is sent to "wherever stdout is currently going" (the terminal). Then, stdout is redirected to `log`. Errors still go to the terminal.
+
+---
+
+### Question 3: Comparing Command Outputs
+Using process substitution, write a command that compares the list of installed packages from two different servers (assuming you have their lists in variables or can run a command to get them).
+
+**Answer:**
+```bash
+diff <(ssh server1 "dpkg -l") <(ssh server2 "dpkg -l")
+```
+
+**Explanation:**
+The `diff` command requires two file paths. Process substitution `<(...)` provides those paths by creating temporary named pipes or file descriptors for the output of the `ssh` commands. This allows comparison in a single line without creating local temporary files.

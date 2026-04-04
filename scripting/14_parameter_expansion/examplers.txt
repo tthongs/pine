@@ -1,0 +1,40 @@
+# Parameter Expansion Examplers
+
+### Q1: Given `path="/etc/nginx/nginx.conf"`, how do you extract just the filename and just the directory using only parameter expansion?
+**A1:** Use `##*/` to get the filename and `%/*` to get the directory.
+```bash
+filename="${path##*/}" # nginx.conf
+directory="${path%/*}" # /etc/nginx
+```
+**Explanation:** `##*/` removes the longest match of `*/` from the left (everything up to the last slash). `%/*` removes the shortest match of `/*` from the right (everything from the last slash onwards).
+
+---
+
+### Q2: How do you extract the file extension from a filename like `archive.tar.gz`?
+**A2:** Use `${filename##*.}` to get the final extension.
+```bash
+file="archive.tar.gz"
+echo "${file##*.}" # gz
+```
+**Explanation:** `##*.` removes everything up to the very last dot from the left. If you wanted `.tar.gz`, you would use `${file#*.}` (shortest match from left).
+
+---
+
+### Q3: How do you safely remove the last character of a variable, regardless of what it is?
+**A3:** Use the substring expansion with a negative offset or `%?`.
+```bash
+str="Hello!"
+echo "${str%?}"    # Hello
+echo "${str:0:-1}" # Hello (Bash 4.2+)
+```
+**Explanation:** `%?` removes the shortest match of any single character (`?`) from the right. `${str:0:-1}` takes the string from index 0 up to (but not including) the last character.
+
+---
+
+### Q4: How do you replace all spaces in a string with underscores?
+**A4:** Use the global search and replace syntax.
+```bash
+title="My Great Document"
+echo "${title// /_}" # My_Great_Document
+```
+**Explanation:** The double slash `//` tells Bash to replace every instance of the pattern (a space) with the replacement string (an underscore).

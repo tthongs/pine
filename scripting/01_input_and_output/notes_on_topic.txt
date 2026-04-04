@@ -1,0 +1,47 @@
+# Notes on Topic: Input and Output
+
+## 📖 Overview
+This topic covers the fundamental ways to handle data entry and formatted output in Bash scripts, focusing on the `read` and `printf` commands.
+
+## 🛠️ Commands and References
+
+### 1. `read` (User Input)
+Captures user input and assigns it to one or more variables.
+
+| Option | Description | Use-Case Scenario |
+| :--- | :--- | :--- |
+| `-p "Prompt"` | Displays a prompt before reading input. | Asking for a username: `read -p "User: " usr` |
+| `-t <sec>` | Specifies a timeout in seconds. | Auto-skipping if a user doesn't respond in time. |
+| `-n <count>` | Captures a fixed number of characters without waiting for Enter. | Single-key confirmation prompts (y/n). |
+| `-s` | Silent mode; input is not echoed to the terminal. | Securely entering passwords or sensitive keys. |
+
+**Advanced Feature: Field Splitting**
+`read` splits input into multiple variables based on the `IFS` (Internal Field Separator, default is space/tab/newline).
+- Example: `read -p "Enter coordinates: " x y`
+
+### 2. `printf` (Formatted Output)
+A powerful tool for creating structured and aligned output.
+
+| Format | Description | Example |
+| :--- | :--- | :--- |
+| `%s` | String placeholder. | `printf "%s" "Hello"` |
+| `%6s` | Right-justify string in 6 columns. | `[  pine]` |
+| `%-6s` | Left-justify string in 6 columns. | `[pine  ]` |
+| `%.4s` | Truncate string to 4 characters. | `pine` (from "pinepine") |
+| `%d` | Decimal (integer) placeholder. | `printf "%d" 25` |
+| `%05d` | Zero-padded integer (5 digits). | `00025` |
+| `%f` | Floating-point placeholder. | `printf "%f" 1.2` |
+| `%.2f` | Float truncated to 2 decimal places. | `1.20` |
+
+### 3. Arithmetic Operations
+Bash provides two primary ways to perform integer math:
+
+- **`expr` (Legacy):** Requires spaces around operators and is an external command.
+  - Usage: `result=$(expr $a + $b)`
+- **`$(( ))` (Modern):** Shell built-in, faster, and handles variables without the `$` prefix.
+  - Usage: `result=$((a + b))`
+
+## 💡 Practical Use-Cases
+1. **Dynamic Tables:** Using `printf` to align columns for logs or status reports.
+2. **Interactive Scripts:** Using `read -t` and `read -n 1` for responsive CLI menus.
+3. **Sensitive Scripts:** Using `read -s` for credential management.

@@ -1,0 +1,27 @@
+# Time Command Technical Reference
+
+The `time` command is used to determine how long a command takes to execute and what system resources it consumes.
+
+## Metrics Explained
+Most `time` implementations provide three primary values:
+1. **Real (Wall Clock Time)**: The actual time elapsed from start to finish. This is what you would measure with a stopwatch.
+2. **User**: The amount of CPU time spent in "user-mode" (executing your code and library code).
+3. **Sys (System)**: The amount of CPU time spent in "kernel-mode" (executing system calls like reading files or allocating memory).
+
+**Note**: `User + Sys` is the total CPU time. If `Real` is much larger than `User + Sys`, the process was likely waiting for I/O or other system resources. If `User + Sys` is larger than `Real`, the process was using multiple CPU cores.
+
+## Shell Built-in vs. Binary Utility
+- **Shell Built-in (`time`)**: Most shells (bash, zsh) have a built-in `time` keyword. It is fast and easy to use but has limited features.
+- **System Binary (`/usr/bin/time`)**: A standalone executable. It usually offers much more detail, including memory usage, context switches, and I/O counts.
+
+## Redirection
+Redirection with `time` is tricky because it writes its output to **stderr**, not stdout.
+- To redirect the built-in's output, use a subshell:
+  `{ time cmd; } 2> time_report.txt`
+- To redirect the binary's output, use the `-o` flag:
+  `/usr/bin/time -o time_report.txt cmd`
+
+## Useful Binary Flags (`/usr/bin/time`)
+- **`-v` (Verbose)**: Displays every available resource metric, including peak memory usage (Maximum resident set size).
+- **`-p` (POSIX)**: Forces the traditional 3-line output format.
+- **`-f` (Format)**: Allows you to define a custom output string using placeholders (e.g., `%e` for elapsed time, `%M` for max memory).

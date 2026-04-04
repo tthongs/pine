@@ -1,0 +1,43 @@
+# Notes on Topic: Loops and Logic
+
+## 📖 Overview
+Loops and Logic control the flow of execution in Bash. This topic covers iteration (`while`, `for`), loop control (`break`, `continue`), and dynamic command evaluation (`eval`).
+
+## 🛠️ Commands and References
+
+### 1. `while` Loop
+Repeats a block of code as long as the specified condition remains true.
+
+| Pattern | Description | Use-Case Scenario |
+| :--- | :--- | :--- |
+| `while [[ cond ]]; do` | Standard conditional loop. | Counting from 1 to 10. |
+| `while :; do` | Infinite loop (shorthand for `while true`). | Background monitoring services. |
+| `while read line; do` | Iterates over input line-by-line. | Processing file contents. |
+
+### 2. Loop Control
+Modify the behavior of a running loop.
+
+- **`break`**: Exits the loop entirely and moves to the first command after `done`.
+- **`continue`**: Skips the remaining commands in the current iteration and jumps back to the start of the loop for the next check.
+
+### 3. `eval` (Dynamic Execution)
+Parses and executes a string as a shell command.
+
+| Pattern | Description |
+| :--- | :--- |
+| `eval "$cmd"` | Executes the command stored in `$cmd`. |
+| `eval "echo \$$var"` | **Pointer Pattern:** Accesses the value of a variable whose name is stored in `$var`. |
+| `eval "v$id=val"` | **Dynamic Assignment:** Creates/updates variables with dynamic names. |
+
+> [!CAUTION]
+> **Security Warning:** `eval` is dangerous if the input contains untrusted data, as it can execute arbitrary commands (e.g., `rm -rf /`). Always prefer arrays or `${!var}` (indirect expansion) when possible.
+
+### 4. Nested Loops
+Placing one loop inside another allows for multi-dimensional iteration.
+- **Outer Loop:** Controls the primary dimension (e.g., Rows).
+- **Inner Loop:** Controls the secondary dimension (e.g., Columns).
+
+## 💡 Practical Use-Cases
+1. **File Waiter:** Using a `while` loop with `[[ ! -f file ]]` to wait for a specific file to appear before proceeding.
+2. **Data Filtering:** Using a `for` loop with `continue` to skip hidden files or directories during processing.
+3. **Pattern Printing:** Using nested loops to generate grids, multiplication tables, or ASCII art.

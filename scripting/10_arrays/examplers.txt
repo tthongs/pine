@@ -1,0 +1,43 @@
+# Examplers: Arrays
+
+### Question 1: Closing Gaps (Re-indexing)
+If you have an array `arr=(A B C D E)` and you run `unset 'arr[2]'`, what are the indices of the remaining elements? How do you fix the array so the indices are `0, 1, 2, 3`?
+
+**Answer:**
+- **Indices after unset:** `0, 1, 3, 4` (Index 2 is a "gap").
+- **Fix (Re-indexing):** `arr=("${arr[@]}")`
+
+**Explanation:**
+The `unset` command removes the value and the key but does not shift the remaining elements. By re-assigning the array to its own expanded values `("${arr[@]}")`, Bash creates a new array with contiguous numeric indices starting from 0.
+
+---
+
+### Question 2: Associative Array Iteration
+Write a script that declares an associative array of server statuses (e.g., `[web01]="UP"`, `[db01]="DOWN"`), and then loops through it to print: "Server [name] is currently [status]".
+
+**Answer:**
+```bash
+declare -A statuses=([web01]="UP" [db01]="DOWN" [app01]="UP")
+
+for server in "${!statuses[@]}"; do
+    echo "Server $server is currently ${statuses[$server]}"
+done
+```
+
+**Explanation:**
+- `declare -A` is required for associative arrays.
+- `"${!statuses[@]}"` expands to the list of **keys** (web01, db01, app01).
+- `${statuses[$server]}` uses the key to retrieve the corresponding **value**.
+
+---
+
+### Question 3: Array Search and Replace
+Given an array of filenames `files=(img1.jpg img2.png data.csv)`, write a single command to create a new array `backups` where all `.jpg` extensions are replaced with `.bak`.
+
+**Answer:**
+```bash
+backups=("${files[@]/.jpg/.bak}")
+```
+
+**Explanation:**
+Bash allows pattern substitution on entire arrays. The syntax `${array[@]/pattern/replacement}` applies the transformation to every individual element in the array and returns the resulting list, which we then capture into the `backups` variable.

@@ -1,0 +1,43 @@
+# Examplers: Terminal Formatting
+
+### Question 1: Portable Cursor Movement
+Write a command sequence that clears the screen and prints the word "CENTER" exactly in the middle of a terminal that is 80 columns wide and 24 lines deep.
+
+**Answer:**
+```bash
+tput clear
+tput cup 12 37
+echo "CENTER"
+```
+
+**Explanation:**
+- `tput clear` wipes the terminal.
+- `tput cup 12 37` moves the cursor to the 12th row and 37th column (Middle of 24x80).
+- Note: `tput` uses 0-based indexing for rows and columns.
+
+---
+
+### Question 2: Password Masking
+How can you use `tput` to make a user's input invisible while they type a password, and then restore visibility immediately afterward?
+
+**Answer:**
+```bash
+echo -n "Enter Password: "
+tput invis
+read -s password
+tput sgr0
+echo -e "\nInput received."
+```
+
+**Explanation:**
+- `tput invis` makes the cursor and any typed text invisible.
+- `read -s` is a Bash-specific way to also suppress echoing, but `tput invis` is a terminal-level control.
+- `tput sgr0` (Select Graphic Rendition 0) resets all terminal attributes, including visibility.
+
+---
+
+### Question 3: ANSI vs Tput
+What is the primary advantage of using `tput setaf 1` over the ANSI escape sequence `\e[31m`?
+
+**Answer:**
+**Portability.** `tput` queries the `terminfo` database based on the user's `$TERM` variable. It will provide the correct sequence for whatever terminal the user is using (xterm, vt100, screen, etc.). The ANSI escape sequence is a "hardcoded" standard that might not be supported or interpreted correctly by all terminal emulators.
