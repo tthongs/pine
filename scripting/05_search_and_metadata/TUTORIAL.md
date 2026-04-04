@@ -7,6 +7,7 @@ This directory covers advanced file discovery and metadata-based filtering using
 1. **`find_advanced_examples.sh`**: Teaches `find` with depth limits, permissions, and complex `-exec` subshells.
 2. **`find_basename_demo.sh`**: Demonstrates multiple ways to extract names from `find` output.
 3. **`find_mtime_exec.sh`**: Shows how to locate and process files based on their last modification time.
+4. **`find_process_substitution.sh`**: Combines `find` with process substitution for efficient filename extraction.
 
 ## Advanced Discovery (Lecture Review)
 

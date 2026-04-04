@@ -40,6 +40,7 @@ Bash provides two primary ways to perform integer math:
   - Usage: `result=$(expr $a + $b)`
 - **`$(( ))` (Modern):** Shell built-in, faster, and handles variables without the `$` prefix.
   - Usage: `result=$((a + b))`
+- **`let` (Built-in):** Performs arithmetic operations on variables. It allows for more complex assignments and logical evaluations (e.g., `let "a = b + c"`).
 
 ## 💡 Practical Use-Cases
 1. **Dynamic Tables:** Using `printf` to align columns for logs or status reports.

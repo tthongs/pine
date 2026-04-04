@@ -6,6 +6,9 @@ This directory focuses on how Bash scripts receive and process external data.
 
 1. **`positional_parameters.sh`**: Teaches `$0`, `$1`, `$#`, and `$@` logic.
 2. **`shift_and_iteration.sh`**: Demonstrates how to iterate through an unknown number of arguments.
+3. **`positional_params_list.sh`**: Lists all special positional variables ($0-$9, $@, $#, etc.).
+4. **`shift_multi_dir_find.sh`**: Advanced use of `shift` to process multiple directory arguments for cleanup.
+5. **`args_regex_handling.sh`**: Demonstrates filtering positional arguments using regex patterns.
 
 ## Key Concepts
 

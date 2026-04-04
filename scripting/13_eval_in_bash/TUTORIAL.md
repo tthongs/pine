@@ -4,6 +4,7 @@ This directory focuses on the eval command for dynamic command execution.
 
 ## Core Tutorial Script
 1. **`eval_demo.sh`**: Teaches basic dynamic execution, variable pointers, and constructing complex pipelines.
+2. **`dynamic_eval_demo.sh`**: Interactive demonstration of building and executing commands on the fly.
 
 ## Key Takeaways
 - **Dynamic Command Strings**: Use `eval` to execute complex commands constructed as strings.

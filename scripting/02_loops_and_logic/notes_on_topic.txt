@@ -20,7 +20,14 @@ Modify the behavior of a running loop.
 - **`break`**: Exits the loop entirely and moves to the first command after `done`.
 - **`continue`**: Skips the remaining commands in the current iteration and jumps back to the start of the loop for the next check.
 
-### 3. `eval` (Dynamic Execution)
+### 3. Conditional Statements
+Bash provides several ways to perform tests and branches.
+
+- **`if [[ ... ]]; then`**: Modern test syntax with support for regex and logical operators.
+- **`case ... in`**: Efficient multi-way branching based on pattern matching.
+- **`(( ... ))`**: Specialized environment for arithmetic evaluations and comparisons.
+
+### 4. `eval` (Dynamic Execution)
 Parses and executes a string as a shell command.
 
 | Pattern | Description |

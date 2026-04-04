@@ -5,6 +5,8 @@ This directory covers how to create reusable blocks of code and handle multi-lin
 ## Core Files
 
 1. **`usage_functions.sh`**: Teaches how to define functions and use heredocs to print standardized usage messages.
+2. **`function_scope_demo.sh`**: Explains the difference between `local` and global variables within functions.
+3. **`function_arguments_iteration.sh`**: Shows how to pass and iterate over multiple arguments inside a function.
 
 ## Key Concepts
 

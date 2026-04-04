@@ -7,6 +7,7 @@ This directory covers indexed and associative arrays in Bash, used to manage col
 1. **`01_basics`**: Basic array declaration and access.
 2. **`02_iteration`**: Looping through array indices and values.
 3. **`03_operations`**: Advanced manipulations like deletion and slicing.
+4. **`comprehensive_arrays.sh`**: A master script demonstrating indexing, slicing, copying, and associative arrays.
 
 ## Key Concepts
 

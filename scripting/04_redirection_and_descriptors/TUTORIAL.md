@@ -6,6 +6,7 @@ This directory covers advanced I/O management and treating command streams as fi
 
 1. **`io_redirection_basics.sh`**: Teaches stdin (0), stdout (1), and stderr (2) redirection. Includes merging stderr into stdout (`2>&1`).
 2. **`process_substitution.sh`**: Explains `<(command)` syntax to treat output as a file path. Teaches how to avoid subshells in loops.
+3. **`process_substitution_while.sh`**: Practical demo of using process substitution to keep variable state alive in `while` loops.
 
 ## Key Takeaways
 - **File Descriptors**: 0=stdin, 1=stdout, 2=stderr.

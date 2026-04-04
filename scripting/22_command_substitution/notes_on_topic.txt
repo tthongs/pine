@@ -1,0 +1,25 @@
+# Notes on Topic: Command Substitution
+
+## 📖 Overview
+Command substitution allows the output of a command to replace the command name itself. It is one of the most common ways to populate variables with dynamic data.
+
+## 🛠️ Commands and References
+
+### 1. Syntax Styles
+- **Modern:** `var=$(ls)` - Highly recommended. Easy to read and nest.
+- **Legacy:** `var=\`ls\`` - Backticks. Difficult to nest and prone to escaping issues.
+
+### 2. Execution Environment
+Command substitution is executed in a **subshell**. This means:
+- Any variables modified *inside* the `$(...)` block will **not** be updated in the parent shell.
+- The standard output (stdout) of the command is captured; standard error (stderr) is still sent to the terminal unless redirected.
+
+### 3. Nesting
+You can easily nest modern substitution:
+`count=$(ls $(echo "/tmp") | wc -l)`
+
+## 💡 Practical Use-Cases
+1. **Dynamic Assignments:** `today=$(date +%Y-%m-%d)`
+2. **Path Manipulation:** `full_path=$(realpath "$1")`
+3. **Counting Results:** `file_count=$(ls -1 | wc -l)`
+4. **Capturing Function Output:** Capturing the printed result of a Bash function for further processing.

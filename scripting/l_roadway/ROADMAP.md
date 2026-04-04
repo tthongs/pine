@@ -14,18 +14,29 @@ It is automatically generated and updated to reflect the project's current state
 - [**📘 Tutorial Guide**](../01_input_and_output/TUTORIAL.md)
 - [**acknowledge_loop.sh**](../01_input_and_output/acknowledge_loop.sh): Demonstrates a simple while loop for repeating output or status checks.
 - [**basic_read.sh**](../01_input_and_output/basic_read.sh): Demonstrates how to take user input using the 'read' command.
+- [**let_arithmetic_basics.sh**](../01_input_and_output/let_arithmetic_basics.sh): Demonstrates basic arithmetic using the 'let' command.
 - [**printf_formatting_mastery.sh**](../01_input_and_output/printf_formatting_mastery.sh): Demonstrates advanced printf formatting for strings, numbers, and floats
 - [**read_with_timeout.sh**](../01_input_and_output/read_with_timeout.sh): Demonstrates how to use timeouts and capture fixed numbers of characters.
 
 ## Loops And Logic
 - [**📘 Tutorial Guide**](../02_loops_and_logic/TUTORIAL.md)
+- [**arithmetic_expansion_demo.sh**](../02_loops_and_logic/arithmetic_expansion_demo.sh): Demonstrates arithmetic expansion using (( )) and [[ ]] for comparisons.
+- [**boolean_logic_tests.sh**](../02_loops_and_logic/boolean_logic_tests.sh): Demonstrates boolean logic, status codes, and the test command.
+- [**case_statement_files.sh**](../02_loops_and_logic/case_statement_files.sh): Demonstrates using a case statement to check file extensions and presence.
+- [**command_switcher_case.sh**](../02_loops_and_logic/command_switcher_case.sh): Uses a case statement to switch between different system commands.
+- [**conditional_ls_demo.sh**](../02_loops_and_logic/conditional_ls_demo.sh): Conditional execution of ls -l based on an argument.
+- [**c_style_for_loops.sh**](../02_loops_and_logic/c_style_for_loops.sh): Demonstrates C-style for loops, nested structures, and logic flags.
 - [**eval_demo.sh**](../02_loops_and_logic/eval_demo.sh): Demonstrates dynamic command execution and variable manipulation.
+- [**infinite_loop_demo.sh**](../02_loops_and_logic/infinite_loop_demo.sh): Simple demonstration of an infinite loop using the : (null) command.
 - [**loop_control_continue.sh**](../02_loops_and_logic/loop_control_continue.sh): Teaches how to skip the rest of a loop's current iteration.
 - [**nested_while_loops.sh**](../02_loops_and_logic/nested_while_loops.sh): Demonstrates how to use one while loop inside another for multi-dimensional iteration.
+- [**string_testing_demo.sh**](../02_loops_and_logic/string_testing_demo.sh): Demonstrates string testing using [[ ]] and the test command.
 - [**while_loops_demo.sh**](../02_loops_and_logic/while_loops_demo.sh): Demonstrates infinite loops, finite counters, and waiting for files to appear.
+- [**while_ls_wait_demo.sh**](../02_loops_and_logic/while_ls_wait_demo.sh): Demonstrates a while loop that waits for text files to disappear.
 
 ## Text Processing And Ifs
 - [**📘 Tutorial Guide**](../03_text_processing_and_ifs/TUTORIAL.md)
+- [**extension_stripping_demo.sh**](../03_text_processing_and_ifs/extension_stripping_demo.sh): Demonstrates how to strip file extensions using parameter expansion.
 - [**file_extraction_logic.sh**](../03_text_processing_and_ifs/file_extraction_logic.sh): Demonstrates how to iterate through files, filter by extension using regex, 
 - [**ifs_field_splitting.sh**](../03_text_processing_and_ifs/ifs_field_splitting.sh): Demonstrates how Bash uses IFS to split strings into tokens.
 - [**ifs_newline_processing.sh**](../03_text_processing_and_ifs/ifs_newline_processing.sh): Demonstrates how to process data line by line using IFS.
@@ -40,20 +51,27 @@ It is automatically generated and updated to reflect the project's current state
 - [**📘 Tutorial Guide**](../04_redirection_and_descriptors/TUTORIAL.md)
 - [**io_redirection_basics.sh**](../04_redirection_and_descriptors/io_redirection_basics.sh): #!/bin/bash
 - [**process_substitution.sh**](../04_redirection_and_descriptors/process_substitution.sh): #!/bin/bash
+- [**process_substitution_while.sh**](../04_redirection_and_descriptors/process_substitution_while.sh): Demonstrates process substitution combined with a while loop.
 
 ## Search And Metadata
 - [**📘 Tutorial Guide**](../05_search_and_metadata/TUTORIAL.md)
 - [**find_advanced_examples.sh**](../05_search_and_metadata/find_advanced_examples.sh): Demonstrates find with depth limits, permissions, and complex -exec commands
 - [**find_basename_demo.sh**](../05_search_and_metadata/find_basename_demo.sh): Demonstrates how to apply 'basename' on the output of 'find' using various methods.
 - [**find_mtime_exec.sh**](../05_search_and_metadata/find_mtime_exec.sh): Demonstrates parsing directory arguments and executing find
+- [**find_process_substitution.sh**](../05_search_and_metadata/find_process_substitution.sh): Using find with process substitution and basename for clean output.
 
 ## Arguments And Parameters
 - [**📘 Tutorial Guide**](../06_arguments_and_parameters/TUTORIAL.md)
+- [**args_regex_handling.sh**](../06_arguments_and_parameters/args_regex_handling.sh): Parses arguments and uses regex matching within a loop.
 - [**positional_parameters.sh**](../06_arguments_and_parameters/positional_parameters.sh): Demonstrates how to use positional parameters and set command
+- [**positional_params_list.sh**](../06_arguments_and_parameters/positional_params_list.sh): Lists various positional parameters and special variables.
 - [**shift_and_iteration.sh**](../06_arguments_and_parameters/shift_and_iteration.sh): Demonstrates how to iterate through arguments using shift
+- [**shift_multi_dir_find.sh**](../06_arguments_and_parameters/shift_multi_dir_find.sh): Uses shift to iterate through directories and find old files.
 
 ## Functions And Heredocs
 - [**📘 Tutorial Guide**](../07_functions_and_heredocs/TUTORIAL.md)
+- [**function_arguments_iteration.sh**](../07_functions_and_heredocs/function_arguments_iteration.sh): Demonstrates passing and iterating over multiple arguments in functions.
+- [**function_scope_demo.sh**](../07_functions_and_heredocs/function_scope_demo.sh): Demonstrates local vs global variable scope in Bash functions.
 - [**usage_functions.sh**](../07_functions_and_heredocs/usage_functions.sh): Demonstrates how to define a usage function with heredocs
 
 ## Shell Options
@@ -78,6 +96,7 @@ It is automatically generated and updated to reflect the project's current state
 - [**advanced_operations.sh**](../10_arrays/03_operations/advanced_operations.sh): #!/bin/bash
 - [**array_deletion_demo.sh**](../10_arrays/03_operations/array_deletion_demo.sh): #!/bin/bash
 - [**image_reference_examples.sh**](../10_arrays/04_references/image_reference_examples.sh): #!/bin/bash
+- [**comprehensive_arrays.sh**](../10_arrays/comprehensive_arrays.sh): Comprehensive demonstration of Bash arrays, including indexed and associative arrays, 
 
 ## Awk
 - [**📘 Tutorial Guide**](../11_awk/TUTORIAL.md)
@@ -106,12 +125,14 @@ It is automatically generated and updated to reflect the project's current state
 
 ## Eval In Bash
 - [**📘 Tutorial Guide**](../13_eval_in_bash/TUTORIAL.md)
+- [**dynamic_eval_demo.sh**](../13_eval_in_bash/dynamic_eval_demo.sh): Demonstrates dynamic command execution using the eval command.
 - [**eval_demo.sh**](../13_eval_in_bash/eval_demo.sh): Demonstrates dynamic command execution and variable manipulation.
 
 ## Parameter Expansion
 - [**📘 Tutorial Guide**](../14_parameter_expansion/TUTORIAL.md)
 - [**advanced_expansion.sh**](../14_parameter_expansion/advanced_expansion.sh): Demonstrates string replacement, slicing, and case manipulation.
 - [**comprehensive_expansion.sh**](../14_parameter_expansion/comprehensive_expansion.sh): Demonstrates all major Parameter Expansion techniques in Bash
+- [**existence_check_operator.sh**](../14_parameter_expansion/existence_check_operator.sh): Demonstrates the existence check operator (${var:?message}) in parameter expansion.
 - [**parameter_expansion_basics.sh**](../14_parameter_expansion/parameter_expansion_basics.sh): Demonstrates how to extract paths and filenames using built-in Bash string manipulation.
 
 ## Ps
@@ -123,7 +144,10 @@ It is automatically generated and updated to reflect the project's current state
 - [**📘 Tutorial Guide**](../16_regex/TUTORIAL.md)
 - [**alpha_hash_n.sh**](../16_regex/alpha_hash_n.sh): #!/usr/bin/bash
 - [**array_filtering_logic.sh**](../16_regex/array_filtering_logic.sh): #!/bin/bash
+- [**bash_rematch_capture.sh**](../16_regex/bash_rematch_capture.sh): Uses Bash's built-in BASH_REMATCH to capture groups from a regex.
 - [**file_extraction_logic.sh**](../16_regex/file_extraction_logic.sh): Demonstrates how to iterate through files, filter by extension using regex, 
+- [**filename_parsing_cut.sh**](../16_regex/filename_parsing_cut.sh): Demonstrates filename parsing using traditional tools like cut.
+- [**interactive_regex_match.sh**](../16_regex/interactive_regex_match.sh): Interactive tool to test strings against regex patterns using [[ =~ ]].
 - [**interactive_regex_tester.sh**](../16_regex/interactive_regex_tester.sh): Demonstrates how to take user input for both a string and a regex pattern to test matches.
 - [**line_by_line_parsing.sh**](../16_regex/line_by_line_parsing.sh): Demonstrates how to iterate through a file and apply different regex patterns to each line.
 - [**match.awk**](../16_regex/match.awk): Lesson script.
@@ -143,6 +167,18 @@ It is automatically generated and updated to reflect the project's current state
 ## Time Command
 - [**📘 Tutorial Guide**](../19_time_command/TUTORIAL.md)
 - [**time_basics.sh**](../19_time_command/time_basics.sh): Demonstrates how to use 'time' to measure the execution duration of commands and scripts.
+
+## Subshells And Processes
+- [**📘 Tutorial Guide**](../21_subshells_and_processes/TUTORIAL.md)
+- [**export_scope_demo.sh**](../21_subshells_and_processes/export_scope_demo.sh): Demonstrates how exported variables carry over to child processes.
+- [**pid_basics.sh**](../21_subshells_and_processes/pid_basics.sh): Demonstrates process IDs ($$, $BASHPID) and the process forest.
+- [**pipeline_subshell_scope.sh**](../21_subshells_and_processes/pipeline_subshell_scope.sh): Further demonstration of subshell scope using pipelines.
+- [**subshell_variable_scope.sh**](../21_subshells_and_processes/subshell_variable_scope.sh): Demonstrates that subshells created by pipelines have their own scope.
+
+## Command Substitution
+- [**📘 Tutorial Guide**](../22_command_substitution/TUTORIAL.md)
+- [**cmd_substitution_basics.sh**](../22_command_substitution/cmd_substitution_basics.sh): Demonstrates basic command substitution using $(command).
+- [**function_scope_substitution.sh**](../22_command_substitution/function_scope_substitution.sh): Shows how command substitution interacts with variable scope.
 
 ## Assignments and Exercises
 - [**alt_print_ascii_all.sh**](../assignments/ascii/alt_print_ascii_all.sh) (assignments/ascii)

@@ -6,6 +6,7 @@ This directory focuses on Bash Parameter Expansion—the most efficient way to m
 
 1. **`parameter_expansion_basics.sh`**: Teaches high-performance basename and dirname equivalents using `${var##*/}` and `${var%/*}`.
 2. **`advanced_expansion.sh`**: Demonstrates search-and-replace, string slicing (substrings), case conversion, and handling default values.
+3. **`existence_check_operator.sh`**: Teaches the `${var:?}` syntax to enforce required arguments or variables.
 
 ## Key Takeaways
 - **Pattern Removal (Front)**:

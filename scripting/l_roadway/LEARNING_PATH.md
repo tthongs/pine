@@ -81,11 +81,18 @@ This path follows the chronological and topical structure found in the `scr/READ
   - [**14_parameter_expansion/comprehensive_expansion.sh**](../14_parameter_expansion/comprehensive_expansion.sh)
 
 ### Session 12: Terminal Control & Subshells
-- **Topics:** `tput`, ANSI escape sequences, `eval`, process substitution `<()`, pid logic.
+- **Topics:** `tput`, ANSI escape sequences, `eval`, process substitution `<()`, pid logic, variable inheritance.
 - **Reference:** `README.txt` (March 2026)
 - **Materials:**
   - [**09_terminal_formatting/interactive_tput_demo.sh**](../09_terminal_formatting/interactive_tput_demo.sh)
   - [**13_eval_in_bash**](../13_eval_in_bash)
+  - [**21_subshells_and_processes**](../21_subshells_and_processes)
+
+### Session 13: Command Substitution & Advanced Scope
+- **Topics:** Capturing command output `$(...)`, nesting substitutions, function-subshell interaction.
+- **Reference:** `README.txt` (March 2026)
+- **Materials:**
+  - [**22_command_substitution**](../22_command_substitution)
 
 ---
 **Note:** To refresh the links in this roadway, run `./l_roadway/sync_roadway.sh`.

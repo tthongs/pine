@@ -6,6 +6,9 @@ This directory contains a collection of scripts that demonstrate different aspec
 1. **`regex_file_parsing.sh`**: Basic `grep -E` patterns, character classes, and anchors.
 2. **`line_by_line_parsing.sh`**: Using the Bash `=~` operator to capture and process groups.
 3. **`interactive_regex_tester.sh`**: A practical tool to test strings against regex patterns provided via user input.
+4. **`interactive_regex_match.sh`**: Simplified interactive regex testing tool.
+5. **`filename_parsing_cut.sh`**: Using `cut` and basic regex for file naming convention extraction.
+6. **`bash_rematch_capture.sh`**: Advanced use of `BASH_REMATCH` for group capturing from filenames.
 
 ## Specialized Tools
 3. **`sed_tutorial.sh`**: Deletion, printing, and substitution with `sed` using patterns.

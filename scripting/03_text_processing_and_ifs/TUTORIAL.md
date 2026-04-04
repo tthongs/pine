@@ -13,6 +13,7 @@ This directory covers Internal Field Separator (IFS) manipulation and advanced t
 7. **`tr_command_demo.sh`**: Practical implementation of the tr command.
 8. **`list_files_only.sh`**: Extracting only regular files from a directory.
 9. **`file_extraction_logic.sh`**: Practical logic for filtering by extension and parsing names.
+10. **`extension_stripping_demo.sh`**: Demonstrates efficient extension removal using parameter expansion.
 
 ## Key Takeaways
 - **IFS**: Control how Bash splits strings into tokens.
