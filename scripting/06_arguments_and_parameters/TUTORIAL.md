@@ -9,6 +9,8 @@ This directory focuses on how Bash scripts receive and process external data.
 3. **`positional_params_list.sh`**: Lists all special positional variables ($0-$9, $@, $#, etc.).
 4. **`shift_multi_dir_find.sh`**: Advanced use of `shift` to process multiple directory arguments for cleanup.
 5. **`args_regex_handling.sh`**: Demonstrates filtering positional arguments using regex patterns.
+6. **`getopts_parsing_demo.sh`**: Standard short-flag parsing with the 'getopts' built-in.
+7. **`manual_flag_parsing.sh`**: Manually parsing arguments with 'for' loops and 'case'.
 
 ## Key Concepts
 
