@@ -21,6 +21,21 @@ Bash automatically assigns arguments to special variables based on their positio
 
 - **`shift [n]`**: "Consumes" the first `n` arguments (default 1) and shifts all remaining arguments to the left. `$2` becomes `$1`, `$3` becomes `$2`, and `$#` decreases accordingly.
 
+### 3. Parsing with `getopts`
+The `getopts` built-in provides a robust way to parse short, single-character 
+flags in Bash.
+
+- **Basic Usage:** `while getopts 'uh' opt; do` parses `-u` and `-h`.
+- **Arguments:** Appending a colon (e.g., `f:`) means the flag requires a 
+  value. The value is captured in the `$OPTARG` variable.
+- **Silent Errors:** Starting the option string with a colon (e.g., `:hf:`) 
+  suppresses default Bash error messages.
+- **Handling Errors:**
+  - `\?)`: Triggered when an invalid option is provided. The invalid character 
+    is stored in `$OPTARG`.
+  - `:)`: Triggered when a required argument is missing for an option. The 
+    option character is stored in `$OPTARG`.
+
 ## 💡 Practical Use-Cases
 1. **Argument Validation:** Checking `if [[ $# -lt 2 ]]` to ensure the user provided enough information before proceeding.
 
