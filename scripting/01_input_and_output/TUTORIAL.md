@@ -8,8 +8,10 @@ This directory covers the fundamental concepts of interacting with a user via th
 2. **`read_with_timeout.sh`**: Advanced `read` options, including the `-t` flag for timeouts and `-n` for character-limited input.
 3. **`acknowledge_loop.sh`**: A simple loop showing how to repeat terminal output.
 4. **`let_arithmetic_basics.sh`**: Demonstrates basic arithmetic using the `let` command and logical evaluations.
+5. **`bc_floating_point.sh`**: External calculator for floating-point math, precision (`scale`), and here-strings.
 
 ## Key Takeaways
 - Use `read -p "Prompt: " var` to get input.
 - Always validate input before performing operations (like arithmetic).
-- `expr` is the legacy math tool, whereas `$(( ))` is modern and efficient.
+- `expr` is the legacy math tool, whereas `$(( ))` is modern and efficient for integers.
+- For floating-point arithmetic, use the `bc` utility (e.g., `echo "5/2" | bc -l`).
