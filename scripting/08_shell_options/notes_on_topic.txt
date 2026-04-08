@@ -1,16 +1,16 @@
 # Notes on Topic: Shell Options
 
 ## 📖 Overview
-Shell options allow you to modify the behavior of the Bash environment. These can be toggled using the `set` command to enable features, enforce safety rules, or debug scripts.
+Shell options allow you to modify the behavior of the Bash environment. These can be toggled using the `set` command (standard `sh` features) or `shopt` (Bash-specific features) to enable features, enforce safety rules, or debug scripts.
 
 ## 🛠️ Commands and References
 
-### 1. Toggling Options
+### 1. The `set` Command (Standard `sh` Shell, Bash Valid)
 - **`set -o <option>`**: Enables (turns ON) an option.
-
 - **`set +o <option>`**: Disables (turns OFF) an option.
+- **`set -f` / `set -o noglob`**: Disables filename expansion (globbing). Use `set +f` to re-enable.
 
-### 2. Common Safety and Debugging Options
+### 2. Common Safety and Debugging Options (`set`)
 
 | Option | Shorthand | Description |
 | :--- | :--- | :--- |
@@ -19,16 +19,22 @@ Shell options allow you to modify the behavior of the Bash environment. These ca
 | `xtrace` | `-x` | Print each command to stderr before executing it (Debugging). |
 | `pipefail` | (none) | The return value of a pipeline is the status of the last command to exit with a non-zero status. |
 
-### 3. Feature-Specific Options
+### 3. Feature-Specific Options (`set`)
 - **`allexport` (`-a`)**: Automatically marks all subsequently defined variables for export to child processes.
-
 - **`braceexpand` (`-B`)**: Enables/disables the `{a,b}` expansion feature.
-
 - **`noclobber` (`-C`)**: Prevents overwriting existing files with the `>` operator.
+
+### 4. The `shopt` Command (Bash-Specific)
+- **`shopt -s <option>`**: Sets (enables) a shell option.
+- **`shopt -u <option>`**: Unsets (disables) a shell option.
+- **`echo $BASHOPTS`**: Displays a colon-separated list of enabled shell options.
+
+#### Key `shopt` Options:
+- **`autocd`**: If enabled, simply typing a directory name without `cd` will change into it (e.g., `shopt -s autocd`).
+- **`globstar`**: If enabled, the pattern `**` used in a filename expansion context will match all files and zero or more directories and subdirectories.
 
 ## 💡 Practical Use-Cases
 1. **Strict Mode:** Adding `set -euo pipefail` at the start of a script to make it more robust and easier to debug.
-
 2. **Environment Setup:** Using `set -a` before sourcing a `.env` file to ensure all variables are immediately available to subshells and child processes.
-
 3. **Isolating Behavior:** Temporarily disabling `braceexpand` when working with filenames that contain literal curly braces.
+4. **Disabling Globbing:** Using `set -f` when processing raw strings with `*` or `?` that shouldn't be expanded into filenames.
