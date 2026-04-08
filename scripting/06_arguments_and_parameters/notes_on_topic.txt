@@ -35,6 +35,9 @@ flags in Bash.
     is stored in `$OPTARG`.
   - `:)`: Triggered when a required argument is missing for an option. The 
     option character is stored in `$OPTARG`.
+- **Argument Validation:** It is a best practice to use regex (e.g., 
+  `[[ $OPTARG =~ ^(-h|-l)$ ]]`) to ensure that an argument passed to a flag 
+  isn't accidentally another flag due to a user omission.
 
 ## 💡 Practical Use-Cases
 1. **Argument Validation:** Checking `if [[ $# -lt 2 ]]` to ensure the user provided enough information before proceeding.

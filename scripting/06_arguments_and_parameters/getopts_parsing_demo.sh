@@ -36,29 +36,27 @@ done
 OPTIND=1
 
 # ------------------------------------------------------------------------------
-# Example 2: Flags with Arguments and Silent Error Reporting
+# Example 3: Validating Option Arguments
 # ------------------------------------------------------------------------------
-# Usage: ./getopts_parsing_demo.sh -f "file.txt" -l "log.txt" -v "verbose"
-header "2. Flags with Arguments and Silent Errors"
+# Usage: ./getopts_parsing_demo.sh -f "-h" (Trigger error)
+header "3. Validating that Arguments are not Flags"
 
-# ':hf:l:v:' breakdown:
-# - Leading ':' : Enables silent error reporting (Bash won't print its own errors).
-# - 'f:', 'l:', 'v:' : These flags require an argument.
-# - 'h'         : The 'h' flag is a standalone flag.
-while getopts ':hf:l:v:' opt; do
+OPTIND=1
+while getopts ':hf:l:' opt; do
     case "$opt" in
         h)
-            echo "Help: Use -f <file>, -l <log>, or -v <val>."
-            ;;
+            echo "help" ;;
         f)
-            echo "f: $OPTARG"
+            # Regex check to ensure the argument doesn't look like another flag
+            if [[ $OPTARG =~ ^(-h|-l)$ ]]; then
+                echo "Illegal value of -f: $OPTARG"
+                continue
+            else
+                echo "f is $OPTARG"
+            fi
             ;;
         l)
-            echo "l: $OPTARG"
-            ;;
-        v)
-            echo "val is $OPTARG"
-            ;;
+            echo "l: $OPTARG" ;;
         \?)
             echo "var: $opt"
             echo "invalid option: $OPTARG"
