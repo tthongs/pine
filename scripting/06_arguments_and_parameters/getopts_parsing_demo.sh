@@ -11,15 +11,13 @@ header() {
     echo -e "\n\033[1;34m>>> $1 <<<\033[0m"
 }
 
-# Example Usage:
-# ./getopts_parsing_demo.sh -u
-# ./getopts_parsing_demo.sh -h
-# ./getopts_parsing_demo.sh -uh
+# ------------------------------------------------------------------------------
+# Example 1: Basic Flags
+# ------------------------------------------------------------------------------
+# Usage: ./getopts_parsing_demo.sh -u -h
+header "1. Basic Flags (-u, -h)"
 
-header "Parsing Flags with getopts"
-
-# 'uh' means the script accepts -u and -h.
-# A colon after a letter (e.g., 'u:h') would mean -u requires an argument.
+# 'uh' means the script accepts -u and -h as standalone flags.
 while getopts 'uh' var; do
     case "$var" in
         u)
@@ -30,6 +28,36 @@ while getopts 'uh' var; do
             ;;
         *)
             echo "Invalid option provided."
+            ;;
+    esac
+done
+
+# Reset getopts internal index for the next example
+OPTIND=1
+
+# ------------------------------------------------------------------------------
+# Example 2: Flags with Arguments and Silent Error Reporting
+# ------------------------------------------------------------------------------
+# Usage: ./getopts_parsing_demo.sh -v "some value"
+header "2. Flags with Arguments and Silent Errors"
+
+# ':v:' breakdown:
+# - Leading ':' : Enables silent error reporting (Bash won't print its own errors).
+# - 'v:'        : The 'v' flag requires an argument.
+# - 'h'         : The 'h' flag is a standalone flag.
+while getopts ':hv:' opt; do
+    case "$opt" in
+        h)
+            echo "Help: Use -v <value> to provide a parameter."
+            ;;
+        v)
+            echo "Value provided via -v: $OPTARG"
+            ;;
+        \?)
+            echo "Error: Invalid option -$OPTARG"
+            ;;
+        :)
+            echo "Error: Option -$OPTARG requires an argument."
             ;;
     esac
 done

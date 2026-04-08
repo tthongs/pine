@@ -14,6 +14,7 @@ It is automatically generated and updated to reflect the project's current state
 - [**📘 Tutorial Guide**](../01_input_and_output/TUTORIAL.md)
 - [**acknowledge_loop.sh**](../01_input_and_output/acknowledge_loop.sh): Demonstrates a simple while loop for repeating output or status checks.
 - [**basic_read.sh**](../01_input_and_output/basic_read.sh): Demonstrates how to take user input using the 'read' command.
+- [**bc_floating_point.sh**](../01_input_and_output/bc_floating_point.sh): #!/bin/bash
 - [**let_arithmetic_basics.sh**](../01_input_and_output/let_arithmetic_basics.sh): Demonstrates basic arithmetic using the 'let' command.
 - [**printf_formatting_mastery.sh**](../01_input_and_output/printf_formatting_mastery.sh): Demonstrates advanced printf formatting for strings, numbers, and floats
 - [**read_with_timeout.sh**](../01_input_and_output/read_with_timeout.sh): Demonstrates how to use timeouts and capture fixed numbers of characters.
@@ -26,10 +27,10 @@ It is automatically generated and updated to reflect the project's current state
 - [**command_switcher_case.sh**](../02_loops_and_logic/command_switcher_case.sh): Uses a case statement to switch between different system commands.
 - [**conditional_ls_demo.sh**](../02_loops_and_logic/conditional_ls_demo.sh): Conditional execution of ls -l based on an argument.
 - [**c_style_for_loops.sh**](../02_loops_and_logic/c_style_for_loops.sh): Demonstrates C-style for loops, nested structures, and logic flags.
-- [**eval_demo.sh**](../02_loops_and_logic/eval_demo.sh): Demonstrates dynamic command execution and variable manipulation.
 - [**infinite_loop_demo.sh**](../02_loops_and_logic/infinite_loop_demo.sh): Simple demonstration of an infinite loop using the : (null) command.
 - [**loop_control_continue.sh**](../02_loops_and_logic/loop_control_continue.sh): Teaches how to skip the rest of a loop's current iteration.
 - [**nested_while_loops.sh**](../02_loops_and_logic/nested_while_loops.sh): Demonstrates how to use one while loop inside another for multi-dimensional iteration.
+- [**select_menu_demo.sh**](../02_loops_and_logic/select_menu_demo.sh): #!/bin/bash
 - [**string_testing_demo.sh**](../02_loops_and_logic/string_testing_demo.sh): Demonstrates string testing using [[ ]] and the test command.
 - [**while_loops_demo.sh**](../02_loops_and_logic/while_loops_demo.sh): Demonstrates infinite loops, finite counters, and waiting for files to appear.
 - [**while_ls_wait_demo.sh**](../02_loops_and_logic/while_ls_wait_demo.sh): Demonstrates a while loop that waits for text files to disappear.
@@ -63,6 +64,8 @@ It is automatically generated and updated to reflect the project's current state
 ## Arguments And Parameters
 - [**📘 Tutorial Guide**](../06_arguments_and_parameters/TUTORIAL.md)
 - [**args_regex_handling.sh**](../06_arguments_and_parameters/args_regex_handling.sh): Parses arguments and uses regex matching within a loop.
+- [**getopts_parsing_demo.sh**](../06_arguments_and_parameters/getopts_parsing_demo.sh): #!/bin/bash
+- [**manual_flag_parsing.sh**](../06_arguments_and_parameters/manual_flag_parsing.sh): #!/bin/bash
 - [**positional_parameters.sh**](../06_arguments_and_parameters/positional_parameters.sh): Demonstrates how to use positional parameters and set command
 - [**positional_params_list.sh**](../06_arguments_and_parameters/positional_params_list.sh): Lists various positional parameters and special variables.
 - [**shift_and_iteration.sh**](../06_arguments_and_parameters/shift_and_iteration.sh): Demonstrates how to iterate through arguments using shift
