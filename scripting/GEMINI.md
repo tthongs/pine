@@ -134,8 +134,15 @@ The roadway is automatically updated as new content is added. To manually refres
 - **`tutorial_notes.txt`**: General notes on quotes, line numbers, find/replace, and more.
 - **`main_readme.txt`**: Comprehensive history and foundational notes.
 
+### `utils/`
+- **`create_samples.sh`**: Run this to (re)generate all sample data for manual exploration.
+- **`renumber.py`**: Utility script to automatically renumber the Core Learning Modules in this file.
+
+### `scr/`
+- Dedicated directory for **new data, content, or notes** to be further analyzed and organized.
+
 ### `data/` 
-- **`create_samples.sh`**: Run this from the root to (re)generate all sample data for manual exploration.
+- Sample data and deep path structures for testing scripts.
 
 ---
 
